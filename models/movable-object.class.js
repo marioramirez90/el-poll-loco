@@ -1,4 +1,4 @@
-class MovavleObject{
+class MovableObject{
     x = 120;
     y = 200;
     img;
@@ -7,7 +7,7 @@ class MovavleObject{
 
     loadImage(path){
         this.img = new Image();
-        this.img.scr = path;
+        this.img.src = path;
     }
 
     moveRight() {
