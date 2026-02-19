@@ -1,8 +1,6 @@
-class Chicken{
+class Chicken extends MovavleObject{
     x;
     y;
+   
 
-    moveLeft(){
-        
-    }
 }

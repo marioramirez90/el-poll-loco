@@ -6,4 +6,8 @@ class MovavleObject{
     moveRight() {
         
     }
+    
+    moveLeft(){
+        
+    }
 }

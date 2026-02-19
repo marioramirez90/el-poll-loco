@@ -1,12 +1,6 @@
-class Character{
-    x;
-    y;
-
-    moveRight(){
-
-    }
-
+class Character extends MovavleObject{
+ 
     jump(){
-        
+
     }
 }
