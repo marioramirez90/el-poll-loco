@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-    speed = 10;
+    speed = 5.5;
     height = 180;
     IMAGES_WALKING =[
         'img/2_character_pepe/2_walk/W-21.png',
@@ -25,10 +25,13 @@ class Character extends MovableObject {
             
             if (this.world.keyboard.RIGHT){
                 this.x += this.speed;
+                this.otherDiretion = false;
             }
 
              if (this.world.keyboard.LEFT){
                 this.x -= this.speed;
+                this.otherDiretion = true;
+                
             }
             
 
