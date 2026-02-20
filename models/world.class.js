@@ -15,19 +15,22 @@ backgroundObjects = [
     new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 0),
     new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 0),
 
-    
-
-
 ]
 
-
+keyboard;
 canvas;
 ctx;
 
-constructor(canvas){
+constructor(canvas, keyboard){
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
+    this.keyboard = keyboard;
     this.draw();
+    this.setWorld();
+}
+
+setWorld(){
+    this.character.world = this;
 }
     draw(){
         this.ctx.clearRect(0, 0, canvas.width, canvas.height);
