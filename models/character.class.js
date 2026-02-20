@@ -1,6 +1,7 @@
 class Character extends MovableObject {
     speed = 5.5;
     height = 180;
+    camera_x = 0;
     IMAGES_WALKING =[
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -26,14 +27,15 @@ class Character extends MovableObject {
             if (this.world.keyboard.RIGHT){
                 this.x += this.speed;
                 this.otherDiretion = false;
+              
             }
 
              if (this.world.keyboard.LEFT){
                 this.x -= this.speed;
                 this.otherDiretion = true;
-                
             }
-            
+
+            this.world.camera_x = -this.x;
 
         }, 1000/60)
 
