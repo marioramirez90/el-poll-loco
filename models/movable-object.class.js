@@ -25,6 +25,14 @@ class MovableObject{
             
         });
     }
+
+    playAnimatio(images){
+                let i = this.currentImage % this.IMAGES_WALKING.length;
+             let path = this.images[i]
+             this.img = this.imageCache[path];
+             this.currentImage++;
+
+    }
  
 
     moveRight() {
