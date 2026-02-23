@@ -8,7 +8,26 @@ class MovableObject{
     currentImage = 0;
     speed = 0.2;
     otherDiretion = false;
+    speedY = 0.15;
+    acceleration = 4; 
+ 
 
+    applyGravity(){  
+        setInterval(() => {
+            if(this.isAboveGround() || this.speedY > 0){
+                  this.y -= this.speedY
+            this.speedY -= this.acceleration;
+
+            }
+          
+         
+        }, 1000/ 25);
+    }
+
+    isAboveGround(){
+        return this.y < 210; 
+    }
+ 
 
 
     loadImage(path){
@@ -26,23 +45,44 @@ class MovableObject{
         });
     }
 
-    playAnimatio(images){
-                let i = this.currentImage % this.IMAGES_WALKING.length;
-             let path = this.images[i]
+    playaAnimation(images){
+             let i = this.currentImage % this.IMAGES_WALKING.length;
+             let path = images[i]
              this.img = this.imageCache[path];
              this.currentImage++;
-
     }
+       playaSandingAnimation(images){
+             let i = this.currentImage % this.IMAGES_STANDING.length;
+             let path = images[i]
+             this.img = this.imageCache[path];
+             this.currentImage++;
+    }
+     playaSeepingAnimation(images){
+             let i = this.currentImage % this.IMAGES_SLEEPING.length;
+             let path = images[i]
+             this.img = this.imageCache[path];
+             this.currentImage++;
+    }
+    
  
 
     moveRight() {
-        
+           this.x += this.speed;
+          
     }
     
     
     moveLeft(){
-         setInterval(() => {
-            this.x -= this.speed;
-        }, 1000/ 60);
+        
+               this.x -= this.speed;
+          
+       
     }
+
+    jump(){
+         this.speedY = 30;
+
+    }
+
+    
 }
