@@ -58,7 +58,7 @@ class Character extends MovableObject {
     world;
 
     constructor(){
-        super().loadImage(this.IMAGES_STANDING[0]);
+        super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.IMAGES_STANDING);
         this.applyGravity()
         this.loadImages(this.IMAGES_WALKING);
@@ -69,10 +69,11 @@ class Character extends MovableObject {
     }
     animate(){
        
-            setInterval(() => {
-                     this.playaAnimation(this.IMAGES_SLEEPING);
-                   this.playaAnimation(this.IMAGES_STANDING);
-                  
+          setInterval(() => {
+
+                this.playaAnimation(this.IMAGES_STANDING)
+
+     
         },500);
      
         setInterval(() =>{

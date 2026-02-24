@@ -51,19 +51,6 @@ class MovableObject{
              this.img = this.imageCache[path];
              this.currentImage++;
     }
-       playaSandingAnimation(images){
-             let i = this.currentImage % this.IMAGES_STANDING.length;
-             let path = images[i]
-             this.img = this.imageCache[path];
-             this.currentImage++;
-    }
-     playaSeepingAnimation(images){
-             let i = this.currentImage % this.IMAGES_SLEEPING.length;
-             let path = images[i]
-             this.img = this.imageCache[path];
-             this.currentImage++;
-    }
-    
  
 
     moveRight() {
