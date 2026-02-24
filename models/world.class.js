@@ -17,27 +17,39 @@ constructor(canvas, keyboard){
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
+    this.checkCollisions();
 }
 
 setWorld(){
     this.character.world = this;
 }
-    draw(){
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-        this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.addToMap(this.character);
+checkCollisions(){
+    setInterval(() => {
+        this.level.enemies.forEach((enemy) =>{
+            if(this.character.isColliding(enemy)){
+                console.log(`treffer`);
+                
+            }
+        })
+        
+    }, 200);
 
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.clouds);
+}
 
-        this.ctx.translate(-this.camera_x, 0);
+draw(){
+    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.ctx.translate(this.camera_x, 0);
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addToMap(this.character);
+     this.addObjectsToMap(this.level.enemies);
+     this.addObjectsToMap(this.level.clouds);
+     this.ctx.translate(-this.camera_x, 0);
  
-        let self = this;
-        requestAnimationFrame(function(){
+    let self = this;
+    requestAnimationFrame(function(){
             self.draw();
-        });
+    });
     }
 
     addObjectsToMap(objects){
@@ -75,6 +87,10 @@ setWorld(){
           mo.x = mo.x * -1;
         this.ctx.restore();
     }
+
+
+
+
 
    
    

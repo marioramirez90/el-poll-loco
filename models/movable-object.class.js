@@ -34,15 +34,16 @@ class MovableObject{
     }
 
     drawframe(ctx){
-      ctx.beginPath();
-      ctx.lineWidth = '5';
-      ctx.strokeStyle = "blue";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
+        if(this instanceof Character || this instanceof Chicken ||  this instanceof Endboss){
+        ctx.beginPath();
+        ctx.lineWidth = '5';
+        ctx.strokeStyle = "blue";
+        ctx.rect(this.x, this.y, this.width, this.height, this.offset);
+        ctx.stroke()
+    };}
 
 
-    loadImages(arr){
+    loadImages(arr){ 
         arr.forEach((path) => {
             let img = new Image();
             img.src = path;
@@ -51,10 +52,10 @@ class MovableObject{
     }
 
     playaAnimation(images){
-             let i = this.currentImage % this.IMAGES_WALKING.length;
-             let path = images[i]
-             this.img = this.imageCache[path];
-             this.currentImage++;
+        let i = this.currentImage % this.IMAGES_WALKING.length;
+        let path = images[i]
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
 
     moveRight() {
@@ -67,6 +68,15 @@ class MovableObject{
 
     jump(){
          this.speedY = 30;
+    }
+
+    isColliding(mo){
+        
+        return this.x + this.width - this.offset.right > mo.x + this.offset.left &&
+          this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+          this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+          this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+         
     }
 
 }
