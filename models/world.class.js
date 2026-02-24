@@ -49,17 +49,34 @@ setWorld(){
 
     addToMap(mo){
         if(mo.otherDiretion){
+            this.flipImage(mo);
+      
+
+    }
+    mo.draw(this.ctx);
+    mo.drawframe(this.ctx);
+      
+ 
+      if(mo.otherDiretion){
+        this.flipImageBack(mo);
+      
+      }
+ }
+
+ 
+    flipImage(mo){
         this.ctx.save();
         this.ctx.translate(mo.width, 0 );
         this.ctx.scale(-1, 1);
         mo.x = mo.x * -1;
-
     }
-      this.ctx.drawImage(mo.img,mo.x,mo.y,mo.width,mo.height);
-      if(mo.otherDiretion){
-        mo.x = mo.x * -1;
-        this.ctx.restore();
-      }
-}
 
-};
+    flipImageBack(mo){
+          mo.x = mo.x * -1;
+        this.ctx.restore();
+    }
+
+   
+   
+
+ };

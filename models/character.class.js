@@ -2,7 +2,6 @@ class Character extends MovableObject {
     speed = 5.5;
     height = 280;
     camera_x = 0;
-  
 
     IMAGES_STANDING =[
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -28,7 +27,6 @@ class Character extends MovableObject {
         'img/2_character_pepe/1_idle/long_idle/I-18.png',
         'img/2_character_pepe/1_idle/long_idle/I-19.png',
         'img/2_character_pepe/1_idle/long_idle/I-20.png'
-
     ];
 
     IMAGES_WALKING =[
@@ -53,8 +51,6 @@ class Character extends MovableObject {
 
     ];
 
-    
-
     world;
 
     constructor(){
@@ -70,36 +66,29 @@ class Character extends MovableObject {
     animate(){
        
           setInterval(() => {
-
-                this.playaAnimation(this.IMAGES_STANDING)
-
-     
+            this.playaAnimation(this.IMAGES_STANDING)
         },500);
      
         setInterval(() =>{
            
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
                  this.otherDiretion = false; 0
-                 this.moveRight()
-                 
+                 this.moveRight()    
             }
-             if (this.world.keyboard.LEFT && this.x > 0 ){
+
+            if (this.world.keyboard.LEFT && this.x > 0 ){
                  this.otherDiretion = true;
                  this.moveLeft()
-            
             } 
-            
+        
             if(this.world.keyboard.SPACE && !this.isAboveGround()){
                 this.jump();
-                
-               
             }
             
             this.world.camera_x = -this.x + 100;
 
         }, 1000/60)
         
-
         setInterval(() => {
           
             if(this.isAboveGround()){
@@ -111,9 +100,6 @@ class Character extends MovableObject {
             }
 
             }
-
-           
-          
         },50);
 
     }
