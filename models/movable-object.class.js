@@ -1,11 +1,4 @@
-class MovableObject{
-    x = 120;
-    y = 200;
-    img;
-    height = 150;
-    width = 100;
-    imageCache =[]
-    currentImage = 0;
+class MovableObject extends DrawableObject {
     speed = 0.2;
     otherDiretion = false;
     speedY = 0.15;
@@ -27,15 +20,6 @@ class MovableObject{
         return this.y < 210; 
     }
 
-    loadImage(path){
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    draw(ctx){
-      ctx.drawImage(this.img, this.x, this.y, this.width, this.height,);
-    }
-
     drawframe(ctx){
         if(this instanceof Character || this instanceof Chicken ||  this instanceof Endboss){
         ctx.beginPath();
@@ -52,13 +36,6 @@ class MovableObject{
             img.src = path;
             this.imageCache[path] = img; 
         });
-    }
-
-    playaAnimation(images){
-        let i = this.currentImage % images.length;
-        let path = images[i]
-        this.img = this.imageCache[path];
-        this.currentImage++;
     }
 
     moveRight() {
