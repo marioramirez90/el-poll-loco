@@ -20,23 +20,10 @@ class MovableObject extends DrawableObject {
         return this.y < 210; 
     }
 
-    drawframe(ctx){
-        if(this instanceof Character || this instanceof Chicken ||  this instanceof Endboss){
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = "blue";
-        ctx.rect(this.x, this.y, this.width, this.height,);
-        ctx.stroke()
-    };}
+   
 
 
-    loadImages(arr){ 
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img; 
-        });
-    }
+ 
 
     moveRight() {
            this.x += this.speed;  

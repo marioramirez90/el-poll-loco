@@ -1,6 +1,7 @@
 class World{
 
 character = new Character();
+statusBar = new StatusBar();
 level = level1;
 enemies = level1.enemies
 clouds = level1.clouds
@@ -43,6 +44,8 @@ draw(){
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addToMap(this.character);
+     this.addToMap(this.statusBar);
+    
      this.addObjectsToMap(this.level.enemies);
      this.addObjectsToMap(this.level.clouds);
      this.ctx.translate(-this.camera_x, 0);

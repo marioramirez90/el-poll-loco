@@ -38,34 +38,41 @@ class StatusBar extends DrawableObject{
         
     ];
 
+      percentage = 100;
+    
     constructor(){
-        this.loadImage(this.HEALTH_IMAGES);
-        this.loadImage(this.BOTTEL_IMAGES);
-        this.loadImage(this.ENDBOSS_IMAGES);
-        this.loadImage(this.COIN_IMAGES);
+        super();
+        this.x = 100;
+        this.y = 100;
+        this.loadImages(this.HEALTH_IMAGES);
+        this.loadImages(this.BOTTEL_IMAGES);
+        this.loadImages(this.ENDBOSS_IMAGES);
+        this.loadImages(this.COIN_IMAGES);
+        this.setPercentage(100);
     }
 
-    setPercentage(percentige){
-        this.percentige = percentige;
+    setPercentage(percentage){
+        this.percentage = percentage;
         let path = this.HEALTH_IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
+    
     resolveImageIndex() {
-        if (this.percentige == 100) {
+        if (this.percentage == 100) {
                 return 5;
-        } else if (this.percentige > 80){
+        } else if (this.percentage > 80){
             return 4;
 
-        }else if (this.percentige > 60){
+        }else if (this.percentage > 60){
             return 3;
 
-        }else if (this.percentige > 40){
+        }else if (this.percentage > 40){
             return 2;
 
-        }else if (this.percentige > 20){
+        }else if (this.percentage > 20){
             return 1;
 
-        }else if (this.percentige >= 0){
+        }else if (this.percentage >= 0){
             return 0;
 
         }}
