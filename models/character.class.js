@@ -7,8 +7,8 @@ class Character extends MovableObject {
  
         offset = {
     top: 70,
-    left: 30,
-    right: 20,
+    left: 10,
+    right:10,
     bottom: 0
  }
 
@@ -60,6 +60,16 @@ class Character extends MovableObject {
 
     ];
 
+    
+    IMAGES_HURT =[
+        'img/2_character_pepe/4_hurt/H-41.png',
+        'img/2_character_pepe/4_hurt/H-41.png',
+        'img/2_character_pepe/4_hurt/H-41.png',
+      
+
+    ];
+
+
     IMAGES_DEAD =[
         'img/2_character_pepe/5_dead/D-51.png',
         'img/2_character_pepe/5_dead/D-52.png',
@@ -82,7 +92,8 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING) ;
         this.loadImages(this.IMAGES_SLEEPING);
-         this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_HURT);
         this.animate();
         this.y = 3;
     }
@@ -119,11 +130,17 @@ class Character extends MovableObject {
         setInterval(() => {
 
             if (this.isDead()){
-                 this.playaAnimation(this.IMAGES_DEAD);
+                this.playaAnimation(this.IMAGES_DEAD);
+            }else if( this.isHurt()) {
+                this.playaAnimation(this.IMAGES_HURT);
+
+
+
             }else if(!this.isAboveGround()){
-                 if (this.world.keyboard.RIGHT|| this.world.keyboard.LEFT ){
+                if (this.world.keyboard.RIGHT|| this.world.keyboard.LEFT ){
                 this.playaAnimation(this.IMAGES_WALKING);
             }
+
             }
         },50);
          

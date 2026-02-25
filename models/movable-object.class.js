@@ -11,6 +11,7 @@ class MovableObject{
     speedY = 0.15;
     acceleration = 4; 
     energy = 100;
+    lastHit = 0;
   
 
     applyGravity(){  
@@ -54,7 +55,7 @@ class MovableObject{
     }
 
     playaAnimation(images){
-        let i = this.currentImage % this.IMAGES_WALKING.length;
+        let i = this.currentImage % images.length;
         let path = images[i]
         this.img = this.imageCache[path];
         this.currentImage++;
@@ -77,15 +78,23 @@ class MovableObject{
         return this.x + this.width - this.offset.right > mo.x + this.offset.left &&
           this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
           this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-          this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
-         
+          this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;  
     }
 
-    hit(){
-        this.energy -= 50;
-        if(this.energy < 0)
-            this.energy = 0;
-         
+    hit() {
+        this.energy -= 5;
+        if(this.energy < 0) {
+            this.energy = 0;   
+    } else {
+        this.lastHit = new Date().getTime()
+    }
+    }
+
+   isHurt(){
+    let timepassed = new Date().getTime() - this.lastHit;
+    timepassed = timepassed / 1000;
+    return timepassed < 0.5;
+
     }
 
     isDead(){
