@@ -2,7 +2,7 @@ class Character extends MovableObject {
     speed = 5.5;
     height = 280;
     camera_x = 0;
-    energy = 200;
+    energy = 100;
 
  
         offset = {
