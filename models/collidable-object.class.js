@@ -3,10 +3,10 @@ class CollidableObject extends MovableObject{
  damage = 0;
 
  offset = {
-    top: 120,
-    left: 40,
-    right: 30,
-    bottom: 30
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
  }
 
 

@@ -2,11 +2,13 @@ class Character extends MovableObject {
     speed = 5.5;
     height = 280;
     camera_x = 0;
+    energy = 200;
 
-    offset = {
-    top: 0,
-    left: 0,
-    right: 0,
+ 
+        offset = {
+    top: 70,
+    left: 30,
+    right: 20,
     bottom: 0
  }
 
@@ -58,8 +60,21 @@ class Character extends MovableObject {
 
     ];
 
-    world;
+    IMAGES_DEAD =[
+        'img/2_character_pepe/5_dead/D-51.png',
+        'img/2_character_pepe/5_dead/D-52.png',
+        'img/2_character_pepe/5_dead/D-53.png',
+        'img/2_character_pepe/5_dead/D-54.png',
+        'img/2_character_pepe/5_dead/D-55.png',
+        'img/2_character_pepe/5_dead/D-56.png',
+        'img/2_character_pepe/5_dead/D-57.png',
 
+        
+        
+    ];
+
+    world;
+  
     constructor(){
         super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.IMAGES_STANDING);
@@ -67,14 +82,18 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING) ;
         this.loadImages(this.IMAGES_SLEEPING);
+         this.loadImages(this.IMAGES_DEAD);
         this.animate();
         this.y = 3;
     }
     animate(){
-       
-          setInterval(() => {
+
+             setInterval(() => {
             this.playaAnimation(this.IMAGES_STANDING)
         },500);
+       
+     
+       
      
         setInterval(() =>{
            
@@ -96,20 +115,31 @@ class Character extends MovableObject {
 
         }, 1000/60)
         
+
         setInterval(() => {
-          
-            if(this.isAboveGround()){
-                 this.playaAnimation(this.IMAGES_JUMPING);
-                
-            }else{
+
+            if (this.isDead()){
+                 this.playaAnimation(this.IMAGES_DEAD);
+            }else if(!this.isAboveGround()){
                  if (this.world.keyboard.RIGHT|| this.world.keyboard.LEFT ){
                 this.playaAnimation(this.IMAGES_WALKING);
             }
-
             }
         },50);
+         
+             setInterval(() => {
+          
+            if(this.isAboveGround()){
+             
+             this.playaAnimation(this.IMAGES_JUMPING);
+                
 
+            }
+        },150);
+         
     }
+
+
 
 
  

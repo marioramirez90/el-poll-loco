@@ -10,6 +10,8 @@ class MovableObject{
     otherDiretion = false;
     speedY = 0.15;
     acceleration = 4; 
+    energy = 100;
+  
 
     applyGravity(){  
         setInterval(() => {
@@ -30,7 +32,7 @@ class MovableObject{
     }
 
     draw(ctx){
-      ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+      ctx.drawImage(this.img, this.x, this.y, this.width, this.height,);
     }
 
     drawframe(ctx){
@@ -38,7 +40,7 @@ class MovableObject{
         ctx.beginPath();
         ctx.lineWidth = '5';
         ctx.strokeStyle = "blue";
-        ctx.rect(this.x, this.y, this.width, this.height, this.offset);
+        ctx.rect(this.x, this.y, this.width, this.height,);
         ctx.stroke()
     };}
 
@@ -77,6 +79,17 @@ class MovableObject{
           this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
           this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
          
+    }
+
+    hit(){
+        this.energy -= 50;
+        if(this.energy < 0)
+            this.energy = 0;
+         
+    }
+
+    isDead(){
+        return this.energy == 0;
     }
 
 }
