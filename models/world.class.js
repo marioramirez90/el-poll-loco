@@ -29,7 +29,7 @@ checkCollisions() {
     setInterval(() => {
         this.level.enemies.forEach((enemy, index) => { 
             if (this.character.isColliding(enemy) && !enemy.isDead()) {
-                
+                console.log(`treffer`, this.character.energy);
                 if (this.character.isAboveGround() && this.character.speedY < 0) {
                     enemy.hit();
                     this.character.jump();
@@ -78,21 +78,22 @@ draw(){
 
     }
 
-    addToMap(mo){
-        if(mo.otherDiretion){
-            this.flipImage(mo);
-      
-
+ addToMap(mo){
+    if(mo.otherDiretion){
+        this.flipImage(mo);
     }
+
     mo.draw(this.ctx);
-    mo.drawframe(this.ctx);
-      
- 
-      if(mo.otherDiretion){
+
+    if (mo.drawFrame) {
+        mo.drawFrame(this.ctx); // <-- richtige Schreibweise!
+    }
+
+    if(mo.otherDiretion){
         this.flipImageBack(mo);
-      
-      }
- }
+    }
+}
+   
 
  
     flipImage(mo){
