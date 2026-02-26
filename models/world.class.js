@@ -4,6 +4,7 @@ character = new Character();
 statusBar = new StatusBar();
 coinStatusBar = new CoinStatusBar();
 bottleStatusBar = new BottleStatusBar();
+endbossStatusBar = new EndbossStatusBar();
 level = level1;
 enemies = level1.enemies
 clouds = level1.clouds
@@ -25,6 +26,12 @@ constructor(canvas, keyboard){
 
 setWorld(){
     this.character.world = this;
+
+    this.level.enemies.forEach(enemy => {
+        if (enemy instanceof Endboss) {
+            enemy.character = this.character;
+        }
+    });
 }
 
 checkCollisions() {
@@ -66,7 +73,11 @@ draw(){
     this.addToMap(this.bottleStatusBar);
     this.ctx.translate(this.camera_x, 0);
     this.addToMap(this.character);
+
      this.addObjectsToMap(this.level.enemies);
+     
+         this.addToMap(this.endbossStatusBar);
+
      this.addObjectsToMap(this.level.clouds);
      this.ctx.translate(-this.camera_x, 0);
     let self = this;
