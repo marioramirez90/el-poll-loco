@@ -2,6 +2,8 @@ class World{
 
 character = new Character();
 statusBar = new StatusBar();
+coinStatusBar = new CoinStatusBar();
+bottleStatusBar = new BottleStatusBar();
 level = level1;
 enemies = level1.enemies
 clouds = level1.clouds
@@ -56,6 +58,8 @@ draw(){
     this.addObjectsToMap(this.level.backgroundObjects);
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
+    this.addToMap(this.coinStatusBar);
+    this.addToMap(this.bottleStatusBar);
     this.ctx.translate(this.camera_x, 0);
     this.addToMap(this.character);
      this.addObjectsToMap(this.level.enemies);
