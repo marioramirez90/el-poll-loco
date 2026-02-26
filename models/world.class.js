@@ -47,6 +47,7 @@ checkCollisions() {
     }, 100);
 }
 
+ 
 
 draw(){
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -86,7 +87,7 @@ draw(){
     mo.draw(this.ctx);
 
     if (mo.drawFrame) {
-        mo.drawFrame(this.ctx); // <-- richtige Schreibweise!
+        mo.drawFrame(this.ctx); 
     }
 
     if(mo.otherDiretion){
@@ -95,7 +96,6 @@ draw(){
 }
    
 
- 
     flipImage(mo){
         this.ctx.save();
         this.ctx.translate(mo.width, 0 );

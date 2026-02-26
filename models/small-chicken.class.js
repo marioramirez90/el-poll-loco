@@ -4,10 +4,10 @@ class Smallchicken extends MovableObject{
     x = 200;
     static SmallchickenIndex = 0;
     offset = {
-    top: 10,
-    left: 10,
-    right: 10,
-     bottom: 10,
+    top: 5,
+    left: 5,
+    right: 5,
+     bottom: 5,
     
  }
     IMAGES_WALKING =[
