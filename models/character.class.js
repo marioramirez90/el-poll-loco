@@ -9,7 +9,7 @@ class Character extends MovableObject {
     top: 70,
     left: 10,
     right:10,
-    bottom: 0
+    bottom: 10,
  }
 
     IMAGES_STANDING =[

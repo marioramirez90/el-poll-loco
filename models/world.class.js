@@ -25,20 +25,28 @@ setWorld(){
     this.character.world = this;
 }
 
-checkCollisions(){
+checkCollisions() {
     setInterval(() => {
-        this.level.enemies.forEach((enemy) =>{
-            if(this.character.isColliding(enemy)){
-                console.log(`treffer`, this.character.energy);
-               this.character.hit();
-               this.statusBar.setPercentage(this.character.energy)
+        this.level.enemies.forEach((enemy, index) => { 
+            if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 
-            }
-        })
-        
-    }, 200);
+                if (this.character.isAboveGround() && this.character.speedY < 0) {
+                    enemy.hit();
+                    this.character.jump();
+                    
+                    setTimeout(() => {
+                        this.level.enemies.splice(index, 1);
+                    }, 1000);
 
+                } else {
+                    this.character.hit();
+                    this.statusBar.setPercentage(this.character.energy);
+                }
+            }
+        });
+    }, 100);
 }
+
 
 draw(){
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
