@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
   width = 390;
   energy = 1000;
   speed = 20;
+  distance = 0;
   offset = {
     top: 120,
     left: 80,
@@ -67,14 +68,14 @@ class Endboss extends MovableObject {
   animate() {
     setInterval(() => {
       if (!this.character) return;
-      let distance = Math.abs(this.x - this.character.x);
+      this.distance = Math.abs(this.x - this.character.x);
       if (this.isDead()) {
         this.playaAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
-      } else if (distance < 10) {
+      } else if (this.distance < 10) {
         this.playaAnimation(this.IMAGES_ATTACK);
-      } else if (distance < 400) {
+      } else if (this.distance < 400) {
         this.playaAnimation(this.IMAGES_WALKING);
 
         if (this.x > this.character.x) {

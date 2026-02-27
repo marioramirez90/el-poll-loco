@@ -2,6 +2,7 @@ class Smallchicken extends MovableObject {
   height = 70;
   width = 70;
   x = 200;
+  speed = 0.5;
   static SmallchickenIndex = 0;
   offset = {
     top: 5,
