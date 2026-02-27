@@ -22,7 +22,7 @@ class DrawableObject {
       this instanceof Chicken ||
       this instanceof Smallchicken ||
       this instanceof Endboss ||
-      this instanceof COINS
+      this instanceof coins
     ) {
       ctx.strokeStyle = "red";
       ctx.strokeRect(

@@ -3,7 +3,7 @@ class Character extends MovableObject {
   height = 280;
   camera_x = 0;
   energy = 100;
-  coinNumber =0;
+  coinNumber = 0;
 
   offset = {
     top: 100,
@@ -93,6 +93,7 @@ class Character extends MovableObject {
       this.playaAnimation(this.IMAGES_STANDING);
     }, 500);
 
+ 
     setInterval(() => {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.otherDiretion = false;

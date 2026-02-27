@@ -42,22 +42,24 @@ const level1 = new Level(
 ],
 
 [
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins(),
-    new coins()
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
+    new Coins(),
     
+
 
   
     

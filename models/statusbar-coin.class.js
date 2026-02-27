@@ -19,7 +19,7 @@ class CoinStatusBar extends StatusBar {
     this.loadImages(this.COIN_IMAGES);
     this.setPercentage(0);
   }
-  
+
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.COIN_IMAGES[this.resolveImageIndex()];

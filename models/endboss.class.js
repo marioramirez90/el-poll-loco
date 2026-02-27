@@ -27,13 +27,12 @@ class Endboss extends MovableObject {
     "img/4_enemie_boss_chicken/2_alert/G11.png",
     "img/4_enemie_boss_chicken/2_alert/G12.png",
   ];
-
+  
   IMAGES_HURT = [
     "img/4_enemie_boss_chicken/4_hurt/G21.png",
     "img/4_enemie_boss_chicken/4_hurt/G22.png",
     "img/4_enemie_boss_chicken/4_hurt/G23.png",
   ];
-  
   IMAGES_DEAD = [
     "img/4_enemie_boss_chicken/5_dead/G24.png",
     "img/4_enemie_boss_chicken/5_dead/G25.png",
@@ -68,9 +67,7 @@ class Endboss extends MovableObject {
   animate() {
     setInterval(() => {
       if (!this.character) return;
-
       let distance = Math.abs(this.x - this.character.x);
-
       if (this.isDead()) {
         this.playaAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {

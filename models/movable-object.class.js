@@ -52,20 +52,9 @@ class MovableObject extends DrawableObject {
 
   receivedCoin() {
     this.coinNumber += 10;
-    if (this.coinNumber < 0) {
-      this.coinNumber = 0;
-    }
-  }
-  checkCoinCollisions() {
-  this.level.coins.forEach((coin, index) => {
-    if (this.character.isColliding(coin)) {
-      this.character.receivedCoin();
-      this.coinBar.setPercentage(this.character.coinNumber);
-      this.level.coins.splice(index, 1);
-    }
-  });
+    if (this.coinNumber > 100) this.coinNumber = 100;
 }
-
+  
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;

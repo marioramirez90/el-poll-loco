@@ -1,12 +1,12 @@
-class coins extends MovableObject {
+class Coins extends MovableObject {
   height = 170;
   width = 170;
   x = 200;
   offset = {
-    top: 5,
+    top: 1,
     left: 5,
     right: 5,
-    bottom: 5,
+    bottom: 2,
   };
 
    static coinIndex = 0;
@@ -18,6 +18,7 @@ class coins extends MovableObject {
     
   ];
 
+
   constructor() {
     super().loadImage("img/8_coin/coin_1.png");
     
@@ -27,10 +28,7 @@ class coins extends MovableObject {
     
     this.animate();
   }
-   receivedCoin() {
-    this.coinNumber = 0;
-  }
- 
+
 
   animate() {
     setInterval(() => {
