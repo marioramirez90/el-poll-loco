@@ -40,6 +40,29 @@ const level1 = new Level(
     
    
 ],
+
+[
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins()
+    
+
+  
+    
+   
+],
  [
     
     new BackgroundObject('img/5_background/layers/air.png',-960),

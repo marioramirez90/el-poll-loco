@@ -1,13 +1,11 @@
-class CollidableObject extends MovableObject{
- collidable = true;
- damage = 0;
+class CollidableObject extends MovableObject {
+  collidable = true;
+  damage = 0;
 
- offset = {
+  offset = {
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0
- }
-
-
+    bottom: 0,
+  };
 }
