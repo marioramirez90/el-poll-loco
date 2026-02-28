@@ -15,25 +15,26 @@ class DrawableObject {
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
+drawframe(ctx) {
+  if (
+    this instanceof Character ||
+    this instanceof Chicken ||
+    this instanceof Smallchicken ||
+    this instanceof Endboss ||
+    this instanceof Bottle ||
+    this instanceof Coins
+  ) {
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3;
 
-  drawframe(ctx) {
-    if (
-      this instanceof Character ||
-      this instanceof Chicken ||
-      this instanceof Smallchicken ||
-      this instanceof Endboss ||
-      this instanceof Bottle ||
-      this instanceof coins
-    ) {
-      ctx.strokeStyle = "red";
-      ctx.strokeRect(
-        this.x + this.offset.left,
-        this.y + this.offset.top,
-        this.width - this.offset.left - this.offset.right,
-        this.height - this.offset.top - this.offset.bottom,
-      );
-    }
+    ctx.strokeRect(
+      this.x + this.offset.left,
+      this.y + this.offset.top,
+      this.width - this.offset.left - this.offset.right,
+      this.height - this.offset.top - this.offset.bottom
+    );
   }
+}
 
   loadImages(arr) {
     arr.forEach((path) => {

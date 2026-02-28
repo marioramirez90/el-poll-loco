@@ -3,10 +3,10 @@ class Coins extends MovableObject {
   width = 170;
   x = 200;
   offset = {
-    top: 1,
-    left: 5,
-    right: 5,
-    bottom: 2,
+    top: 55,
+    left: 55,
+    right: 55,
+    bottom: 55,
   };
 
    static coinIndex = 0;

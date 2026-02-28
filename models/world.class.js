@@ -14,7 +14,7 @@ class World {
   keyboard;
   canvas;
   ctx;
-  camera_x = -100;
+  camera_x = 0;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -88,23 +88,23 @@ checkCoinCollisions() {
 
   draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    this.ctx.translate(this.camera_x, 0);
+    this.ctx.translate(Math.floor(this.camera_x), 0);
     this.addObjectsToMap(this.level.backgroundObjects);
-    this.ctx.translate(-this.camera_x, 0);
+    this.ctx.translate(-Math.floor(this.camera_x), 0);
+    this.addObjectsToMap(this.level.clouds);
     this.addToMap(this.statusBar);
     this.addToMap(this.coinStatusBar);
     this.addToMap(this.bottleStatusBar);
-    this.ctx.translate(this.camera_x, 0);
+    this.ctx.translate(Math.floor(this.camera_x), 0);
+    
+
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
-      this.addObjectsToMap(this.level.bottle);
-
+    this.addObjectsToMap(this.level.bottle);
     this.addToMap(this.endbossStatusBar);
-    this.addObjectsToMap(this.level.clouds);
-    this.ctx.translate(-this.camera_x, 0);
+    this.ctx.translate(-Math.floor(this.camera_x), 0);
     let self = this;
-
     requestAnimationFrame(function () {
       self.draw();
     });
@@ -116,21 +116,18 @@ checkCoinCollisions() {
     });
   }
 
-  addToMap(mo) {
-    if (mo.otherDiretion) {
-      this.flipImage(mo);
-    }
-
-    mo.draw(this.ctx);
-
-    if (mo.drawFrame) {
-      mo.drawFrame(this.ctx);
-    }
-
-    if (mo.otherDiretion) {
-      this.flipImageBack(mo);
-    }
+addToMap(mo) {
+  if (mo.otherDiretion) {
+    this.flipImage(mo);
   }
+
+  mo.draw(this.ctx);
+  mo.drawframe(this.ctx);
+
+  if (mo.otherDiretion) {
+    this.flipImageBack(mo);
+  }
+}
 
   flipImage(mo) {
     this.ctx.save();

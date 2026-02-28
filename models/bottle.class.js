@@ -5,10 +5,10 @@ class Bottle extends MovableObject {
   y = 420;
 
   offset = {
-    top: 1,
-    left: 5,
-    right: 5,
-    bottom: 2,
+    top: 20,
+    left: 35,
+     right: 35,
+    bottom: 10,
   };
 
    static BottleIndex = 0;
