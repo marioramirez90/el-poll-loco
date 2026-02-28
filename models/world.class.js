@@ -98,8 +98,8 @@ checkCoinCollisions() {
     this.ctx.translate(Math.floor(this.camera_x), 0);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottle);
-    this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
+     this.addToMap(this.character);
     this.addToMap(this.endbossStatusBar);
     this.ctx.translate(-Math.floor(this.camera_x), 0);
     let self = this;
