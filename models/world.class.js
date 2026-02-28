@@ -4,6 +4,7 @@ class World {
   coinStatusBar = new CoinStatusBar();
   bottleStatusBar = new BottleStatusBar();
   endbossStatusBar = new EndbossStatusBar();
+  bottle = new Bottle();
   coin = new Coins();
   level = level1;
   enemies = level1.enemies;
@@ -23,6 +24,7 @@ class World {
     this.setWorld();
     this.checkCollisions();
     this.checkCoinCollisions();
+    this.checkBottleCollisions();
   }
   
 
@@ -38,7 +40,8 @@ class World {
 
   checkCollisions() {
     setInterval(() => {
-    this.checkCoinCollisions()
+    this.checkCoinCollisions();
+    this.checkBottleCollisions();
       this.level.enemies.forEach((enemy, index) => {
         if (this.character.isColliding(enemy) && !enemy.isDead()) {
           let hitFromAbove =
@@ -71,6 +74,15 @@ checkCoinCollisions() {
       }
     });
   }
+  checkBottleCollisions() {
+    this.level.bottle.forEach((bottle, index) => {
+      if (this.character.isColliding(bottle)) {
+        this.character.receivedBottle();
+        this.bottleStatusBar.setPercentage(this.character.bottlenumber);
+        this.level.bottle.splice(index, 1);
+      }
+    });
+  }
 
 
 
@@ -86,6 +98,7 @@ checkCoinCollisions() {
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
+      this.addObjectsToMap(this.level.bottle);
 
     this.addToMap(this.endbossStatusBar);
     this.addObjectsToMap(this.level.clouds);

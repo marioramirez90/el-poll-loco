@@ -4,6 +4,7 @@ class Character extends MovableObject {
   camera_x = 0;
   energy = 100;
   coinNumber = 0;
+  bottlenumber = 0;
 
   offset = {
     top: 100,

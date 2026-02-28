@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
   energy = 100;
   lastHit = 0;
   coinNumber = 0;
+  bottlenumber = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -54,6 +55,11 @@ class MovableObject extends DrawableObject {
     this.coinNumber += 10;
     if (this.coinNumber > 100) this.coinNumber = 100;
 }
+  receivedBottle() {
+    this.bottlenumber += 10;
+    if (this.bottlenumber > 100) this.bottlenumber = 100;
+}
+
   
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
