@@ -96,12 +96,10 @@ checkCoinCollisions() {
     this.addToMap(this.coinStatusBar);
     this.addToMap(this.bottleStatusBar);
     this.ctx.translate(Math.floor(this.camera_x), 0);
-    
-
-    this.addToMap(this.character);
-    this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottle);
+    this.addToMap(this.character);
+    this.addObjectsToMap(this.level.enemies);
     this.addToMap(this.endbossStatusBar);
     this.ctx.translate(-Math.floor(this.camera_x), 0);
     let self = this;
@@ -122,7 +120,7 @@ addToMap(mo) {
   }
 
   mo.draw(this.ctx);
-  mo.drawframe(this.ctx);
+  //mo.drawframe(this.ctx);
 
   if (mo.otherDiretion) {
     this.flipImageBack(mo);

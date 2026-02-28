@@ -24,8 +24,13 @@ class Coins extends MovableObject {
     
     this.loadImages(this.IMAGES);
     this.x = 400 + Math.floor(Math.random() * 5) * 1000 + Math.random() * 1000;
-    
-    
+
+    if (Coins.coinIndex % 3 === 0) {
+      this.y = 300;
+    } else {
+      this.y = 150;
+    }
+    Coins.coinIndex++;
     this.animate();
   }
 
@@ -37,4 +42,5 @@ class Coins extends MovableObject {
       
     }, 200);
   }
+
 }

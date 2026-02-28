@@ -2,7 +2,7 @@ class Bottle extends MovableObject {
   height = 100;
   width = 100;
   x = 100;
-  y = 420;
+  y = 400;
 
   offset = {
     top: 20,
@@ -22,10 +22,9 @@ class Bottle extends MovableObject {
   constructor() {
     super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
     
-      this.x = 300 + Math.random() * 800;
+   this.x = 300 + (Bottle.BottleIndex * 500) + (Math.random() * 200);    
     
-    
-   
+   Bottle.BottleIndex++;
   }
 
 

@@ -25,9 +25,9 @@ drawframe(ctx) {
     this instanceof Coins
   ) {
     ctx.strokeStyle = "red";
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 1;
 
-    ctx.strokeRect(
+   ctx.strokeRect(
       this.x + this.offset.left,
       this.y + this.offset.top,
       this.width - this.offset.left - this.offset.right,
