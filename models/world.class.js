@@ -60,8 +60,7 @@ checkCollisions(){
   this.level.enemies.forEach((enemy, index) => {
     if (this.character.isColliding(enemy) && !enemy.isDead()) {
 
-      let hitFromAbove =
-        this.character.isAboveGround() && this.character.speedY < 0;
+      let hitFromAbove = this.character.isAboveGround() && this.character.speedY < 0;
 
       if (hitFromAbove && !(enemy instanceof Endboss)) {
 
@@ -104,7 +103,7 @@ checkCoinCollisions() {
 
   checkThrowObject(){
     if(this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow){
-      let salsa = new ThrowableObject(this.character.x +100 ,this.character.y +100);
+      let salsa = new ThrowableObject(this.character.x +40 ,this.character.y +100);
       this.canThrow = true;
 
       this.throwableObjects.push(salsa);
@@ -124,6 +123,7 @@ checkCoinCollisions() {
       if (bottle.isColliding(enemy) && !enemy.isDead()) {
 
         enemy.hit();
+        bottle.splash(); 
      if (enemy instanceof Endboss ) {
               this.endbossStatusBar.setPercentage(enemy.energy);
             }
@@ -180,7 +180,7 @@ addToMap(mo) {
   }
 
   mo.draw(this.ctx);
-  mo.drawframe(this.ctx);
+  //mo.drawframe(this.ctx);
 
   if (mo.otherDiretion) {
     this.flipImageBack(mo);

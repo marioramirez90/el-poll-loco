@@ -22,8 +22,7 @@ class MovableObject extends DrawableObject {
     return true;
     }else{
       return this.y < 210;
-
-
+    
     }
 
   }
