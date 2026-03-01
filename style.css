@@ -16,12 +16,52 @@ canvas{
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.523);
     
 }
+.start-menu{
+    display: flex;
+    height:540px ;
+    width: 960px;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+}
+.start-img{
+    transition: all 1s;
+}
+.start-img:hover{
+    transform: scale(1.1);
+}
 
-@media only screen and (max-width: 960px) {
+.info-img{
+    transition: all 1s;
+}
+.info-img:hover{
+    transform: scale(1.1);
+}
+
+.start-menu img{
+    width: 590px;
+}
+
+.d-none{
+    display: none;
+}
+
+@media only screen and (max-width: 960px) and (orientation: landscape) {
     canvas{
-      
+        background-image: url(img/9_intro_outro_screens/start/startscreen_2.png);
         width: 100%;
     }
+   .start-menu{
+    width: 100%;
+     margin-top: 130px;
+    gap: 0;
+   }
+   .start-menu img{
+    width: 190px;
+   
+}
     
 }
 
@@ -29,6 +69,9 @@ canvas{
     canvas{
         height: 100vh;
     }
+    .start-menu{
+    height:100vh ;
+   }
     
 }
 

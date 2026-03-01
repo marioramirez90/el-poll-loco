@@ -1,12 +1,26 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let canvasStart = document.getElementById("canvas")
+let startAudio = new Audio('audio/game/gameStart.mp3')
 
-function init(){
+function startGame(){
+    initLevel1();
     canvas = document.getElementById("canvas");
     world = new World(canvas, keyboard);
+    removeStartMenu()
+
+}
+
+function removeStartMenu(){
+    let start = document.getElementById("menu")
+    start.classList.add("d-none");
+    canvas.classList.remove("d-none");
+    startAudio.play()
     
 }
+
+
 
 window.addEventListener("keydown",(e) =>{
     if (e.keyCode == 39) {
