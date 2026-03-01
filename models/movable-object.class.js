@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject {
   lastHit = 0;
   coinNumber = 0;
   bottlenumber = 0;
+  
 
   applyGravity() {
     setInterval(() => {
@@ -52,13 +53,16 @@ class MovableObject extends DrawableObject {
     this.energy -= 10;
     if (this.energy < 0) {
       this.energy = 0;
+
     } else {
       this.lastHit = new Date().getTime();
+      
     }
   }
 
   receivedCoin() {
     this.coinNumber += 10;
+    this.coin_sound.play();
     if (this.coinNumber > 100) this.coinNumber = 100;
 }
   receivedBottle() {
@@ -67,8 +71,7 @@ class MovableObject extends DrawableObject {
 }
 
   hitBottle(){
-        this.energy -= 10;
-
+    this.energy -= 10;
     this.bottlenumber -= 10;
     if (this.bottlenumber == 0) this.bottlenumber = 0;
 }

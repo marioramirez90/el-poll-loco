@@ -76,6 +76,15 @@ class Character extends MovableObject {
   ];
 
   world;
+  sleep_sound = new Audio("audio/character/characterRun.mp3");
+  walking_sound = new Audio("audio/character/characterRun.mp3");
+  jump_sound = new Audio("audio/character/characterJump.wav");
+  damage_sound = new Audio("audio/character/characterRun.mp3");
+  dead_sound = new Audio("audio/character/characterDead.wav");
+  dead2_sound = new Audio("audio/character/alder-ay-dios-mio.mp3");
+  coin_sound = new Audio("audio/collectibles/collectSound.wav");
+  bottle_sound = new Audio("audio/collectibles/bottleCollectSound.wav");
+
 
   constructor() {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
@@ -94,33 +103,47 @@ class Character extends MovableObject {
       this.playaAnimation(this.IMAGES_STANDING);
     }, 500);
 
- 
     setInterval(() => {
+      this.walking_sound.pause();
+
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.otherDiretion = false;0;
+        this.otherDiretion = false;
         this.moveRight();
+        if (!this.isAboveGround()) {
+          this.walking_sound.play();
+        }
       }
 
       if (this.world.keyboard.LEFT && this.x > 0) {
         this.otherDiretion = true;
+        this.walking_sound.play();
         this.moveLeft();
+        if (!this.isAboveGround()) {
+          this.walking_sound.play();
+        }
       }
 
       if (this.world.keyboard.SPACE && !this.isAboveGround()) {
         this.jump();
+        this.jump_sound.play();
       }
 
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
     setInterval(() => {
+      
       if (this.isDead()) {
         this.playaAnimation(this.IMAGES_DEAD);
+       this.dead_sound.play();
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
+               this.dead2_sound.play();
       } else if (!this.isAboveGround()) {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
           this.playaAnimation(this.IMAGES_WALKING);
+          this.walking_sound.play();
+
         }
       }
     }, 50);

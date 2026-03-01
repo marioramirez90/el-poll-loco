@@ -2,8 +2,10 @@ class Endboss extends MovableObject {
   height = 450;
   width = 390;
   energy = 120;
-  speed = 20;
+  speed = 25;
   distance = 0;
+  endgame_sound = new Audio('audio/endboss/gregorquendel-cinematic-music-sketches-10-cinematic-cello-arpeggio-sketch-116187.mp3')
+  chicken_sound = new Audio('audio/endboss/ribhavagrawal-chicken-cluking-type-3-293320.mp3')
   offset = {
     top: 120,
     left: 80,
@@ -70,12 +72,17 @@ class Endboss extends MovableObject {
       if (!this.character) return;
       this.distance = Math.abs(this.x - this.character.x);
       if (this.isDead()) {
+        this.endgame_sound.pause()
+        this.chicken_sound.pause()
         this.playaAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
       } else if (this.distance < 10) {
         this.playaAnimation(this.IMAGES_ATTACK);
-      } else if (this.distance < 400) {
+      } else if (this.distance < 480) {
+        this.endgame_sound.play();
+        this.chicken_sound.play()
+
         this.playaAnimation(this.IMAGES_WALKING);
 
         if (this.x > this.character.x) {

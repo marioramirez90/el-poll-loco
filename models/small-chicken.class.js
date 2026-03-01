@@ -3,6 +3,9 @@ class Smallchicken extends MovableObject {
   width = 70;
   x = 200;
   speed = 0.5;
+  deadsmallchicken_sound = new Audio('audio/chicken/chickenDead2.mp3')
+  deadSoundPlayed = false;
+
   static SmallchickenIndex = 0;
   offset = {
     top: 5,
@@ -26,9 +29,7 @@ class Smallchicken extends MovableObject {
     this.y = 490 - this.height;
     this.animate();
   }
-  hit() {
-    this.energy = 0;
-  }
+ 
 
   animate() {
     setInterval(() => {
@@ -39,6 +40,10 @@ class Smallchicken extends MovableObject {
 
     setInterval(() => {
       if (this.isDead()) {
+        if (!this.deadSoundPlayed) {
+          this.deadsmallchicken_sound.play();
+          this.deadSoundPlayed = true;
+        }
         this.playaAnimation(this.IMAGES_DEAD);
       } else {
         this.playaAnimation(this.IMAGES_WALKING);

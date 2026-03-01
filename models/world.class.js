@@ -18,6 +18,7 @@ class World {
   ctx;
   camera_x = 0;
 
+
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -162,8 +163,9 @@ checkCoinCollisions() {
      this.addToMap(this.character);
    
     this.ctx.translate(-Math.floor(this.camera_x), 0);
-      if (this.character.x > 4500) {
+      if (this.character.x > 4100) {
         this.addToMap(this.endbossStatusBar);
+
     }
     let self = this;
     requestAnimationFrame(function () {

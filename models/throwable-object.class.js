@@ -23,6 +23,9 @@ class ThrowableObject extends MovableObject{
    
   ];
 
+    bottleHit_sound = new Audio('audio/throwable/bottleBreak.mp3')
+
+
     constructor(x, y) {
     super().loadImage("img/6_salsa_bottle/salsa_bottle.png");
     this.x = x;
@@ -46,22 +49,23 @@ class ThrowableObject extends MovableObject{
       this.x += 10;
     }, 25);
   }
-
-  animate() {
-    setInterval(() => {
-
-      if (this.isSplashed) {
-        this.playaAnimation(this.IMAGES_SPLASH);
-      } else {
-        this.playaAnimation(this.IMAGES_ROTATION);
+animate() {
+  setInterval(() => {
+    if (this.isSplashed) {
+      if (!this.hasPlayedSplashSound) { 
+        this.bottleHit_sound.currentTime = 0;
+        this.bottleHit_sound.play().catch(err => console.log(err));
+        this.hasPlayedSplashSound = true; 
       }
-
-    }, 20);
-  }
-
-  splash() {
-    this.isSplashed = true;
-    this.speedY = 0;
-  }
-
+      this.playaAnimation(this.IMAGES_SPLASH);
+    } else {
+      this.playaAnimation(this.IMAGES_ROTATION);
+    }
+  }, 20);
 }
+
+splash() {
+  this.isSplashed = true;
+  this.speedY = 0;
+  this.hasPlayedSplashSound = false;
+}}
