@@ -12,7 +12,7 @@ class EndbossStatusBar extends StatusBar {
 
   constructor() {
     super();
-    this.x = 5100;
+    this.x = 540;
     this.y = 20;
     this.width = 400;
     this.height = 90;

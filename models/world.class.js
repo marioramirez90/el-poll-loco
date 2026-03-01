@@ -160,8 +160,11 @@ checkCoinCollisions() {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.throwableObjects);
      this.addToMap(this.character);
-    this.addToMap(this.endbossStatusBar);
+   
     this.ctx.translate(-Math.floor(this.camera_x), 0);
+      if (this.character.x > 4500) {
+        this.addToMap(this.endbossStatusBar);
+    }
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
