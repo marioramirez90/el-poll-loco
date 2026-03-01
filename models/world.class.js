@@ -56,27 +56,32 @@ class World {
       
     }, 50);
   }
- checkCollisions(){
+checkCollisions(){
   this.level.enemies.forEach((enemy, index) => {
-        if (this.character.isColliding(enemy) && !enemy.isDead()) {
-          let hitFromAbove =
-            this.character.isAboveGround() && this.character.speedY < 0;
+    if (this.character.isColliding(enemy) && !enemy.isDead()) {
 
-          if (hitFromAbove) {
-            enemy.energy = 0;
-            this.character.speedY = 15;
+      let hitFromAbove =
+        this.character.isAboveGround() && this.character.speedY < 0;
 
-            setTimeout(() => {
-              this.level.enemies.splice(index, 1);
-            }, 200);
-          } else {
-            if (!this.character.isHurt() ) {
-              this.character.hit();
-              this.statusBar.setPercentage(this.character.energy);
-            }
-          }
+      if (hitFromAbove && !(enemy instanceof Endboss)) {
+
+        enemy.energy = 0;
+        this.character.speedY = 15;
+
+        setTimeout(() => {
+          this.level.enemies.splice(index, 1);
+        }, 200);
+
+      } else {
+
+        if (!this.character.isHurt()) {
+          this.character.hit();
+          this.statusBar.setPercentage(this.character.energy);
         }
-      })};
+      }
+    }
+  });
+}
 
 checkCoinCollisions() {
     this.level.coins.forEach((coin, index) => {
@@ -119,9 +124,8 @@ checkCoinCollisions() {
       if (bottle.isColliding(enemy) && !enemy.isDead()) {
 
         enemy.hit();
-     if (!this.endboss.isHurt() ) {
-              this.endboss.hit();
-              this.endbossStatusBar.setPercentage(this.endboss.energy);
+     if (enemy instanceof Endboss ) {
+              this.endbossStatusBar.setPercentage(enemy.energy);
             }
 
           setTimeout(() => {
