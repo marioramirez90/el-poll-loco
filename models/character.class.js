@@ -133,7 +133,7 @@ class Character extends MovableObject {
         this.jump_sound.play();
       }
 
-      this.world.camera_x = -this.x + 100;
+      this.world.camera_x = -this.x + 180;
     }, 1000 / 60);
 
     setInterval(() => {

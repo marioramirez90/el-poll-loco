@@ -9,10 +9,27 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    margin: 0;
 }
 canvas{
     background-color: black;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.523);
     
 }
+
+@media only screen and (max-width: 960px) {
+    canvas{
+      
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-height: 540px) {
+    canvas{
+        height: 100vh;
+    }
+    
+}
+
 
