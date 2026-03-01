@@ -5,6 +5,7 @@ class Character extends MovableObject {
   energy = 100;
   coinNumber = 0;
   bottlenumber = 0;
+  idleTime = 0;
 
   offset = {
     top: 100,
@@ -96,11 +97,15 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_HURT);
     this.animate();
-    this.y = 3;
+    this.y = 80;
   }
   animate() {
     setInterval(() => {
+      if (this.idleTimer > 5) {
+      this.playaAnimation(this.IMAGES_SLEEPING);
+    } else {
       this.playaAnimation(this.IMAGES_STANDING);
+    }
     }, 500);
 
     setInterval(() => {
