@@ -79,10 +79,9 @@ class Endboss extends MovableObject {
         this.playaAnimation(this.IMAGES_HURT);
       } else if (this.distance < 10) {
         this.playaAnimation(this.IMAGES_ATTACK);
-      } else if (this.distance < 480) {
+      } else if (this.distance < 550) {
         this.endgame_sound.play();
         this.chicken_sound.play()
-
         this.playaAnimation(this.IMAGES_WALKING);
 
         if (this.x > this.character.x) {

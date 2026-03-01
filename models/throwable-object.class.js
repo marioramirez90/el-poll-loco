@@ -54,7 +54,7 @@ animate() {
     if (this.isSplashed) {
       if (!this.hasPlayedSplashSound) { 
         this.bottleHit_sound.currentTime = 0;
-        this.bottleHit_sound.play().catch(err => console.log(err));
+        this.bottleHit_sound.play()
         this.hasPlayedSplashSound = true; 
       }
       this.playaAnimation(this.IMAGES_SPLASH);

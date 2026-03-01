@@ -1,58 +1,47 @@
-class Chicken extends MovableObject{
-    height = 110 ;
-    width = 110;
-    x = 600;
-    energy = 1;
-    deadSoundPlayed = false;
-    deadchicken_sound = new Audio('audio/chicken/chickenDead.mp3')
+class Chicken extends MovableObject {
+  height = 110;
+  width = 110;
+  x = 600;
+  energy = 1;
+  deadSoundPlayed = false;
+  deadchicken_sound = new Audio("audio/chicken/chickenDead.mp3");
 
+  static chickenIndex = 0;
 
-    static chickenIndex = 0;
-    
-    offset = {
+  offset = {
     top: 0,
     bottom: 0,
     left: 5,
-    right: 5
-};
-    IMAGES_WALKING =[
-       'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
-      'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
-      'img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
-    ];
-    IMAGES_DEAD =[
-       'img/3_enemies_chicken/chicken_normal/2_dead/dead.png',
-    
-    ];
+    right: 5,
+  };
+  IMAGES_WALKING = [
+    "img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
+    "img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
+    "img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
+  ];
+  IMAGES_DEAD = ["img/3_enemies_chicken/chicken_normal/2_dead/dead.png"];
 
-  
-     constructor(){
-        super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png')
-        this.loadImages(this.IMAGES_WALKING)
-        this.loadImages(this.IMAGES_DEAD)
-        this.x = 800 + Math.random() * Chicken.chickenIndex * 800;
-        Chicken.chickenIndex++;
-         this.y = 490 - this.height;
-        this.animate();
+  constructor() {
+    super().loadImage("img/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
+    this.loadImages(this.IMAGES_WALKING);
+    this.loadImages(this.IMAGES_DEAD);
+    this.x = 800 + Math.random() * Chicken.chickenIndex * 800;
+    Chicken.chickenIndex++;
+    this.y = 490 - this.height;
+    this.animate();
+  }
+  hit() {
+    this.energy = 0;
+  }
 
+  animate() {
+    setInterval(() => {
+      if (!this.isDead()) {
+        this.moveLeft();
+      }
+    }, 1000 / 60);
 
-        
-
-    }
-    hit() {
-        this.energy = 0;
-    }
-
-   animate() {
-        
-        setInterval(() => {
-            if (!this.isDead()) {
-                this.moveLeft();
-            }
-        }, 1000 / 60);
-
-      
-       setInterval(() => {
+    setInterval(() => {
       if (this.isDead()) {
         if (!this.deadSoundPlayed) {
           this.deadchicken_sound.play();

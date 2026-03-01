@@ -12,12 +12,12 @@ class World {
   clouds = level1.clouds;
   backgroundObjects = level1.backgroundObjects;
   throwableObjects = [];
+  endbossActivated = false;
 
   keyboard;
   canvas;
   ctx;
   camera_x = 0;
-
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -28,11 +28,26 @@ class World {
     this.checkCollisions();
     this.checkCoinCollisions();
     this.checkBottleCollisions();
-    this.checkThrowObject()
-    this.checkThrowCollisions()
+    this.checkThrowObject();
+    this.checkThrowCollisions();
     this.run();
+    this.backgroundMusic = new Audio("audio/game/mfcc-mexican-mexican-mexico-mariachi-music-290633.mp3");
+    this.backgroundMusic.loop = true;
+    this.backgroundMusic.volume = 0.02;
+    this.startsound();
+    this.stopsound();
   }
-  
+
+
+  startsound() {
+        this.backgroundMusic.play();
+    }
+
+    stopsound() {
+        this.backgroundMusic.pause();
+        this.backgroundMusic.currentTime = 0;
+    }
+
 
   setWorld() {
     this.character.world = this;
@@ -43,47 +58,43 @@ class World {
       }
     });
   }
-  run(){
-    
-  }
+  run() {}
 
   run() {
     setInterval(() => {
-    this.checkCollisions();
-    this.checkCoinCollisions();
-    this.checkBottleCollisions();
-    this.checkThrowObject()
-    this.checkThrowCollisions()
-      
+      this.checkCollisions();
+      this.checkCoinCollisions();
+      this.checkBottleCollisions();
+      this.checkThrowObject();
+      this.checkThrowCollisions();
+      this.startsound();
+
     }, 50);
   }
-checkCollisions(){
-  this.level.enemies.forEach((enemy, index) => {
-    if (this.character.isColliding(enemy) && !enemy.isDead()) {
+  checkCollisions() {
+    this.level.enemies.forEach((enemy, index) => {
+      if (this.character.isColliding(enemy) && !enemy.isDead()) {
+        let hitFromAbove =
+          this.character.isAboveGround() && this.character.speedY < 0;
 
-      let hitFromAbove = this.character.isAboveGround() && this.character.speedY < 0;
+        if (hitFromAbove && !(enemy instanceof Endboss)) {
+          enemy.energy = 0;
+          this.character.speedY = 15;
 
-      if (hitFromAbove && !(enemy instanceof Endboss)) {
-
-        enemy.energy = 0;
-        this.character.speedY = 15;
-
-        setTimeout(() => {
-          this.level.enemies.splice(index, 1);
-        }, 200);
-
-      } else {
-
-        if (!this.character.isHurt()) {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
+          setTimeout(() => {
+            this.level.enemies.splice(index, 1);
+          }, 200);
+        } else {
+          if (!this.character.isHurt()) {
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+          }
         }
       }
-    }
-  });
-}
+    });
+  }
 
-checkCoinCollisions() {
+  checkCoinCollisions() {
     this.level.coins.forEach((coin, index) => {
       if (this.character.isColliding(coin)) {
         this.character.receivedCoin();
@@ -102,71 +113,75 @@ checkCoinCollisions() {
     });
   }
 
-  checkThrowObject(){
-    if(this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow){
-      let salsa = new ThrowableObject(this.character.x +40 ,this.character.y +100);
+  checkThrowObject() {
+    if (this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow) {
+      let salsa = new ThrowableObject(
+        this.character.x + 40,
+        this.character.y + 100,
+      );
       this.canThrow = true;
 
       this.throwableObjects.push(salsa);
       this.character.hitBottle();
       this.bottleStatusBar.setPercentage(this.character.bottlenumber);
-       setTimeout(() => {
-      this.canThrow = false;
-    }, 500);
-
+      setTimeout(() => {
+        this.canThrow = false;
+      }, 500);
     }
   }
 
   checkThrowCollisions() {
-  this.throwableObjects.forEach((bottle, bottleIndex) => {
-    this.level.enemies.forEach((enemy, enemyIndex) => {
-
-      if (bottle.isColliding(enemy) && !enemy.isDead()) {
-
-        enemy.hit();
-        bottle.splash(); 
-     if (enemy instanceof Endboss ) {
-              this.endbossStatusBar.setPercentage(enemy.energy);
-            }
+    this.throwableObjects.forEach((bottle, bottleIndex) => {
+      this.level.enemies.forEach((enemy, enemyIndex) => {
+        if (bottle.isColliding(enemy) && !enemy.isDead()) {
+          enemy.hit();
+          bottle.splash();
+          if (enemy instanceof Endboss) {
+            this.endbossStatusBar.setPercentage(enemy.energy);
+          }
 
           setTimeout(() => {
-             this.throwableObjects.splice(bottleIndex, 1);
-            }, 50);
-        if (enemy.energy <= 0) {
+            this.throwableObjects.splice(bottleIndex, 1);
+          }, 50);
+          if (enemy.energy <= 0) {
             setTimeout(() => {
               this.level.enemies.splice(enemyIndex, 1);
             }, 200);
+          }
         }
-      }
-
+      });
     });
-  });
-}
+  }
 
-
-
-
-  draw() {
+    draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     this.ctx.translate(Math.floor(this.camera_x), 0);
     this.addObjectsToMap(this.level.backgroundObjects);
     this.ctx.translate(-Math.floor(this.camera_x), 0);
+
     this.addObjectsToMap(this.level.clouds);
+
     this.addToMap(this.statusBar);
     this.addToMap(this.coinStatusBar);
     this.addToMap(this.bottleStatusBar);
+
     this.ctx.translate(Math.floor(this.camera_x), 0);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottle);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.throwableObjects);
-     this.addToMap(this.character);
-   
+    this.addToMap(this.character);
     this.ctx.translate(-Math.floor(this.camera_x), 0);
-      if (this.character.x > 4100) {
-        this.addToMap(this.endbossStatusBar);
+    if (this.character.x > 4500) {
+      this.endbossActivated = true;
+    }
+    if (this.endbossActivated) {
+      this.addToMap(this.endbossStatusBar);
+            this.stopsound();
 
     }
+
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
@@ -179,18 +194,18 @@ checkCoinCollisions() {
     });
   }
 
-addToMap(mo) {
-  if (mo.otherDiretion) {
-    this.flipImage(mo);
-  }
+  addToMap(mo) {
+    if (mo.otherDiretion) {
+      this.flipImage(mo);
+    }
 
-  mo.draw(this.ctx);
-  //mo.drawframe(this.ctx);
+    mo.draw(this.ctx);
+    //mo.drawframe(this.ctx);
 
-  if (mo.otherDiretion) {
-    this.flipImageBack(mo);
+    if (mo.otherDiretion) {
+      this.flipImageBack(mo);
+    }
   }
-}
 
   flipImage(mo) {
     this.ctx.save();
