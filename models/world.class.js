@@ -10,6 +10,7 @@ class World {
   enemies = level1.enemies;
   clouds = level1.clouds;
   backgroundObjects = level1.backgroundObjects;
+  throwableObjects = [];
 
   keyboard;
   canvas;
@@ -25,6 +26,9 @@ class World {
     this.checkCollisions();
     this.checkCoinCollisions();
     this.checkBottleCollisions();
+    this.checkThrowObject()
+    this.checkThrowCollisions()
+    this.run();
   }
   
 
@@ -37,12 +41,22 @@ class World {
       }
     });
   }
+  run(){
+    
+  }
 
-  checkCollisions() {
+  run() {
     setInterval(() => {
+    this.checkCollisions();
     this.checkCoinCollisions();
     this.checkBottleCollisions();
-      this.level.enemies.forEach((enemy, index) => {
+    this.checkThrowObject()
+    this.checkThrowCollisions()
+      
+    }, 50);
+  }
+ checkCollisions(){
+  this.level.enemies.forEach((enemy, index) => {
         if (this.character.isColliding(enemy) && !enemy.isDead()) {
           let hitFromAbove =
             this.character.isAboveGround() && this.character.speedY < 0;
@@ -61,9 +75,7 @@ class World {
             }
           }
         }
-      });
-    }, 50);
-  }
+      })};
 
 checkCoinCollisions() {
     this.level.coins.forEach((coin, index) => {
@@ -84,6 +96,44 @@ checkCoinCollisions() {
     });
   }
 
+  checkThrowObject(){
+    if(this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow){
+      let salsa = new ThrowableObject(this.character.x +100 ,this.character.y +100);
+      this.canThrow = true;
+
+      this.throwableObjects.push(salsa);
+      this.character.hitBottle();
+      this.bottleStatusBar.setPercentage(this.character.bottlenumber);
+       setTimeout(() => {
+      this.canThrow = false;
+    }, 500);
+
+    }
+  }
+
+  checkThrowCollisions() {
+  this.throwableObjects.forEach((bottle, bottleIndex) => {
+    this.level.enemies.forEach((enemy, enemyIndex) => {
+
+      if (bottle.isColliding(enemy) && !enemy.isDead()) {
+
+        enemy.hit();
+
+          setTimeout(() => {
+             this.throwableObjects.splice(bottleIndex, 1);
+            }, 50);
+        if (enemy.energy <= 0) {
+            setTimeout(() => {
+              this.level.enemies.splice(enemyIndex, 1);
+            }, 200);
+        }
+      }
+
+    });
+  });
+}
+
+
 
 
   draw() {
@@ -99,6 +149,7 @@ checkCoinCollisions() {
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottle);
     this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.throwableObjects);
      this.addToMap(this.character);
     this.addToMap(this.endbossStatusBar);
     this.ctx.translate(-Math.floor(this.camera_x), 0);
@@ -120,7 +171,7 @@ addToMap(mo) {
   }
 
   mo.draw(this.ctx);
-  //mo.drawframe(this.ctx);
+  mo.drawframe(this.ctx);
 
   if (mo.otherDiretion) {
     this.flipImageBack(mo);

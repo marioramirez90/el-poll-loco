@@ -22,7 +22,8 @@ drawframe(ctx) {
     this instanceof Smallchicken ||
     this instanceof Endboss ||
     this instanceof Bottle ||
-    this instanceof Coins
+    this instanceof Coins ||
+    this instanceof ThrowableObject
   ) {
     ctx.strokeStyle = "red";
     ctx.lineWidth = 1;

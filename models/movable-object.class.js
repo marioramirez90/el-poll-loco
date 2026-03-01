@@ -18,7 +18,14 @@ class MovableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    return this.y < 210;
+    if(this instanceof ThrowableObject){
+    return true;
+    }else{
+      return this.y < 210;
+
+
+    }
+
   }
 
   moveRight() {
@@ -56,15 +63,20 @@ class MovableObject extends DrawableObject {
     if (this.coinNumber > 100) this.coinNumber = 100;
 }
   receivedBottle() {
-    this.bottlenumber += 10;
+    this.bottlenumber += 20;
     if (this.bottlenumber > 100) this.bottlenumber = 100;
+}
+
+  hitBottle(){
+    this.bottlenumber -= 10;
+    if (this.bottlenumber == 0) this.bottlenumber = 0;
 }
 
   
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
-    return timepassed < 0.5;
+    return timepassed < 0.5; 
   }
 
   isDead() {

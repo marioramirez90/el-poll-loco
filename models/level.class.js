@@ -10,7 +10,7 @@ class Level{
         this.enemies = enemies
         this.clouds = clouds
         this.coins = coins
-        this.bottle = bottle
+        this.bottle = bottle 
         this.backgroundObjects = backgroundObjects
 
     }
