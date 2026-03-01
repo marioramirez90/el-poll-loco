@@ -1,7 +1,7 @@
 class Endboss extends MovableObject {
   height = 450;
   width = 390;
-  energy = 120;
+  energy = 180;
   speed = 25;
   distance = 0;
   endgame_sound = new Audio('audio/endboss/gregorquendel-cinematic-music-sketches-10-cinematic-cello-arpeggio-sketch-116187.mp3')
