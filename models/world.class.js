@@ -1,6 +1,7 @@
 class World {
   character = new Character();
   statusBar = new StatusBar();
+  endboss = new Endboss();
   coinStatusBar = new CoinStatusBar();
   bottleStatusBar = new BottleStatusBar();
   endbossStatusBar = new EndbossStatusBar();
@@ -118,6 +119,10 @@ checkCoinCollisions() {
       if (bottle.isColliding(enemy) && !enemy.isDead()) {
 
         enemy.hit();
+     if (!this.endboss.isHurt() ) {
+              this.endboss.hit();
+              this.endbossStatusBar.setPercentage(this.endboss.energy);
+            }
 
           setTimeout(() => {
              this.throwableObjects.splice(bottleIndex, 1);

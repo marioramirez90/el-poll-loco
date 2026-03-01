@@ -68,11 +68,12 @@ class MovableObject extends DrawableObject {
 }
 
   hitBottle(){
+        this.energy -= 10;
+
     this.bottlenumber -= 10;
     if (this.bottlenumber == 0) this.bottlenumber = 0;
 }
 
-  
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;

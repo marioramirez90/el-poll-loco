@@ -25,4 +25,5 @@ class EndbossStatusBar extends StatusBar {
     let path = this.ENDBOSS_IMAGES[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
+
 }
