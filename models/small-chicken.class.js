@@ -3,7 +3,7 @@ class Smallchicken extends MovableObject {
   width = 70;
   x = 200;
   speed = 0.5;
-  deadsmallchicken_sound = new Audio('audio/chicken/chickenDead2.mp3')
+  
   deadSoundPlayed = false;
 
   static SmallchickenIndex = 0;

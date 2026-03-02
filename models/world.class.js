@@ -31,23 +31,8 @@ class World {
     this.checkThrowObject();
     this.checkThrowCollisions();
     this.run();
-    this.backgroundMusic = new Audio("audio/game/mfcc-mexican-mexican-mexico-mariachi-music-290633.mp3");
-    this.backgroundMusic.loop = true;
-    this.backgroundMusic.volume = 0.02;
-    this.startsound();
-    this.stopsound();
+  
   }
-
-
-  startsound() {
-        this.backgroundMusic.play();
-    }
-
-    stopsound() {
-        this.backgroundMusic.pause();
-        this.backgroundMusic.currentTime = 0;
-    }
-
 
   setWorld() {
     this.character.world = this;
@@ -67,7 +52,7 @@ class World {
       this.checkBottleCollisions();
       this.checkThrowObject();
       this.checkThrowCollisions();
-      this.startsound();
+      
 
     }, 50);
   }

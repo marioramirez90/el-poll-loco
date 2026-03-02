@@ -4,8 +4,7 @@ class Endboss extends MovableObject {
   energy = 180;
   speed = 25;
   distance = 0;
-  endgame_sound = new Audio('audio/endboss/gregorquendel-cinematic-music-sketches-10-cinematic-cello-arpeggio-sketch-116187.mp3')
-  chicken_sound = new Audio('audio/endboss/ribhavagrawal-chicken-cluking-type-3-293320.mp3')
+  
   offset = {
     top: 120,
     left: 80,

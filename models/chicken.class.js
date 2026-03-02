@@ -4,7 +4,7 @@ class Chicken extends MovableObject {
   x = 600;
   energy = 1;
   deadSoundPlayed = false;
-  deadchicken_sound = new Audio("audio/chicken/chickenDead.mp3");
+
 
   static chickenIndex = 0;
 

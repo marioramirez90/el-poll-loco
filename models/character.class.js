@@ -77,15 +77,6 @@ class Character extends MovableObject {
   ];
 
   world;
-  sleep_sound = new Audio("audio/character/characterSnoring.mp3");
-  walking_sound = new Audio("audio/character/characterRun.mp3");
-  jump_sound = new Audio("audio/character/characterJump.wav");
-  damage_sound = new Audio("audio/character/characterRun.mp3");
-  dead_sound = new Audio("audio/character/characterDead.wav");
-  dead2_sound = new Audio("audio/character/alder-ay-dios-mio.mp3");
-  coin_sound = new Audio("audio/collectibles/collectSound.wav");
-  bottle_sound = new Audio("audio/collectibles/bottleCollectSound.wav");
-
 
   constructor() {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
