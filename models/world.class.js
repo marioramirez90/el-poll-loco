@@ -163,7 +163,7 @@ class World {
     }
     if (this.endbossActivated) {
       this.addToMap(this.endbossStatusBar);
-            this.stopsound();
+          
 
     }
 

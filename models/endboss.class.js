@@ -69,18 +69,29 @@ class Endboss extends MovableObject {
   animate() {
     setInterval(() => {
       if (!this.character) return;
+      
       this.distance = Math.abs(this.x - this.character.x);
+
       if (this.isDead()) {
         playsound.pause('endgame');
         playsound.pause('chicken');
         this.playaAnimation(this.IMAGES_DEAD);
-      } else if (this.isHurt()) {
+      } 
+      else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
-      } else if (this.distance < 10) {
+      } 
+      else if (this.distance < 10) {
         this.playaAnimation(this.IMAGES_ATTACK);
-      } else if (this.distance < 550) {
-       playsound.play('endgame');
-        playsound.play('chicken');
+      } 
+      else if (this.distance < 550) {
+        if (playsound.sounds['endgame'].paused) {
+            playsound.play('endgame');
+            playsound.pause('backgroundmusic');
+        }
+        if (playsound.sounds['chicken'].paused) {
+            playsound.play('chicken');
+        }
+
         this.playaAnimation(this.IMAGES_WALKING);
 
         if (this.x > this.character.x) {
@@ -88,9 +99,11 @@ class Endboss extends MovableObject {
         } else {
           this.moveRight();
         }
-      } else {
+      } 
+      else {
         this.playaAnimation(this.IMAGES_ALERT);
+        playsound.pause('endgame');
+        playsound.pause('chicken');
       }
     }, 100);
-  }
-}
+}}

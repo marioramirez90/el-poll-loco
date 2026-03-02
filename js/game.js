@@ -1,7 +1,6 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let startAudio = new Audio("audio/game/gameStart.mp3");
 let dialog = document.getElementById("dialog");
 let fullscreen = document.getElementById("fullscreen");
 let restart = document.getElementById('reset')
@@ -11,6 +10,7 @@ function startGame() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
   removeStartMenu();
+  playsound.play('backgroundmusic');
 }
 
 function removeStartMenu() {
@@ -18,12 +18,14 @@ function removeStartMenu() {
   start.classList.add("d-none");
   restart.classList.remove("d-none")
   canvas.classList.remove("d-none");
-  startAudio.play();
+  playsound.play('startbutton');
   fullscreen.classList.remove("d-none");
 }
 
 function openDialog() {
   dialog.showModal();
+  playsound.play('startbutton');
+
 }
 
 function closeDialog() {

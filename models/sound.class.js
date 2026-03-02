@@ -14,23 +14,45 @@ class PlaySounds {
         'chicken': new Audio('audio/endboss/ribhavagrawal-chicken-cluking-type-3-293320.mp3'),
         'dead_small_chicken': new Audio('audio/chicken/chickenDead2.mp3'),
         'dead_chicken': new Audio("audio/chicken/chickenDead.mp3"),
-        'bottle_hit': new Audio('audio/throwable/bottleBreak.mp3')
+        'bottle_hit': new Audio('audio/throwable/bottleBreak.mp3'),
+        'backgroundmusic': new Audio('audio/game/mfcc-mexican-mexican-mexico-mariachi-music-290633.mp3'),
+        'startbutton' : new Audio("audio/game/gameStart.mp3")
+
     };
+
+    constructor() {
+        this.setAllVolumes(0.1); // Alle Sounds standardmäßig auf 20%
+        
+        // Spezielle Anpassung für die Hintergrundmusik (sehr leise)
+        if (this.sounds['backgroundmusic']) {
+            this.sounds['backgroundmusic'].volume = 0.02;
+            this.sounds['backgroundmusic'].loop = true; // Musik soll normalerweise loopen
+        }
+    }
+
+    /**
+     * Setzt die Lautstärke für alle geladenen Sounds gleichzeitig
+     */
+    setAllVolumes(volume) {
+        Object.values(this.sounds).forEach(sound => {
+            sound.volume = volume;
+        });
+    }
 
     play(name) {
         let sound = this.sounds[name];
         if (sound && !this.isMuted) {
             sound.currentTime = 0; 
-            sound.play();
+            sound.play().catch(e => console.warn("Audio-Autoplay blockiert:", e));
         }
     }
 
-   pause(name) {
-    let sound = this.sounds[name];
-    if (sound) {
-        sound.pause();
+    pause(name) {
+        let sound = this.sounds[name];
+        if (sound) {
+            sound.pause();
+        }
     }
-}
 
     toggleMute() {
         this.isMuted = !this.isMuted;
@@ -40,5 +62,5 @@ class PlaySounds {
     }
 }
 
-
+// Initialisierung
 const playsound = new PlaySounds();

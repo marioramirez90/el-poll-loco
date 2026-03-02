@@ -96,8 +96,7 @@ class Character extends MovableObject {
         
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE) {
             i = 0;
-            playsound.pause('sleep')
-            playsound.curr
+            playsound.pause('sleep');
         } else {
             i++;
         }
@@ -106,27 +105,30 @@ class Character extends MovableObject {
                 this.playaAnimation(this.IMAGES_STANDING);
             } else {
                 this.playaAnimation(this.IMAGES_SLEEPING);
-                playsound.play('sleep');
+         if (playsound.sounds['sleep'].paused) {
+                    playsound.play('sleep');
+                }
             }
         }
     }, 450);
 
     setInterval(() => {
-      playsound.pause('walking');
+      if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT) {
+          playsound.pause('walking');
+      }
 
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.otherDiretion = false;
         this.moveRight();
-        if (!this.isAboveGround()) {
+        if (!this.isAboveGround() && playsound.sounds['walking'].paused) {
           playsound.play('walking');
         }
       }
 
       if (this.world.keyboard.LEFT && this.x > 0) {
         this.otherDiretion = true;
-        playsound.play('walking');
         this.moveLeft();
-        if (!this.isAboveGround()) {
+        if (!this.isAboveGround() && playsound.sounds['walking'].paused) {
           playsound.play('walking');
         }
       }
@@ -140,18 +142,19 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-      
       if (this.isDead()) {
         this.playaAnimation(this.IMAGES_DEAD);
-       playsound.play('dead');
+        if (playsound.sounds['dead'].paused) {
+            playsound.play('dead');
+        }
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
-               playsound.play('dead2');
+        if (playsound.sounds['dead2'].paused) {
+            playsound.play('dead2');
+        }
       } else if (!this.isAboveGround()) {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
           this.playaAnimation(this.IMAGES_WALKING);
-          playsound.play('walking');
-
         }
       }
     }, 50);
@@ -161,5 +164,4 @@ class Character extends MovableObject {
         this.playaAnimation(this.IMAGES_JUMPING);
       }
     }, 150);
-  }
-}
+  }}
