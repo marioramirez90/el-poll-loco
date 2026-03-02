@@ -11,7 +11,9 @@
 <body>
    
     <div class="canvas-container">
-    <button  onclick="openFullscreen()" class="fullscreen"><img src="img/9_intro_outro_screens/start/fullscreen.png" alt=""></button>
+    
+    <button id="fullscreen" onclick="openFullscreen()" class=" d-none fullscreen "><img src="img/9_intro_outro_screens/start/fullscreen.png" alt="fullscreen_button"></button>
+    <button id="reset" onclick="resetGame()" class=" d-none restart "><img src="img/9_intro_outro_screens/start/restart.png" alt="reset_button"></button>
     <canvas class="d-none" id="canvas" width="960" height="540"></canvas>
     </div>
    
@@ -20,7 +22,7 @@
         <img onclick="openDialog()" class="info-img" src="img/9_intro_outro_screens/start/INFO.png" alt="INFO-button">
 
     </div>
-    <dialog onclick="clodeDialog()" id="dialog">
+    <dialog onclick="closeDialog()" id="dialog">
         <div class="Information">
             <img class="Information-image" src="img/9_intro_outro_screens/start/infomation.png" alt="">
         </div>
