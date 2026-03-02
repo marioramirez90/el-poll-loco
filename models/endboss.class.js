@@ -71,16 +71,16 @@ class Endboss extends MovableObject {
       if (!this.character) return;
       this.distance = Math.abs(this.x - this.character.x);
       if (this.isDead()) {
-        this.endgame_sound.pause()
-        this.chicken_sound.pause()
+        playsound.pause('endgame');
+        playsound.pause('chicken');
         this.playaAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
       } else if (this.distance < 10) {
         this.playaAnimation(this.IMAGES_ATTACK);
       } else if (this.distance < 550) {
-        this.endgame_sound.play();
-        this.chicken_sound.play()
+       playsound.play('endgame');
+        playsound.play('chicken');
         this.playaAnimation(this.IMAGES_WALKING);
 
         if (this.x > this.character.x) {

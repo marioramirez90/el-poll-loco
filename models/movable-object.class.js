@@ -62,12 +62,12 @@ class MovableObject extends DrawableObject {
 
   receivedCoin() {
     this.coinNumber += 10;
-    this.coin_sound.play();
+    playsound.play('coin');
     if (this.coinNumber > 100) this.coinNumber = 100;
 }
   receivedBottle() {
     this.bottlenumber += 20;
-        this.bottle_sound.play();
+        playsound.play('bottle');
 
     if (this.bottlenumber > 100) this.bottlenumber = 100;
 }

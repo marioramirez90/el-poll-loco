@@ -38,10 +38,10 @@ class Smallchicken extends MovableObject {
       }
     }, 1000 / 60);
 
-    setInterval(() => {
+      setInterval(() => {
       if (this.isDead()) {
         if (!this.deadSoundPlayed) {
-          this.deadsmallchicken_sound.play();
+          playsound.play('dead_small_chicken');
           this.deadSoundPlayed = true;
         }
         this.playaAnimation(this.IMAGES_DEAD);

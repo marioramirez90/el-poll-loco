@@ -96,6 +96,8 @@ class Character extends MovableObject {
         
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE) {
             i = 0;
+            playsound.pause('sleep')
+            playsound.curr
         } else {
             i++;
         }
@@ -104,34 +106,34 @@ class Character extends MovableObject {
                 this.playaAnimation(this.IMAGES_STANDING);
             } else {
                 this.playaAnimation(this.IMAGES_SLEEPING);
-                this.sleep_sound.play()
+                playsound.play('sleep');
             }
         }
     }, 450);
 
     setInterval(() => {
-      this.walking_sound.pause();
+      playsound.pause('walking');
 
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.otherDiretion = false;
         this.moveRight();
         if (!this.isAboveGround()) {
-          this.walking_sound.play();
+          playsound.play('walking');
         }
       }
 
       if (this.world.keyboard.LEFT && this.x > 0) {
         this.otherDiretion = true;
-        this.walking_sound.play();
+        playsound.play('walking');
         this.moveLeft();
         if (!this.isAboveGround()) {
-          this.walking_sound.play();
+          playsound.play('walking');
         }
       }
 
       if (this.world.keyboard.SPACE && !this.isAboveGround()) {
         this.jump();
-        this.jump_sound.play();
+        playsound.play('jump');
       }
 
       this.world.camera_x = -this.x + 180;
@@ -141,14 +143,14 @@ class Character extends MovableObject {
       
       if (this.isDead()) {
         this.playaAnimation(this.IMAGES_DEAD);
-       this.dead_sound.play();
+       playsound.play('dead');
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
-               this.dead2_sound.play();
+               playsound.play('dead2');
       } else if (!this.isAboveGround()) {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
           this.playaAnimation(this.IMAGES_WALKING);
-          this.walking_sound.play();
+          playsound.play('walking');
 
         }
       }
