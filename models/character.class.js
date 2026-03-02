@@ -77,7 +77,7 @@ class Character extends MovableObject {
   ];
 
   world;
-  sleep_sound = new Audio("audio/character/characterRun.mp3");
+  sleep_sound = new Audio("audio/character/characterSnoring.mp3");
   walking_sound = new Audio("audio/character/characterRun.mp3");
   jump_sound = new Audio("audio/character/characterJump.wav");
   damage_sound = new Audio("audio/character/characterRun.mp3");
@@ -100,13 +100,23 @@ class Character extends MovableObject {
     this.y = 80;
   }
   animate() {
+    let i = 0; 
     setInterval(() => {
-      if (this.idleTimer > 5) {
-      this.playaAnimation(this.IMAGES_SLEEPING);
-    } else {
-      this.playaAnimation(this.IMAGES_STANDING);
-    }
-    }, 500);
+        
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE) {
+            i = 0;
+        } else {
+            i++;
+        }
+        if (!this.isAboveGround() && !this.isHurt() && !this.isDead()) {
+            if (i < 10) {
+                this.playaAnimation(this.IMAGES_STANDING);
+            } else {
+                this.playaAnimation(this.IMAGES_SLEEPING);
+                this.sleep_sound.play()
+            }
+        }
+    }, 450);
 
     setInterval(() => {
       this.walking_sound.pause();

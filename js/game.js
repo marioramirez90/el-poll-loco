@@ -3,6 +3,9 @@ let world;
 let keyboard = new Keyboard();
 let canvasStart = document.getElementById("canvas")
 let startAudio = new Audio('audio/game/gameStart.mp3')
+let dialog = document.getElementById('dialog')
+
+
 
 function startGame(){
     initLevel1();
@@ -17,7 +20,24 @@ function removeStartMenu(){
     start.classList.add("d-none");
     canvas.classList.remove("d-none");
     startAudio.play()
-    
+}
+
+function openDialog() {
+dialog.showModal();
+}
+
+function clodeDialog(){
+dialog.close()
+}
+ var elem = document.getElementById("canvas");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
 }
 
 
