@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject {
   lastHit = 0;
   coinNumber = 0;
   bottlenumber = 0;
+  cloudStartX = 0;
   
 
   applyGravity() {

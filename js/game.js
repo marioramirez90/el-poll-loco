@@ -13,6 +13,8 @@ function startGame() {
   playsound.play('backgroundmusic');
 }
 
+
+
 function removeStartMenu() {
   let start = document.getElementById("menu");
   start.classList.add("d-none");
@@ -40,6 +42,19 @@ function openFullscreen() {
   } else if (canvas.msRequestFullscreen) {
     canvas.msRequestFullscreen();
   }
+}
+
+function toggleGameSound() {
+    playsound.toggleMute();
+    let volume = document.getElementById('volumen');
+    let mute = document.getElementById('mute')
+    if (playsound.isMuted) {
+        mute.classList.remove('d-none')
+        volume.classList.add('d-none')
+    } else {
+        mute.classList.add('d-none')
+        volume.classList.remove('d-none')
+    }
 }
 
 window.addEventListener("keydown", (e) => {

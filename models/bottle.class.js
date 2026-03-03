@@ -11,15 +11,13 @@ class Bottle extends MovableObject {
     bottom: 10,
   };
 
-  static BottleIndex = 0;
 
   IMAGES = ["img/6_salsa_bottle/2_salsa_bottle_on_ground.png"];
 
   constructor() {
     super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
 
-    this.x = 300 + Bottle.BottleIndex * 500 + Math.random() * 200;
+    this.x = 350 + Math.random() * 7000;
 
-    Bottle.BottleIndex++;
   }
 }

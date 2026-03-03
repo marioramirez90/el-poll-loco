@@ -1,7 +1,7 @@
 class Coins extends MovableObject {
   height = 170;
   width = 170;
-  x = 200;
+  
   offset = {
     top: 55,
     left: 55,
@@ -9,22 +9,17 @@ class Coins extends MovableObject {
     bottom: 55,
   };
 
-  static coinIndex = 0;
 
   IMAGES = ["img/8_coin/coin_1.png", "img/8_coin/coin_2.png"];
 
   constructor() {
     super().loadImage("img/8_coin/coin_1.png");
-
+   
     this.loadImages(this.IMAGES);
-    this.x = 400 + Math.floor(Math.random() * 5) * 1000 + Math.random() * 1000;
+    this.x = 900 + Math.random() * 4500;
+    
 
-    if (Coins.coinIndex % 3 === 0) {
-      this.y = 300;
-    } else {
-      this.y = 150;
-    }
-    Coins.coinIndex++;
+  
     this.animate();
   }
 

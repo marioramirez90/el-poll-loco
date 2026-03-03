@@ -1,12 +1,10 @@
 class Smallchicken extends MovableObject {
   height = 70;
   width = 70;
-  x = 200;
   speed = 0.5;
   
   deadSoundPlayed = false;
 
-  static SmallchickenIndex = 0;
   offset = {
     top: 5,
     left: 5,
@@ -24,10 +22,10 @@ class Smallchicken extends MovableObject {
     super().loadImage("img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DEAD);
-    this.x = 400 + Math.random() * Smallchicken.SmallchickenIndex * 1000;
-    Smallchicken.SmallchickenIndex++;
+    this.x = 400 + Math.random() * 5000;
     this.y = 490 - this.height;
     this.animate();
+    this.speed = 0.5;
   }
  
 

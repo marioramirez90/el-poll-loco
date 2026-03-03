@@ -25,7 +25,7 @@ level1 = new Level(
     new Smallchicken(),
     new Chicken(),
     new Chicken(),
-    new Endboss(),
+    new Endboss()
    
 ],
 [
@@ -42,7 +42,9 @@ level1 = new Level(
     new Cloud(),
     new Cloud(),
     new Cloud(),
-    
+    new Cloud(),
+    new Cloud(),
+    new Cloud()
    
 ],
 
@@ -62,7 +64,7 @@ level1 = new Level(
     new Coins(),
     new Coins(),
     new Coins(),
-    new Coins(),
+    new Coins()
     
 
 
@@ -86,7 +88,7 @@ level1 = new Level(
     new Bottle(),
     new Bottle(),
     new Bottle(),
-    new Bottle(),
+    new Bottle()
 
 
 ],
