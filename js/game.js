@@ -4,6 +4,8 @@ let keyboard = new Keyboard();
 let dialog = document.getElementById("dialog");
 let fullscreen = document.getElementById("fullscreen");
 let restart = document.getElementById('reset')
+let sound = document.getElementById('soundToggleBtn')
+let gameCanvas = document.getElementById('canvas-container')
 
 function startGame() {
   initLevel1();
@@ -13,12 +15,24 @@ function startGame() {
   playsound.play('backgroundmusic');
 }
 
+function restartGame(){
+    clearAllIntervals()
+    initLevel1();
+    canvas = document.getElementById("canvas");
+    world = new World(canvas, keyboard);
+    playsound.play('backgroundmusic');
 
+}
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
 
 function removeStartMenu() {
   let start = document.getElementById("menu");
   start.classList.add("d-none");
-  restart.classList.remove("d-none")
+  sound.classList.remove('d-none');
+  restart.classList.remove("d-none");
   canvas.classList.remove("d-none");
   playsound.play('startbutton');
   fullscreen.classList.remove("d-none");
@@ -35,12 +49,12 @@ function closeDialog() {
 }
 
 function openFullscreen() {
-  if (canvas.requestFullscreen) {
-    canvas.requestFullscreen();
-  } else if (canvas.webkitRequestFullscreen) {
-    canvas.webkitRequestFullscreen();
-  } else if (canvas.msRequestFullscreen) {
-    canvas.msRequestFullscreen();
+  if (gameCanvas.requestFullscreen) {
+    gameCanvas.requestFullscreen();
+  } else if (gameCanvas.webkitRequestFullscreen) {
+    gameCanvas.webkitRequestFullscreen();
+  } else if (gameCanvas.msRequestFullscreen) {
+    gameCanvas.msRequestFullscreen();
   }
 }
 
