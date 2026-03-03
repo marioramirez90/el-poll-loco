@@ -80,7 +80,23 @@ canvas {
 .d-none {
     display: none;
 }
+.sound_icon{
+    background: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 120px;
+    
+}
 
+.sound_icon img{
+        height: 30px;
+
+}
+.mute{
+    position: absolute;
+    right:9px;
+}
 dialog {
     border: none;
     padding: 0;

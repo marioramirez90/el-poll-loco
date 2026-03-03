@@ -21,18 +21,15 @@ class PlaySounds {
     };
 
     constructor() {
-        this.setAllVolumes(0.1); // Alle Sounds standardmäßig auf 20%
+        this.setAllVolumes(0.1); 
         
-        // Spezielle Anpassung für die Hintergrundmusik (sehr leise)
+       
         if (this.sounds['backgroundmusic']) {
             this.sounds['backgroundmusic'].volume = 0.02;
-            this.sounds['backgroundmusic'].loop = true; // Musik soll normalerweise loopen
+            this.sounds['backgroundmusic'].loop = true; 
         }
     }
 
-    /**
-     * Setzt die Lautstärke für alle geladenen Sounds gleichzeitig
-     */
     setAllVolumes(volume) {
         Object.values(this.sounds).forEach(sound => {
             sound.volume = volume;
@@ -62,5 +59,4 @@ class PlaySounds {
     }
 }
 
-// Initialisierung
 const playsound = new PlaySounds();

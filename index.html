@@ -11,7 +11,10 @@
 <body>
    
     <div class="canvas-container">
-    
+    <button class="sound_icon" id="soundToggleBtn" onclick="toggleGameSound()">
+        <img id="volumen" src="img/9_intro_outro_screens/start/volume.png" alt="volumen">
+        <img id="mute" class="mute d-none" src="img/9_intro_outro_screens/start/mute.png" alt="mute">
+    </button>
     <button id="fullscreen" onclick="openFullscreen()" class=" d-none fullscreen "><img src="img/9_intro_outro_screens/start/fullscreen.png" alt="fullscreen_button"></button>
     <button id="reset" onclick="resetGame()" class=" d-none restart "><img src="img/9_intro_outro_screens/start/restart.png" alt="reset_button"></button>
     <canvas class="d-none" id="canvas" width="960" height="540"></canvas>
