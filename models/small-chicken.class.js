@@ -28,7 +28,9 @@ class Smallchicken extends MovableObject {
     this.speed = 0.5;
   }
  
-
+hit() {
+    this.energy = 0;
+  }
   animate() {
     setInterval(() => {
       if (!this.isDead()) {

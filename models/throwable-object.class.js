@@ -46,7 +46,12 @@ class ThrowableObject extends MovableObject{
     this.speedY = 30;
     this.applyGravity();
     setInterval(() => {
-      this.x += 10;
+      if (!this.isSplashed) {
+        this.x += 10;
+        if (this.y >= 380) {
+          this.splash();
+        }
+      }
     }, 25);
   }
 animate() {

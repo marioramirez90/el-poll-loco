@@ -51,6 +51,7 @@ class World {
       this.checkBottleCollisions();
       this.checkThrowObject();
       this.checkThrowCollisions();
+      this.removeSplashedBottles();
     }, 50);
   }
   checkCollisions() {
@@ -113,25 +114,37 @@ class World {
   }
 
   checkThrowCollisions() {
-    this.throwableObjects.forEach((bottle, bottleIndex) => {
-      this.level.enemies.forEach((enemy, enemyIndex) => {
-        if (bottle.isColliding(enemy) && !enemy.isDead()) {
-          enemy.hit();
+    this.throwableObjects.forEach((bottle) => {
+      if (bottle.isSplashed) return;
+      this.level.enemies.forEach((enemy) => {
+        if (bottle.isColliding(enemy) && !enemy.isDead() && !bottle.isSplashed) {
           bottle.splash();
           if (enemy instanceof Endboss) {
+            enemy.hit();
             this.endbossStatusBar.setPercentage((enemy.energy / 170) * 100);
+          } else {
+            enemy.energy = 0;
           }
-
-          setTimeout(() => {
-            this.throwableObjects.splice(bottleIndex, 1);
-          }, 50);
-          if (enemy.energy <= 0) {
+          if (enemy.energy <= 0 && !(enemy instanceof Endboss)) {
             setTimeout(() => {
-              this.level.enemies.splice(enemyIndex, 1);
+              let i = this.level.enemies.indexOf(enemy);
+              if (i > -1) this.level.enemies.splice(i, 1);
             }, 200);
           }
         }
       });
+    });
+  }
+
+  removeSplashedBottles() {
+    this.throwableObjects.forEach((bottle) => {
+      if (bottle.isSplashed && !bottle.removalScheduled) {
+        bottle.removalScheduled = true;
+        setTimeout(() => {
+          let i = this.throwableObjects.indexOf(bottle);
+          if (i > -1) this.throwableObjects.splice(i, 1);
+        }, 150);
+      }
     });
   }
 
