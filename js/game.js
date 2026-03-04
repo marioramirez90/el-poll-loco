@@ -207,3 +207,19 @@ function bindBtsPressEvents() {
         keyboard.D = false;
     });
 }
+function checkOrientation() {
+
+    const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const rotateWarning = document.getElementById("rotate-warning");
+
+    if (isMobile && isPortrait) {
+        rotateWarning.classList.remove("d-none");
+    } else {
+        rotateWarning.classList.add("d-none");
+    }
+}
+
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
