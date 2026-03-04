@@ -1,368 +1,341 @@
 .rotate-warning {
-    position: fixed;
-    inset: 0;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .rotate-warning img {
-    width: 300px;
+  width: 300px;
 }
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url(img/5_background/background.png);
-    height: 100Vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(img/5_background/background.png);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0;
 }
 
 .canvas-container {
-    height: 100dvh;
-     position: relative;
-     display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 canvas {
-    display: block;
-    background-color: black;
+  display: block;
+  background-color: black;
 }
 
-.fullscreen{
-    background: none;
-    border: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    transition: all 1.5s;
- 
+.fullscreen {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 1.5s;
 }
 .canvas-container:fullscreen canvas {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-.restart{
-    background: none;
-    border: none;
-    position: absolute;
-    top: 14px;
-    right: 70px;
-    transition: all 1.5s;
+.restart {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 14px;
+  right: 70px;
+  transition: all 1.5s;
 }
-.restart:hover{
-    transform: scale(1.1);
+.restart:hover {
+  transform: scale(1.1);
 }
-.restart img{
-    height: 35px;
-    cursor: pointer;
-}
-
-.fullscreen img{
-    height: 40px;
-    cursor: pointer;
+.restart img {
+  height: 35px;
+  cursor: pointer;
 }
 
-.fullscreen:hover{
-    transform: scale(1.1);
+.fullscreen img {
+  height: 40px;
+  cursor: pointer;
+}
+
+.fullscreen:hover {
+  transform: scale(1.1);
 }
 
 .start-menu {
-    display: flex;
-    height: 540px;
-    width: 960px;
-    justify-content: start;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 200px;
-    
-
+  display: flex;
+  height: 540px;
+  width: 960px;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 200px;
 }
 
 .start-img {
-    transition: all 1s;
-    cursor: pointer;
-    background: none;
-    border: none;
+  transition: all 1s;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
-
 .start-img:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .info-img {
-    background: none;
-    transition: all 1s;
-    cursor: pointer;
-    border: none;
+  background: none;
+  transition: all 1s;
+  cursor: pointer;
+  border: none;
 }
 
 .info-img:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .start-menu img {
-    width: 300px;
+  width: 300px;
 }
 
 .d-none {
-    display: none;
+  display: none;
 }
-.sound_icon{
-    background: none;
-    border: none;
-    position: absolute;
-    top: 15px;
-    right: 120px;
-    cursor: pointer;
-    transition: all 1.5s;
-    
+.sound_icon {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 15px;
+  right: 120px;
+  cursor: pointer;
+  transition: all 1.5s;
 }
 
-.sound_icon img{
-        height: 30px;
-        cursor: pointer;
+.sound_icon img {
+  height: 30px;
+  cursor: pointer;
 }
-.sound_icon:hover{
-    transform: scale(1.1);
+.sound_icon:hover {
+  transform: scale(1.1);
 }
-.mute{
-    position: absolute;
-    right:9px;
-    top: 2px;
-    cursor: pointer;
-    transition: all 1.5s;
-
+.mute {
+  position: absolute;
+  right: 9px;
+  top: 2px;
+  cursor: pointer;
+  transition: all 1.5s;
 }
-.mute:hover{
-    transform: scale(1.1);
+.mute:hover {
+  transform: scale(1.1);
 }
 dialog {
-    border: none;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
-    background: transparent;
+  border: none;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  background: transparent;
 }
 
 dialog::backdrop {
-    background: rgba(0, 0, 0, 0.418);
+  background: rgba(0, 0, 0, 0.418);
 }
 
 .Information-image {
-    height: 550px;
+  height: 550px;
 }
 
 .Information {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.you-win-container{
-     position: absolute;
-     
-   
-    justify-content: center;
-    align-items: center;
+.you-win-container {
+  position: absolute;
 
-  
+  justify-content: center;
+  align-items: center;
 }
 
-.you-win-image{
-    height: 540px;
-    width: 960px;
+.you-win-image {
+  height: 540px;
+  width: 960px;
 }
 
+.geme-over-container {
+  position: absolute;
 
-
-.geme-over-container{
-     position: absolute;
-     
-   
-    justify-content: center;
-    align-items: center;
-
-  
+  justify-content: center;
+  align-items: center;
 }
-.gameover-image{
-    height: 540px;
-    width: 960px;
+.gameover-image {
+  height: 540px;
+  width: 960px;
 }
 
-
-.restart-butten-gameover{
- position: absolute;
+.restart-butten-gameover {
+  position: absolute;
   top: 400px;
-    right: 650px;
-    cursor: pointer;
-    transition: all 1.5s;
-    background: none;
-    border: none;
-    height: 50px;
+  right: 650px;
+  cursor: pointer;
+  transition: all 1.5s;
+  background: none;
+  border: none;
+  height: 50px;
 }
-.restart-butten-gameover img{
-    height: 70px;
+.restart-butten-gameover img {
+  height: 70px;
 }
-.menu-butten-gameover{
-     top: 500px;
-    right: 650px;
-    position: absolute;
-    margin: auto;
-    cursor: pointer;
-    transition: all 1.5s;
-    background: none;
-    border: none;
+.menu-butten-gameover {
+  top: 500px;
+  right: 650px;
+  position: absolute;
+  margin: auto;
+  cursor: pointer;
+  transition: all 1.5s;
+  background: none;
+  border: none;
 }
-.menu-butten-youwin{
-      top: 250px;
-    right: 370px;
-    position: absolute;
-    margin: auto;
-    cursor: pointer;
-    transition: all 1.5s;
-    background: none;
-    border: none;
+.menu-butten-youwin {
+  top: 250px;
+  right: 370px;
+  position: absolute;
+  margin: auto;
+  cursor: pointer;
+  transition: all 1.5s;
+  background: none;
+  border: none;
 }
-.menu-butten-youwin img{
-    height: 70px;
+.menu-butten-youwin img {
+  height: 70px;
 }
-.menu-butten-gameover img{
-    height: 70px;
+.menu-butten-gameover img {
+  height: 70px;
 }
 #mobile-controls {
-    display: none; /* Buttons sind auf dem PC unsichtbar */
-    position: absolute;
-    bottom: 35px;
-    left: 20px;
-    right: 20px;
-    justify-content: space-between;
-    pointer-events: none;
-    z-index: 999; /* EXTREM WICHTIG: Damit sie im Fullscreen über dem Canvas liegen! */
+  display: none;
+  position: absolute;
+  bottom: 35px;
+  left: 20px;
+  right: 20px;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 999;
 }
 
+.control-group {
+  display: flex;
+  gap: 20px;
+  pointer-events: auto;
+}
 
-        /* Gruppierung der Buttons */
-        .control-group {
-            display: flex;
-            gap: 20px; /* Abstand zwischen den Buttons */
-            pointer-events: auto; /* ...außer bei den Buttons selbst */
-        }
+.control-btn {
+  width: 65px;
+  height: 55px;
+  opacity: 0.6;
+  transition: 
+    opacity 0.1s,
+    transform 0.1s;
 
-        /* Styling der Button-Bilder */
-        .control-btn {
-            width: 65px; /* Passe die Größe an deine PNGs an */
-            height: 55px;
-            opacity: 0.6;
-            transition: opacity 0.1s, transform 0.1s;
-            
-            /* Sehr wichtig für Mobile Games: Verhindert Textmarkierung und Standard-Touch-Aktionen */
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: none; 
-        }
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
 
-        
-
-        .control-btn:active {
-            opacity: 1;
-            transform: scale(0.9); 
-        }
+.control-btn:active {
+  opacity: 1;
+  transform: scale(0.9);
+}
 @media only screen and (max-width: 960px) and (orientation: landscape) {
-    canvas {
-        width: 100%;
-    }
-     .canvas-container {
-        width: 100%;
-    }
-    .game-over-container{
-        width: 100%;
-        
-    }
-     .you-win-container{
-       width: 100%;
-    }
+  canvas {
+    width: 100%;
+  }
+  .canvas-container {
+    width: 100%;
+  }
+  .game-over-container {
+    width: 100%;
+  }
+  .you-win-container {
+    width: 100%;
+  }
 
-    .gameover-image{
-        width: 100%;
-    }
-    .you-win-image{
-        width: 100%;
-    }
+  .gameover-image {
+    width: 100%;
+  }
+  .you-win-image {
+    width: 100%;
+  }
 
-    .start-menu {
-        width: 100%;
-        margin-top: 130px;
-        gap: 0;
-    }
-    .menu-butten-youwin{
-      top: 170px;
+  .start-menu {
+    width: 100%;
+    margin-top: 130px;
+    gap: 0;
+  }
+  .menu-butten-youwin {
+    top: 170px;
     right: 220px;
-  
-}
+  }
 
-    .start-menu img {
-        width: 190px;
-    }
+  .start-menu img {
+    width: 190px;
+  }
 
-    .Information-image {
-        height: 300px;
-    }
+  .Information-image {
+    height: 300px;
+  }
 
-    .menu-butten-gameover{
-     top: 220px;
+  .menu-butten-gameover {
+    top: 220px;
     right: 340px;
-}
-.restart-butten-gameover{
-
-  top: 150px;
+  }
+  .restart-butten-gameover {
+    top: 150px;
     right: 340px;
-  
+  }
 }
 
+@media only screen and (max-height: 540px) {
+  canvas {
+    height: 100vh;
+  }
+  .gameover-image {
+    height: 100vh;
+  }
+  .start-menu {
+    height: 100vh;
+  }
+  .game-over-container {
+    height: 100vh;
+  }
+
+  .you-win-container {
+    height: 100vh;
+  }
+  .you-win-image {
+    height: 100vh;
+  }
 }
-
-    @media only screen and (max-height: 540px) {
-        canvas {
-            height: 100vh;
-        }
-         .gameover-image{
-            height: 100vh;
-         }
-        .start-menu {
-            height: 100vh;
-        }
-          .game-over-container{
-        height: 100vh;
-       
-    }
-
-    .you-win-container{
-        height: 100vh;
-    }
-      .you-win-image{
-        height: 100vh;
-    }
-
-    }
 @media (hover: none) and (pointer: coarse) {
-    #mobile-controls {
-        display: flex; 
-    }
+  #mobile-controls {
+    display: flex;
+  }
 }
