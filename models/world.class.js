@@ -2,7 +2,6 @@ class World {
   character = new Character();
   statusBar = new StatusBar();
   endboss = new Endboss();
-  
   coinStatusBar = new CoinStatusBar();
   bottleStatusBar = new BottleStatusBar();
   endbossStatusBar = new EndbossStatusBar();
@@ -32,17 +31,15 @@ class World {
     this.checkThrowObject();
     this.checkThrowCollisions();
     this.run();
-    
-  
   }
 
- setWorld() {
+  setWorld() {
     this.character.world = this;
 
     this.level.enemies.forEach((enemy) => {
       if (enemy instanceof Endboss) {
         enemy.character = this.character;
-        enemy.world = this; 
+        enemy.world = this;
       }
     });
   }
@@ -54,8 +51,6 @@ class World {
       this.checkBottleCollisions();
       this.checkThrowObject();
       this.checkThrowCollisions();
-      
-
     }, 50);
   }
   checkCollisions() {
@@ -140,7 +135,7 @@ class World {
     });
   }
 
-    draw() {
+  draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     this.ctx.translate(Math.floor(this.camera_x), 0);
@@ -165,8 +160,6 @@ class World {
     }
     if (this.endbossActivated) {
       this.addToMap(this.endbossStatusBar);
-          
-
     }
 
     let self = this;
@@ -205,30 +198,25 @@ class World {
     this.ctx.restore();
   }
 
-showGameOver() {
+  showGameOver() {
     this.stopAllIntervals();
-    playsound.pause('backgroundmusic');
-    playsound.play('dead2');
-    playsound.play('gameover');
+    playsound.pause("backgroundmusic");
+    playsound.play("dead2");
+    playsound.play("gameover");
 
+    renderGameOverScreen();
+  }
 
-    renderGameOverScreen(); 
-}
-
-showYouWin() {
+  showYouWin() {
     this.stopAllIntervals();
-    playsound.pause('backgroundmusic');
-    playsound.play('dead2');
-    playsound.play('gameover');
+    playsound.pause("backgroundmusic");
+    playsound.play("dead2");
+    playsound.play("gameover");
 
+    renderYouWinScreen();
+  }
 
-    renderYouWinScreen() 
+  stopAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
 }
-
-    stopAllIntervals() {
-        for (let i = 1; i < 9999; i++) window.clearInterval(i)
-        }
-    }
-
-
-
