@@ -122,7 +122,7 @@ class World {
           bottle.splash();
           if (enemy instanceof Endboss) {
             enemy.hit();
-            this.endbossStatusBar.setPercentage((enemy.energy / 170) * 100);
+            this.endbossStatusBar.setPercentage(enemy.energy )
           } else {
             enemy.energy = 0;
           }

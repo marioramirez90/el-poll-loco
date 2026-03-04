@@ -16,6 +16,14 @@ class MovableObject extends DrawableObject {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
+      if (!(this instanceof ThrowableObject) && this.y > 210) {
+        this.y = 210;
+        this.speedY = 0;
+      }
+      if (this instanceof ThrowableObject && this.y > 380) {
+        this.y = 380;
+        this.speedY = 0;
+      }
     }, 1000 / 25);
   }
 
