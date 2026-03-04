@@ -1,3 +1,7 @@
+/**
+ * Represents a throwable salsa bottle.
+ * @extends MovableObject
+ */
 class ThrowableObject extends MovableObject{
       offset = {
     top: 20,
@@ -26,6 +30,11 @@ class ThrowableObject extends MovableObject{
     bottleHit_sound = new Audio('audio/throwable/bottleBreak.mp3')
 
 
+    /**
+     * Creates a throwable object at the given position and starts throw physics.
+     * @param {number} x - The x starting position.
+     * @param {number} y - The y starting position.
+     */
     constructor(x, y) {
     super().loadImage("img/6_salsa_bottle/salsa_bottle.png");
     this.x = x;
@@ -42,6 +51,9 @@ class ThrowableObject extends MovableObject{
     this.animate();
   }
 
+  /**
+   * Initiates the throw with gravity and forward movement.
+   */
   throw() {
     this.speedY = 30;
     this.applyGravity();
@@ -54,6 +66,9 @@ class ThrowableObject extends MovableObject{
       }
     }, 25);
   }
+/**
+ * Animates the bottle rotation or splash depending on state.
+ */
 animate() {
   setInterval(() => {
     if (this.isSplashed) {
@@ -68,6 +83,9 @@ animate() {
   }, 20);
 }
 
+/**
+ * Sets the bottle to splashed state, stopping its movement.
+ */
 splash() {
   this.isSplashed = true;
   this.speedY = 0;

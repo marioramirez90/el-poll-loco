@@ -1,3 +1,7 @@
+/**
+ * Represents the playable character Pepe.
+ * @extends MovableObject
+ */
 class Character extends MovableObject {
   speed = 5.5;
   height = 280;
@@ -78,6 +82,9 @@ class Character extends MovableObject {
 
   world;
 
+  /**
+   * Creates the character, loads all images, applies gravity and starts animations.
+   */
   constructor() {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGES_STANDING);
@@ -90,6 +97,9 @@ class Character extends MovableObject {
     this.animate();
     this.y = 80;
   }
+  /**
+   * Starts all animation intervals for idle, movement, state and jump.
+   */
   animate() {
     let i = 0; 
     setInterval(() => {
@@ -113,6 +123,11 @@ class Character extends MovableObject {
     }, 1450);
 
     setInterval(() => {
+      if (this.isDead()) {
+          playsound.pause('walking');
+          return;
+      }
+
       if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT) {
           playsound.pause('walking');
       }

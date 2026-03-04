@@ -1,3 +1,6 @@
+/**
+ * Main game world containing all game objects, collision logic and rendering.
+ */
 class World {
   character = new Character();
   statusBar = new StatusBar();
@@ -19,6 +22,11 @@ class World {
   ctx;
   camera_x = 0;
 
+  /**
+   * Creates the game world.
+   * @param {HTMLCanvasElement} canvas - The HTML canvas element.
+   * @param {Keyboard} keyboard - The keyboard input handler.
+   */
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -33,6 +41,9 @@ class World {
     this.run();
   }
 
+  /**
+   * Sets the world reference on the character and endboss objects.
+   */
   setWorld() {
     this.character.world = this;
 
@@ -44,6 +55,9 @@ class World {
     });
   }
 
+  /**
+   * Starts the main game loop checking collisions and throwable objects.
+   */
   run() {
     setInterval(() => {
       this.checkCollisions();
@@ -54,6 +68,9 @@ class World {
       this.removeSplashedBottles();
     }, 50);
   }
+  /**
+   * Checks collisions between the character and all enemies.
+   */
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
@@ -78,6 +95,9 @@ class World {
     });
   }
 
+  /**
+   * Checks if the character collides with coins and collects them.
+   */
   checkCoinCollisions() {
     this.level.coins.forEach((coin, index) => {
       if (this.character.isColliding(coin)) {
@@ -87,6 +107,9 @@ class World {
       }
     });
   }
+  /**
+   * Checks if the character collides with bottles and collects them.
+   */
   checkBottleCollisions() {
     this.level.bottle.forEach((bottle, index) => {
       if (this.character.isColliding(bottle)) {
@@ -97,6 +120,9 @@ class World {
     });
   }
 
+  /**
+   * Checks if the player presses the throw key and creates a throwable object.
+   */
   checkThrowObject() {
     if (this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow) {
       let salsa = new ThrowableObject(
@@ -114,6 +140,9 @@ class World {
     }
   }
 
+  /**
+   * Checks collisions between thrown bottles and enemies.
+   */
   checkThrowCollisions() {
     this.throwableObjects.forEach((bottle) => {
       if (bottle.isSplashed) return;
@@ -131,12 +160,11 @@ class World {
               let i = this.level.enemies.indexOf(enemy);
               if (i > -1) this.level.enemies.splice(i, 1);
             }, 200);
-          }
-        }
-      });
-    });
-  }
+          }}});});}
 
+  /**
+   * Removes splashed bottles from the throwable objects array after a delay.
+   */
   removeSplashedBottles() {
     this.throwableObjects.forEach((bottle) => {
       if (bottle.isSplashed && !bottle.removalScheduled) {
@@ -149,6 +177,9 @@ class World {
     });
   }
 
+  /**
+   * Main draw loop rendering all game objects to the canvas.
+   */
   draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -182,12 +213,20 @@ class World {
     });
   }
 
+  /**
+   * Adds an array of objects to the canvas.
+   * @param {DrawableObject[]} objects - The objects to draw.
+   */
   addObjectsToMap(objects) {
     objects.forEach((o) => {
       this.addToMap(o);
     });
   }
 
+  /**
+   * Adds a single object to the canvas, handling mirroring if needed.
+   * @param {DrawableObject} mo - The object to draw.
+   */
   addToMap(mo) {
     if (mo.otherDiretion) {
       this.flipImage(mo);
@@ -200,6 +239,10 @@ class World {
     }
   }
 
+  /**
+   * Flips the canvas context horizontally for a mirrored object.
+   * @param {DrawableObject} mo - The object to flip.
+   */
   flipImage(mo) {
     this.ctx.save();
     this.ctx.translate(mo.width, 0);
@@ -207,11 +250,18 @@ class World {
     mo.x = mo.x * -1;
   }
 
+  /**
+   * Restores the canvas context after drawing a mirrored object.
+   * @param {DrawableObject} mo - The object to restore.
+   */
   flipImageBack(mo) {
     mo.x = mo.x * -1;
     this.ctx.restore();
   }
 
+  /**
+   * Ends the game and displays the game over screen.
+   */
   showGameOver() {
     this.stopAllIntervals();
     playsound.pause("backgroundmusic");
@@ -221,6 +271,9 @@ class World {
     renderGameOverScreen();
   }
 
+  /**
+   * Ends the game and displays the you win screen.
+   */
   showYouWin() {
     this.stopAllIntervals();
     playsound.pause("backgroundmusic");
@@ -230,6 +283,9 @@ class World {
     renderYouWinScreen();
   }
 
+  /**
+   * Clears all active intervals to stop the game loop.
+   */
   stopAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }

@@ -1,3 +1,6 @@
+/**
+ * Tracks the current state of keyboard and touch inputs.
+ */
 class Keyboard {
     LEFT = false;
     RIGHT = false;

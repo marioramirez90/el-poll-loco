@@ -1,4 +1,8 @@
+/** @type {Level} The Level instance holding all entities for level 1. */
 let level1;
+/**
+ * Initializes level 1 with all enemies, clouds, coins, bottles and background layers.
+ */
 function initLevel1(){
 
 

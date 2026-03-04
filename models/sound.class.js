@@ -1,3 +1,6 @@
+/**
+ * Manages all game sounds and the mute state with localStorage persistence.
+ */
 class PlaySounds {
     isMuted = false;
 
@@ -21,22 +24,32 @@ class PlaySounds {
 
     };
 
+    /**
+     * Creates the sound manager, sets volumes, and loads the mute state from localStorage.
+     */
     constructor() {
         this.setAllVolumes(0.1); 
-        
-       
         if (this.sounds['backgroundmusic']) {
             this.sounds['backgroundmusic'].volume = 0.02;
             this.sounds['backgroundmusic'].loop = true; 
         }
+        this.loadMuteState();
     }
 
+    /**
+     * Sets the volume for all sound effects.
+     * @param {number} volume - The volume level (0.0 - 1.0).
+     */
     setAllVolumes(volume) {
         Object.values(this.sounds).forEach(sound => {
             sound.volume = volume;
         });
     }
 
+    /**
+     * Plays a sound by name if not muted.
+     * @param {string} name - The key of the sound to play.
+     */
     play(name) {
         let sound = this.sounds[name];
         if (sound && !this.isMuted) {
@@ -45,6 +58,10 @@ class PlaySounds {
         }
     }
 
+    /**
+     * Pauses a sound by name.
+     * @param {string} name - The key of the sound to pause.
+     */
     pause(name) {
         let sound = this.sounds[name];
         if (sound) {
@@ -52,12 +69,30 @@ class PlaySounds {
         }
     }
 
+    /**
+     * Toggles the mute state and saves it to localStorage.
+     */
     toggleMute() {
         this.isMuted = !this.isMuted;
         Object.values(this.sounds).forEach(s => {
             s.muted = this.isMuted;
         });
+        localStorage.setItem('isMuted', this.isMuted);
+    }
+
+    /**
+     * Loads the mute state from localStorage on initialization.
+     */
+    loadMuteState() {
+        let saved = localStorage.getItem('isMuted');
+        if (saved === 'true') {
+            this.isMuted = true;
+            Object.values(this.sounds).forEach(s => {
+                s.muted = true;
+            });
+        }
     }
 }
 
+/** @type {PlaySounds} Singleton instance of the sound manager used throughout the game. */
 const playsound = new PlaySounds();

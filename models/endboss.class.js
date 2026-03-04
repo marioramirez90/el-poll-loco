@@ -1,3 +1,7 @@
+/**
+ * Represents the end boss enemy chicken.
+ * @extends MovableObject
+ */
 class Endboss extends MovableObject {
   height = 450;
   width = 390;
@@ -52,6 +56,9 @@ class Endboss extends MovableObject {
     "img/4_enemie_boss_chicken/3_attack/G20.png",
   ];
   
+  /**
+   * Creates the endboss, loads all images and starts animations.
+   */
   constructor() {
     super().loadImage(this.IMAGES_ALERT[0]);
      this.world = world;
@@ -66,6 +73,9 @@ class Endboss extends MovableObject {
 
     this.animate();
   }
+  /**
+   * Starts the animation interval handling alert, walk, attack, hurt and dead states.
+   */
   animate() {
     setInterval(() => {
       if (!this.character) return;

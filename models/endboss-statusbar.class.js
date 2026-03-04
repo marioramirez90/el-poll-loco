@@ -1,3 +1,7 @@
+/**
+ * Represents the endboss health status bar.
+ * @extends StatusBar
+ */
 class EndbossStatusBar extends StatusBar {
   ENDBOSS_IMAGES = [
     "img/7_statusbars/2_statusbar_endboss/orange/orange0.png",
@@ -10,6 +14,9 @@ class EndbossStatusBar extends StatusBar {
 
   percentage = 100;
 
+  /**
+   * Creates the endboss status bar at its position.
+   */
   constructor() {
     super();
     this.x = 540;
@@ -20,6 +27,10 @@ class EndbossStatusBar extends StatusBar {
     this.setPercentage(100);
   }
   
+  /**
+   * Sets the endboss health percentage and updates the displayed image.
+   * @param {number} percentage - The endboss health percentage (0-100).
+   */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.ENDBOSS_IMAGES[this.resolveImageIndex()];

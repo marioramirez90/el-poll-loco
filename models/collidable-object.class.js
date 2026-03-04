@@ -1,3 +1,7 @@
+/**
+ * Base class for objects that can participate in collision detection.
+ * @extends MovableObject
+ */
 class CollidableObject extends MovableObject {
   collidable = true;
   damage = 0;

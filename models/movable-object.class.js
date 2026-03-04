@@ -1,3 +1,7 @@
+/**
+ * Base class for all movable game objects with physics and collision.
+ * @extends DrawableObject
+ */
 class MovableObject extends DrawableObject {
   speed = 0.2;
   otherDiretion = false;
@@ -10,6 +14,9 @@ class MovableObject extends DrawableObject {
   cloudStartX = 0;
   
 
+  /**
+   * Applies gravity to the object using a recurring interval.
+   */
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
@@ -27,6 +34,10 @@ class MovableObject extends DrawableObject {
     }, 1000 / 25);
   }
 
+ /**
+  * Checks if the object is above ground level.
+  * @returns {boolean} True if the object is above ground.
+  */
  isAboveGround() {
     if (this instanceof ThrowableObject) {
         return this.y < 380; 
@@ -35,18 +46,32 @@ class MovableObject extends DrawableObject {
     }
 }
 
+  /**
+   * Moves the object to the right by its speed value.
+   */
   moveRight() {
     this.x += this.speed;
   }
 
+  /**
+   * Moves the object to the left by its speed value.
+   */
   moveLeft() {
     this.x -= this.speed;
   }
 
+  /**
+   * Makes the object jump by setting vertical speed.
+   */
   jump() {
     this.speedY = 30;
   }
 
+  /**
+   * Checks if this object is colliding with another movable object.
+   * @param {MovableObject} mo - The other object to check collision against.
+   * @returns {boolean} True if the objects are colliding.
+   */
   isColliding(mo) {
     return (
       this.x + this.width - this.offset.right > mo.x + this.offset.left &&
@@ -56,6 +81,9 @@ class MovableObject extends DrawableObject {
     );
   }
 
+  /**
+   * Reduces the object's energy by 10 and records the hit time.
+   */
   hit() {
     this.energy -= 10;
     if (this.energy < 0) {
@@ -67,11 +95,17 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  /**
+   * Increases the coin counter by 10 and plays the coin sound.
+   */
   receivedCoin() {
     this.coinNumber += 10;
     playsound.play('coin');
     if (this.coinNumber > 100) this.coinNumber = 100;
 }
+  /**
+   * Increases the bottle counter by 20 and plays the bottle sound.
+   */
   receivedBottle() {
     this.bottlenumber += 20;
         playsound.play('bottle');
@@ -79,17 +113,28 @@ class MovableObject extends DrawableObject {
     if (this.bottlenumber > 100) this.bottlenumber = 100;
 }
 
+  /**
+   * Decreases the bottle counter by 10 after throwing.
+   */
   hitBottle(){
     this.bottlenumber -= 10;
     if (this.bottlenumber == 0) this.bottlenumber = 0;
 }
 
+  /**
+   * Checks if the object was recently hurt.
+   * @returns {boolean} True if the object was hit within the last 0.5 seconds.
+   */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 0.5; 
   }
 
+  /**
+   * Checks if the object's energy has reached zero.
+   * @returns {boolean} True if the object is dead.
+   */
   isDead() {
     return this.energy == 0;
   }

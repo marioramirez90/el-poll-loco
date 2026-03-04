@@ -1,3 +1,7 @@
+/**
+ * Represents a collectible salsa bottle on the ground.
+ * @extends MovableObject
+ */
 class Bottle extends MovableObject {
   height = 100;
   width = 100;
@@ -14,6 +18,9 @@ class Bottle extends MovableObject {
 
   IMAGES = ["img/6_salsa_bottle/2_salsa_bottle_on_ground.png"];
 
+  /**
+   * Creates a bottle at a random x position on the ground.
+   */
   constructor() {
     super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
 

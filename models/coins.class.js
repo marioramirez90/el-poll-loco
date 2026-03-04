@@ -1,3 +1,7 @@
+/**
+ * Represents a collectible coin with a spinning animation.
+ * @extends MovableObject
+ */
 class Coins extends MovableObject {
   height = 170;
   width = 170;
@@ -12,6 +16,9 @@ class Coins extends MovableObject {
 
   IMAGES = ["img/8_coin/coin_1.png", "img/8_coin/coin_2.png"];
 
+  /**
+   * Creates a coin at a random x position and starts the spin animation.
+   */
   constructor() {
     super().loadImage("img/8_coin/coin_1.png");
    
@@ -23,6 +30,9 @@ class Coins extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Starts the coin spinning animation.
+   */
   animate() {
     setInterval(() => {
       this.playaAnimation(this.IMAGES);
