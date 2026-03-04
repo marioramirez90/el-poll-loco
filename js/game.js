@@ -39,6 +39,18 @@ function restartGameOver(){
 function backToStart(){
     location.reload();
 }
+function renderGameOverScreen() {
+    document.getElementById('game-over-screen').classList.remove('d-none'); 
+    document.getElementById('canvas-container').classList.add('d-none'); 
+
+    setTimeout(() => {
+        document.getElementById('restart-gameover').classList.remove('d-none'); 
+    }, 1000);
+
+    setTimeout(() => {
+        document.getElementById('menu-gameover').classList.remove('d-none'); 
+    }, 1500);
+}
 
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);

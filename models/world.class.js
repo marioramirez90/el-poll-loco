@@ -203,22 +203,16 @@ class World {
     mo.x = mo.x * -1;
     this.ctx.restore();
   }
-  showGameOver() {
-    playsound.play('dead2');
-    document.getElementById('game-over-screen').classList.remove('d-none'); 
+
+showGameOver() {
     this.stopAllIntervals();
     playsound.pause('backgroundmusic');
-    
-    document.getElementById('canvas-container').classList.add('d-none'); 
-    playsound.play('gameover')
-    setInterval(() => {
-    document.getElementById('restart-gameover').classList.remove('d-none'); 
-    }, 1000);
-    setInterval(() => {
-    document.getElementById('menu-gameover').classList.remove('d-none'); 
-    }, 1500);
- 
-    }
+    playsound.play('dead2');
+    playsound.play('gameover');
+
+
+    renderGameOverScreen(); 
+}
 
     stopAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i)
