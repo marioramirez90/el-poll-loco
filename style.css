@@ -30,6 +30,8 @@ canvas {
     position: absolute;
     top: 10px;
     right: 10px;
+    transition: all 1.5s;
+ 
 }
 .canvas-container:fullscreen canvas {
     width: 100%;
@@ -42,13 +44,23 @@ canvas {
     position: absolute;
     top: 14px;
     right: 70px;
+    transition: all 1.5s;
+}
+.restart:hover{
+    transform: scale(1.1);
 }
 .restart img{
     height: 35px;
+    cursor: pointer;
 }
 
 .fullscreen img{
     height: 40px;
+    cursor: pointer;
+}
+
+.fullscreen:hover{
+    transform: scale(1.1);
 }
 
 .start-menu {
@@ -60,11 +72,15 @@ canvas {
     flex-direction: column;
     gap: 30px;
     margin-top: 50px;
+    
+
 }
 
 .start-img {
     transition: all 1s;
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
 .start-img:hover {
@@ -72,8 +88,10 @@ canvas {
 }
 
 .info-img {
+    background: none;
     transition: all 1s;
     cursor: pointer;
+    border: none;
 }
 
 .info-img:hover {
@@ -93,17 +111,28 @@ canvas {
     position: absolute;
     top: 15px;
     right: 120px;
+    cursor: pointer;
+    transition: all 1.5s;
     
 }
 
 .sound_icon img{
         height: 30px;
-
+        cursor: pointer;
+}
+.sound_icon:hover{
+    transform: scale(1.1);
 }
 .mute{
     position: absolute;
     right:9px;
     top: 2px;
+    cursor: pointer;
+    transition: all 1.5s;
+
+}
+.mute:hover{
+    transform: scale(1.1);
 }
 dialog {
     border: none;
@@ -129,6 +158,43 @@ dialog::backdrop {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+
+
+
+.geme-over-container{
+     position: absolute;
+     display: block;
+   
+    justify-content: center;
+    align-items: center;
+
+  
+}
+
+.gameover-image{
+    height: 540px;
+    width: 960px;
+}
+
+.restart-butten-gameover{
+ position: absolute;
+    top: 540px;
+    right: 960px;
+    cursor: pointer;
+    transition: all 1.5s;
+    background: none;
+    border: none;
+}
+.menu-butten-gameover{
+    position: absolute;
+    top: 660px;
+    right: 960px;
+    cursor: pointer;
+    transition: all 1.5s;
+    background: none;
+    border: none;
 }
 
 @media only screen and (max-width: 960px) and (orientation: landscape) {

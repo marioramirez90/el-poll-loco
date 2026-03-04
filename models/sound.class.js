@@ -6,6 +6,7 @@ class PlaySounds {
         'walking': new Audio("audio/character/characterRun.mp3"),
         'jump': new Audio("audio/character/characterJump.wav"),
         'damage': new Audio("audio/character/characterRun.mp3"),
+        'gameover': new Audio("audio/game/audley_fergine-game-over-classic-206486.mp3"),
         'dead': new Audio("audio/character/characterDead.wav"),
         'dead2': new Audio("audio/character/alder-ay-dios-mio.mp3"),
         'coin': new Audio("audio/collectibles/collectSound.wav"),

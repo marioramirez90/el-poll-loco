@@ -147,6 +147,10 @@ class Character extends MovableObject {
         if (playsound.sounds['dead'].paused) {
             playsound.play('dead');
         }
+        setTimeout(() => {
+            this.world.showGameOver();
+        }, 1000);
+    
       } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
         if (playsound.sounds['dead2'].paused) {

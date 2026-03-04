@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 let dialog = document.getElementById("dialog");
 let fullscreen = document.getElementById("fullscreen");
 let restart = document.getElementById('reset')
+let gameOverRestart = document.getElementById('game-over-screen')
 let sound = document.getElementById('soundToggleBtn')
 let gameCanvas = document.getElementById('canvas-container')
 
@@ -22,6 +23,21 @@ function restartGame(){
     world = new World(canvas, keyboard);
     playsound.play('backgroundmusic');
 
+}
+function restartGameOver(){
+    gameOverRestart.classList.add("d-none");
+    document.getElementById('restart-gameover').classList.add('d-none');
+    document.getElementById('menu-gameover').classList.add('d-none'); 
+    clearAllIntervals()
+    initLevel1();
+    canvas = document.getElementById("canvas");
+    gameCanvas.classList.remove('d-none')
+    world = new World(canvas, keyboard);
+    playsound.play('backgroundmusic');
+}
+
+function backToStart(){
+    location.reload();
 }
 
 function clearAllIntervals() {
