@@ -204,9 +204,11 @@ class World {
     this.ctx.restore();
   }
   showGameOver() {
+    playsound.play('dead2');
     document.getElementById('game-over-screen').classList.remove('d-none'); 
     this.stopAllIntervals();
     playsound.pause('backgroundmusic');
+    
     document.getElementById('canvas-container').classList.add('d-none'); 
     playsound.play('gameover')
     setInterval(() => {
@@ -215,14 +217,13 @@ class World {
     setInterval(() => {
     document.getElementById('menu-gameover').classList.remove('d-none'); 
     }, 1500);
-
+ 
     }
 
     stopAllIntervals() {
-        for (let i = 1; i < 9999; i++) {
-            window.clearInterval(i);
+        for (let i = 1; i < 9999; i++) window.clearInterval(i)
         }
     }
 
 
-}
+

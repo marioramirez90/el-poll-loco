@@ -129,7 +129,7 @@ class Character extends MovableObject {
         this.otherDiretion = true;
         this.moveLeft();
         if (!this.isAboveGround() && playsound.sounds['walking'].paused) {
-          playsound.play('walking');
+          
         }
       }
 
@@ -155,6 +155,7 @@ class Character extends MovableObject {
         this.playaAnimation(this.IMAGES_HURT);
         if (playsound.sounds['dead2'].paused) {
             playsound.play('dead2');
+           
         }
       } else if (!this.isAboveGround()) {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {

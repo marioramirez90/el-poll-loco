@@ -182,7 +182,7 @@ dialog::backdrop {
 .restart-butten-gameover{
  position: absolute;
   top: 400px;
-    right: 740px;
+    right: 650px;
     cursor: pointer;
     transition: all 1.5s;
     background: none;
@@ -194,7 +194,7 @@ dialog::backdrop {
 }
 .menu-butten-gameover{
      top: 500px;
-    right: 740px;
+    right: 650px;
     position: absolute;
     margin: auto;
     cursor: pointer;
@@ -238,12 +238,12 @@ dialog::backdrop {
 
     .menu-butten-gameover{
      top: 220px;
-    right: 310px;
+    right: 340px;
 }
 .restart-butten-gameover{
 
   top: 150px;
-    right: 310px;
+    right: 340px;
   
 }
 
