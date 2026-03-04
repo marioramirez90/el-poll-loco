@@ -174,12 +174,12 @@ function bindBtsPressEvents() {
 
     document.getElementById('btn-jump').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.UP = true;
+        keyboard.SPACE = true;
     });
     
     document.getElementById('btn-jump').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.UP = false;
+        keyboard.SPACE = false;
     });
 
     document.getElementById('btn-bottle').addEventListener('touchstart', (e) => {
