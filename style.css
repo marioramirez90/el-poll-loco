@@ -245,7 +245,8 @@ dialog::backdrop {
 .more-left{
       /* Buttons sind auf dem PC unsichtbar */
     position: absolute;
-    
+        display: none; /* Buttons sind auf dem PC unsichtbar */
+
     bottom: 80px;
     right: 20px;
     justify-content: space-between;
@@ -256,7 +257,8 @@ dialog::backdrop {
 .more-hight{
       /* Buttons sind auf dem PC unsichtbar */
     position: absolute;
-    
+        display: none; /* Buttons sind auf dem PC unsichtbar */
+
     bottom: 10px;
     right: 90px;
     justify-content: space-between;
