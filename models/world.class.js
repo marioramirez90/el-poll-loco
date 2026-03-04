@@ -55,7 +55,7 @@ class World {
     }, 50);
   }
   checkCollisions() {
-    this.level.enemies.forEach((enemy, index) => {
+    this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
         let hitFromAbove =
           this.character.isAboveGround() && this.character.speedY < 0;
@@ -65,7 +65,8 @@ class World {
           this.character.speedY = 15;
 
           setTimeout(() => {
-            this.level.enemies.splice(index, 1);
+            let i = this.level.enemies.indexOf(enemy);
+            if (i > -1) this.level.enemies.splice(i, 1);
           }, 200);
         } else {
           if (!this.character.isHurt()) {
