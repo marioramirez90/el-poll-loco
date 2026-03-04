@@ -110,7 +110,7 @@ class Character extends MovableObject {
                 }
             }
         }
-    }, 450);
+    }, 1450);
 
     setInterval(() => {
       if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT) {
