@@ -187,7 +187,6 @@ class World {
     }
 
     mo.draw(this.ctx);
-    //mo.drawframe(this.ctx);
 
     if (mo.otherDiretion) {
       this.flipImageBack(mo);
@@ -225,8 +224,6 @@ showYouWin() {
 
     renderYouWinScreen() 
 }
-
-
 
     stopAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i)

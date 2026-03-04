@@ -232,7 +232,44 @@ dialog::backdrop {
 .menu-butten-gameover img{
     height: 70px;
 }
+#mobile-controls {
+    display: none; /* Buttons sind auf dem PC unsichtbar */
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 999; /* EXTREM WICHTIG: Damit sie im Fullscreen über dem Canvas liegen! */
+}
 
+        /* Gruppierung der Buttons */
+        .control-group {
+            display: flex;
+            gap: 20px; /* Abstand zwischen den Buttons */
+            pointer-events: auto; /* ...außer bei den Buttons selbst */
+        }
+
+        /* Styling der Button-Bilder */
+        .control-btn {
+            width: 35px; /* Passe die Größe an deine PNGs an */
+            height: 45px;
+            opacity: 0.6;
+            transition: opacity 0.1s, transform 0.1s;
+            
+            /* Sehr wichtig für Mobile Games: Verhindert Textmarkierung und Standard-Touch-Aktionen */
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none; 
+        }
+
+        
+
+        /* Visuelles Feedback beim Drücken */
+        .control-btn:active {
+            opacity: 1;
+            transform: scale(0.9); /* Button wird beim Drücken leicht kleiner */
+        }
 @media only screen and (max-width: 960px) and (orientation: landscape) {
     canvas {
         width: 100%;
@@ -310,3 +347,8 @@ dialog::backdrop {
     }
 
     }
+@media (hover: none) and (pointer: coarse) {
+    #mobile-controls {
+        display: flex; /* Buttons werden auf Handys sichtbar */
+    }
+}
