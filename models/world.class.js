@@ -119,7 +119,7 @@ class World {
           enemy.hit();
           bottle.splash();
           if (enemy instanceof Endboss) {
-            this.endbossStatusBar.setPercentage(enemy.energy);
+            this.endbossStatusBar.setPercentage((enemy.energy / 170) * 100);
           }
 
           setTimeout(() => {
