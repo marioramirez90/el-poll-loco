@@ -71,7 +71,7 @@ canvas {
     align-items: center;
     flex-direction: column;
     gap: 30px;
-    margin-top: 50px;
+    margin-top: 200px;
     
 
 }
@@ -82,6 +82,7 @@ canvas {
     background: none;
     border: none;
 }
+
 
 .start-img:hover {
     transform: scale(1.1);
@@ -99,7 +100,7 @@ canvas {
 }
 
 .start-menu img {
-    width: 590px;
+    width: 300px;
 }
 
 .d-none {
@@ -165,7 +166,7 @@ dialog::backdrop {
 
 .geme-over-container{
      position: absolute;
-     display: block;
+     
    
     justify-content: center;
     align-items: center;
@@ -180,21 +181,29 @@ dialog::backdrop {
 
 .restart-butten-gameover{
  position: absolute;
-    top: 540px;
-    right: 960px;
+  top: 400px;
+    right: 740px;
+    cursor: pointer;
+    transition: all 1.5s;
+    background: none;
+    border: none;
+    height: 50px;
+}
+.restart-butten-gameover img{
+    height: 70px;
+}
+.menu-butten-gameover{
+     top: 500px;
+    right: 740px;
+    position: absolute;
+    margin: auto;
     cursor: pointer;
     transition: all 1.5s;
     background: none;
     border: none;
 }
-.menu-butten-gameover{
-    position: absolute;
-    top: 660px;
-    right: 960px;
-    cursor: pointer;
-    transition: all 1.5s;
-    background: none;
-    border: none;
+.menu-butten-gameover img{
+    height: 70px;
 }
 
 @media only screen and (max-width: 960px) and (orientation: landscape) {
@@ -203,6 +212,10 @@ dialog::backdrop {
     }
      .canvas-container {
         width: 100%;
+    }
+    .game-over-container{
+        width: 100%;
+       
     }
 
     .start-menu {
@@ -225,9 +238,15 @@ dialog::backdrop {
         canvas {
             height: 100vh;
         }
-   
+         .gameover-image{
+            height: 100vh;
+         }
         .start-menu {
             height: 100vh;
         }
+          .game-over-container{
+        height: 100vh;
+       
+    }
 
     }
