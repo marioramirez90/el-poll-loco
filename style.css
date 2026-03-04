@@ -215,7 +215,11 @@ dialog::backdrop {
     }
     .game-over-container{
         width: 100%;
-       
+        
+    }
+
+    .gameover-image{
+        width: 100%;
     }
 
     .start-menu {
@@ -231,6 +235,17 @@ dialog::backdrop {
     .Information-image {
         height: 300px;
     }
+
+    .menu-butten-gameover{
+     top: 220px;
+    right: 310px;
+}
+.restart-butten-gameover{
+
+  top: 150px;
+    right: 310px;
+  
+}
 
 }
 
