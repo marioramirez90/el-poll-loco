@@ -8,6 +8,12 @@ let gameOverRestart = document.getElementById('game-over-screen')
 let sound = document.getElementById('soundToggleBtn')
 let gameCanvas = document.getElementById('canvas-container')
 
+window.addEventListener("load",function() {
+    setTimeout(function(){
+        window.scrollTo(0, 1);
+    }, 0);
+});
+
 function startGame() {
   initLevel1();
   canvas = document.getElementById("canvas");
