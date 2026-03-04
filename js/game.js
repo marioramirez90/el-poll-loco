@@ -87,12 +87,27 @@ function closeDialog() {
 }
 
 function openFullscreen() {
-  if (gameCanvas.requestFullscreen) {
-    gameCanvas.requestFullscreen();
-  } else if (gameCanvas.webkitRequestFullscreen) {
-    gameCanvas.webkitRequestFullscreen();
-  } else if (gameCanvas.msRequestFullscreen) {
-    gameCanvas.msRequestFullscreen();
+
+  if (!document.fullscreenElement) {
+
+    if (gameCanvas.requestFullscreen) {
+      gameCanvas.requestFullscreen();
+    } else if (gameCanvas.webkitRequestFullscreen) {
+      gameCanvas.webkitRequestFullscreen();
+    } else if (gameCanvas.msRequestFullscreen) {
+      gameCanvas.msRequestFullscreen();
+    }
+
+  } else {
+
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+
   }
 }
 

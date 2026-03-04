@@ -235,12 +235,34 @@ dialog::backdrop {
 #mobile-controls {
     display: none; /* Buttons sind auf dem PC unsichtbar */
     position: absolute;
-    bottom: 20px;
+    bottom: 35px;
     left: 20px;
     right: 20px;
     justify-content: space-between;
     pointer-events: none;
     z-index: 999; /* EXTREM WICHTIG: Damit sie im Fullscreen über dem Canvas liegen! */
+}
+.more-left{
+      /* Buttons sind auf dem PC unsichtbar */
+    position: absolute;
+    
+    bottom: 80px;
+    right: 20px;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 999; 
+    
+}
+.more-hight{
+      /* Buttons sind auf dem PC unsichtbar */
+    position: absolute;
+    
+    bottom: 10px;
+    right: 90px;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 999; 
+    
 }
 
         /* Gruppierung der Buttons */
@@ -252,8 +274,8 @@ dialog::backdrop {
 
         /* Styling der Button-Bilder */
         .control-btn {
-            width: 35px; /* Passe die Größe an deine PNGs an */
-            height: 45px;
+            width: 65px; /* Passe die Größe an deine PNGs an */
+            height: 55px;
             opacity: 0.6;
             transition: opacity 0.1s, transform 0.1s;
             
@@ -265,10 +287,9 @@ dialog::backdrop {
 
         
 
-        /* Visuelles Feedback beim Drücken */
         .control-btn:active {
             opacity: 1;
-            transform: scale(0.9); /* Button wird beim Drücken leicht kleiner */
+            transform: scale(0.9); 
         }
 @media only screen and (max-width: 960px) and (orientation: landscape) {
     canvas {
@@ -349,6 +370,6 @@ dialog::backdrop {
     }
 @media (hover: none) and (pointer: coarse) {
     #mobile-controls {
-        display: flex; /* Buttons werden auf Handys sichtbar */
+        display: flex; 
     }
 }
