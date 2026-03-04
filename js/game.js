@@ -52,6 +52,15 @@ function renderGameOverScreen() {
     }, 1500);
 }
 
+function renderYouWinScreen() {
+    document.getElementById('you-win-screen').classList.remove('d-none'); 
+    document.getElementById('canvas-container').classList.add('d-none'); 
+
+       setTimeout(() => {
+        document.getElementById('menu-you-win').classList.remove('d-none'); 
+    }, 1500);
+}
+
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }

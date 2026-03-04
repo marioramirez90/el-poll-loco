@@ -161,6 +161,20 @@ dialog::backdrop {
     height: 100vh;
 }
 
+.you-win-container{
+     position: absolute;
+     
+   
+    justify-content: center;
+    align-items: center;
+
+  
+}
+
+.you-win-image{
+    height: 540px;
+    width: 960px;
+}
 
 
 
@@ -173,11 +187,11 @@ dialog::backdrop {
 
   
 }
-
 .gameover-image{
     height: 540px;
     width: 960px;
 }
+
 
 .restart-butten-gameover{
  position: absolute;
@@ -202,6 +216,19 @@ dialog::backdrop {
     background: none;
     border: none;
 }
+.menu-butten-youwin{
+      top: 250px;
+    right: 370px;
+    position: absolute;
+    margin: auto;
+    cursor: pointer;
+    transition: all 1.5s;
+    background: none;
+    border: none;
+}
+.menu-butten-youwin img{
+    height: 70px;
+}
 .menu-butten-gameover img{
     height: 70px;
 }
@@ -217,8 +244,14 @@ dialog::backdrop {
         width: 100%;
         
     }
+     .you-win-container{
+       width: 100%;
+    }
 
     .gameover-image{
+        width: 100%;
+    }
+    .you-win-image{
         width: 100%;
     }
 
@@ -227,6 +260,11 @@ dialog::backdrop {
         margin-top: 130px;
         gap: 0;
     }
+    .menu-butten-youwin{
+      top: 170px;
+    right: 220px;
+  
+}
 
     .start-menu img {
         width: 190px;
@@ -262,6 +300,13 @@ dialog::backdrop {
           .game-over-container{
         height: 100vh;
        
+    }
+
+    .you-win-container{
+        height: 100vh;
+    }
+      .you-win-image{
+        height: 100vh;
     }
 
     }

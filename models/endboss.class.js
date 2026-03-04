@@ -51,10 +51,10 @@ class Endboss extends MovableObject {
     "img/4_enemie_boss_chicken/3_attack/G19.png",
     "img/4_enemie_boss_chicken/3_attack/G20.png",
   ];
-
+  
   constructor() {
     super().loadImage(this.IMAGES_ALERT[0]);
-
+     this.world = world;
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_ALERT);
@@ -73,11 +73,13 @@ class Endboss extends MovableObject {
       this.distance = Math.abs(this.x - this.character.x);
 
       if (this.isDead()) {
-        playsound.pause('endgame');
-        playsound.pause('chicken');
         this.playaAnimation(this.IMAGES_DEAD);
-      } 
-      else if (this.isHurt()) {
+        
+        setTimeout(() => {
+            this.world.showYouWin();
+        }, 1000);
+    
+      }else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
       } 
       else if (this.distance < 10) {

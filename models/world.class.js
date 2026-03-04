@@ -2,6 +2,7 @@ class World {
   character = new Character();
   statusBar = new StatusBar();
   endboss = new Endboss();
+  
   coinStatusBar = new CoinStatusBar();
   bottleStatusBar = new BottleStatusBar();
   endbossStatusBar = new EndbossStatusBar();
@@ -31,19 +32,20 @@ class World {
     this.checkThrowObject();
     this.checkThrowCollisions();
     this.run();
+    
   
   }
 
-  setWorld() {
+ setWorld() {
     this.character.world = this;
 
     this.level.enemies.forEach((enemy) => {
       if (enemy instanceof Endboss) {
         enemy.character = this.character;
+        enemy.world = this; 
       }
     });
   }
-  run() {}
 
   run() {
     setInterval(() => {
@@ -213,6 +215,18 @@ showGameOver() {
 
     renderGameOverScreen(); 
 }
+
+showYouWin() {
+    this.stopAllIntervals();
+    playsound.pause('backgroundmusic');
+    playsound.play('dead2');
+    playsound.play('gameover');
+
+
+    renderYouWinScreen() 
+}
+
+
 
     stopAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i)
