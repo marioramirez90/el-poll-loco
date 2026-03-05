@@ -129,7 +129,7 @@ class Endboss extends MovableObject {
    * Moves the endboss toward the character and plays walk animation.
    */
   endbossIsWalking() {
-    if (this.distance >= 550 || this.distance < 10 || this.isDead()) return;
+    if (this.distance >= 550 || this.distance < 10 || this.isDead() || this.isHurt()) return;
     this.playAnimation(this.IMAGES_WALKING);
     this.playEndbossSound();
     if (this.x > this.character.x) {
