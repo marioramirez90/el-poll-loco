@@ -120,7 +120,7 @@ class Character extends MovableObject {
         i++;
       }
       this.characterSleepAnimation(i);
-    }, 1500);
+    }, 200);
   }
 
   /**
@@ -267,7 +267,7 @@ class Character extends MovableObject {
       if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       }
-    }, 150);
+    }, 80);
   }
 }
 
