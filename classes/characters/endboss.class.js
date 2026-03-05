@@ -77,8 +77,17 @@ class Endboss extends MovableObject {
    * Starts the animation interval handling alert, walk, attack, hurt and dead states.
    */
   animate() {
+    if (!this.character) return;
+
+    this.checkCharacterDistance();
+    this.endbossIsDead();
+    this.endbossIsHurt();
+
+
+
+  }
     setInterval(() => {
-      if (!this.character) return;
+      
       this.distance = Math.abs(this.x - this.character.x);
 
       if (this.isDead()) {
