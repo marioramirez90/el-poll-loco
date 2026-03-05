@@ -64,7 +64,7 @@ class World {
       this.checkThrowObject();
       this.checkThrowCollisions();
       this.removeSplashedBottles();
-    }, 50);
+    }, 1000 / 60);
   }
   /**
    * Checks collisions between the character and all enemies.

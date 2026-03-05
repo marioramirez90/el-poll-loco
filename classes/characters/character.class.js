@@ -113,7 +113,7 @@ class Character extends MovableObject {
   characterIdleAnimation() {
     let i = 0;
     setInterval(() => {
-      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE) {
+      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE || this.world.keyboard.D) {
         i = 0;
         playsound.pause("sleep");
       } else {
