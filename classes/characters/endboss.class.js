@@ -87,6 +87,8 @@ class Endboss extends MovableObject {
           this.winTriggered = true;
           setTimeout(() => {
             this.world.showYouWin();
+            playsound.play("gameover");
+            playsound.pause("endgame");
           }, 1000);
         }
       } else if (this.isHurt()) {
