@@ -16,6 +16,8 @@ let home = document.getElementById("home")
 let restart = document.getElementById("reset");
 /** @type {HTMLElement} The game-over screen overlay element. */
 let gameOverRestart = document.getElementById("game-over-screen");
+/** @type {HTMLElement} The you-win screen overlay element. */
+let youWinRestart = document.getElementById("you-win-screen");
 /** @type {HTMLElement} The sound toggle button element. */
 let sound = document.getElementById("soundToggleBtn");
 /** @type {HTMLElement} The container element wrapping the game canvas. */
@@ -73,8 +75,9 @@ function backToStart() {
  * Displays the game over screen with staggered button reveals.
  */
 function renderGameOverScreen() {
-  document.getElementById("h1-image").classList.add("d-none");
+  gameOverRestart.classList.remove("d-none");
   document.getElementById("canvas").classList.add("d-none");
+  document.getElementById("h1-image").classList.add("d-none");
   setTimeout(() => {
     document.getElementById("restart-gameover").classList.remove("d-none");
   }, 1000);
@@ -88,8 +91,8 @@ function renderGameOverScreen() {
  * Displays the you win screen with a staggered menu button reveal.
  */
 function renderYouWinScreen() {
-  document.getElementById("you-win-screen").classList.remove("d-none");
-  document.getElementById("canvas-container").classList.add("d-none");
+  youWinRestart.classList.remove("d-none");
+  document.getElementById("canvas").classList.add("d-none");
   document.getElementById("h1-image").classList.add("d-none");
 
   setTimeout(() => {
