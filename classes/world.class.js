@@ -70,54 +70,60 @@ class World {
    * Checks collisions between the character and all enemies.
    */
   checkCollisions() {
-  this.level.enemies.forEach((enemy) => {
-  if (this.character.isColliding(enemy) && !enemy.isDead()) {
-  let hitFromAbove =
-  this.character.isAboveGround() && this.character.speedY < 0; if (hitFromAbove && !(enemy instanceof Endboss)) {
-  enemy.energy=0; this.character.speedY=15; setTimeout(()=> {
-  let i = this.level.enemies.indexOf(enemy);
-  if (i > -1) this.level.enemies.splice(i, 1);
-  }, 200);
-  } else {
-  if (!this.character.isHurt()) {
-  this.character.hit();
-  this.statusBar.setPercentage(this.character.energy);
-  }}}});}
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy) && !enemy.isDead()) {
+        let hitFromAbove =
+          this.character.isAboveGround() && this.character.speedY < 0; if (hitFromAbove && !(enemy instanceof Endboss)) {
+            enemy.energy = 0; this.character.speedY = 15; setTimeout(() => {
+              let i = this.level.enemies.indexOf(enemy);
+              if (i > -1) this.level.enemies.splice(i, 1);
+            }, 200);
+          } else {
+          if (!this.character.isHurt()) {
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+          }
+        }
+      }
+    });
+  }
 
   /**
    * Checks if the character collides with coins and collects them.
    */
   checkCoinCollisions() {
-  this.level.coins.forEach((coin, index) => {
-  if (this.character.isColliding(coin)) {
-  this.character.receivedCoin();
-  this.coinStatusBar.setPercentage(this.character.coinNumber);
-  this.level.coins.splice(index, 1);
-  }});}
+    this.level.coins.forEach((coin, index) => {
+      if (this.character.isColliding(coin)) {
+        this.character.receivedCoin();
+        this.coinStatusBar.setPercentage(this.character.coinNumber);
+        this.level.coins.splice(index, 1);
+      }
+    });
+  }
 
   /**
    * Checks if the character collides with bottles and collects them.
    */
   checkBottleCollisions() {
-  this.level.bottle.forEach((bottle, index) => {
-  if (this.character.isColliding(bottle)) {
-  this.character.receivedBottle();
-  this.bottleStatusBar.setPercentage(this.character.bottlenumber);
-  this.level.bottle.splice(index, 1);
-}
-});
-}
+    this.level.bottle.forEach((bottle, index) => {
+      if (this.character.isColliding(bottle)) {
+        this.character.receivedBottle();
+        this.bottleStatusBar.setPercentage(this.character.bottleNumber);
+        this.level.bottle.splice(index, 1);
+      }
+    });
+  }
 
   /**
    * Checks if the player presses the throw key and creates a throwable object.
    */
   checkThrowObject() {
-    if (this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow) {
+    if (this.keyboard.D && this.character.bottleNumber > 0 && !this.canThrow) {
       let salsa = new ThrowableObject(this.character.x + 40, this.character.y + 100,);
       this.canThrow = true;
       this.throwableObjects.push(salsa);
       this.character.hitBottle();
-      this.bottleStatusBar.setPercentage(this.character.bottlenumber);
+      this.bottleStatusBar.setPercentage(this.character.bottleNumber);
       setTimeout(() => {
         this.canThrow = false;
       }, 500);
@@ -213,11 +219,11 @@ class World {
    * @param {DrawableObject} mo - The object to draw.
    */
   addToMap(mo) {
-    if (mo.otherDiretion) {
+    if (mo.otherDirection) {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    if (mo.otherDiretion) {
+    if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
   }
@@ -259,8 +265,7 @@ class World {
   showYouWin() {
     this.stopAllIntervals();
     playsound.pause("backgroundmusic");
-    playsound.play("dead2");
-    playsound.play("gameover");
+    playsound.play("win");
     renderYouWinScreen();
   }
 

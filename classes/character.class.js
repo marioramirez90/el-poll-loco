@@ -8,7 +8,7 @@ class Character extends MovableObject {
   camera_x = 0;
   energy = 100;
   coinNumber = 0;
-  bottlenumber = 0;
+  bottleNumber = 0;
   idleTime = 0;
 
   offset = {
@@ -115,9 +115,9 @@ class Character extends MovableObject {
       }
       if (!this.isAboveGround() && !this.isHurt() && !this.isDead()) {
         if (i < 10) {
-          this.playaAnimation(this.IMAGES_STANDING);
+          this.playAnimation(this.IMAGES_STANDING);
         } else {
-          this.playaAnimation(this.IMAGES_SLEEPING);
+          this.playAnimation(this.IMAGES_SLEEPING);
           if (playsound.sounds["sleep"].paused) {
             playsound.play("sleep");
           }
@@ -134,14 +134,14 @@ class Character extends MovableObject {
         playsound.pause("walking");
       }
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.otherDiretion = false;
+        this.otherDirection = false;
         this.moveRight();
         if (!this.isAboveGround() && playsound.sounds["walking"].paused) {
           playsound.play("walking");
         }
       }
       if (this.world.keyboard.LEFT && this.x > 0) {
-        this.otherDiretion = true;
+        this.otherDirection = true;
         this.moveLeft();
         if (!this.isAboveGround() && playsound.sounds["walking"].paused) {
         }
@@ -155,28 +155,31 @@ class Character extends MovableObject {
 
     setInterval(() => {
       if (this.isDead()) {
-        this.playaAnimation(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD);
         if (playsound.sounds["dead"].paused) {
           playsound.play("dead");
         }
-        setTimeout(() => {
-          this.world.showGameOver();
-        }, 1000);
+        if (!this.gameOverTriggered) {
+          this.gameOverTriggered = true;
+          setTimeout(() => {
+            this.world.showGameOver();
+          }, 1000);
+        }
       } else if (this.isHurt()) {
-        this.playaAnimation(this.IMAGES_HURT);
+        this.playAnimation(this.IMAGES_HURT);
         if (playsound.sounds["dead2"].paused) {
           playsound.play("dead2");
         }
       } else if (!this.isAboveGround()) {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-          this.playaAnimation(this.IMAGES_WALKING);
+          this.playAnimation(this.IMAGES_WALKING);
         }
       }
     }, 50);
 
     setInterval(() => {
       if (this.isAboveGround()) {
-        this.playaAnimation(this.IMAGES_JUMPING);
+        this.playAnimation(this.IMAGES_JUMPING);
       }
     }, 150);
   }

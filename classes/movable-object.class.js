@@ -4,13 +4,13 @@
  */
 class MovableObject extends DrawableObject {
   speed = 0.2;
-  otherDiretion = false;
+  otherDirection = false;
   speedY = 0.15;
   acceleration = 4;
   energy = 100;
   lastHit = 0;
   coinNumber = 0;
-  bottlenumber = 0;
+  bottleNumber = 0;
   cloudStartX = 0;
 
   /**
@@ -104,17 +104,17 @@ class MovableObject extends DrawableObject {
    * Increases the bottle counter by 20 and plays the bottle sound.
    */
   receivedBottle() {
-    this.bottlenumber += 20;
+    this.bottleNumber += 20;
     playsound.play("bottle");
-    if (this.bottlenumber > 100) this.bottlenumber = 100;
+    if (this.bottleNumber > 100) this.bottleNumber = 100;
   }
 
   /**
    * Decreases the bottle counter by 10 after throwing.
    */
   hitBottle() {
-    this.bottlenumber -= 10;
-    if (this.bottlenumber == 0) this.bottlenumber = 0;
+    this.bottleNumber -= 10;
+    if (this.bottleNumber == 0) this.bottleNumber = 0;
   }
 
   /**

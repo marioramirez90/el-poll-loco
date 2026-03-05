@@ -2,7 +2,7 @@
  * Represents a small chicken enemy.
  * @extends MovableObject
  */
-class Smallchicken extends MovableObject {
+class SmallChicken extends MovableObject {
   height = 70;
   width = 70;
   speed = 0.5;
@@ -57,9 +57,9 @@ class Smallchicken extends MovableObject {
           playsound.play("dead_small_chicken");
           this.deadSoundPlayed = true;
         }
-        this.playaAnimation(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD);
       } else {
-        this.playaAnimation(this.IMAGES_WALKING);
+        this.playAnimation(this.IMAGES_WALKING);
       }
     }, 200);
   }

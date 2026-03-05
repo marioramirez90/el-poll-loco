@@ -72,9 +72,9 @@ class ThrowableObject extends MovableObject {
           playsound.play('bottle_hit');
           this.hasPlayedSplashSound = true;
         }
-        this.playaAnimation(this.IMAGES_SPLASH);
+        this.playAnimation(this.IMAGES_SPLASH);
       } else {
-        this.playaAnimation(this.IMAGES_ROTATION);
+        this.playAnimation(this.IMAGES_ROTATION);
       }
     }, 20);
   }

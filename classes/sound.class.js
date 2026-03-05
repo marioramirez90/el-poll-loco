@@ -20,7 +20,8 @@ class PlaySounds {
         'dead_chicken': new Audio("audio/chicken/chickenDead.mp3"),
         'bottle_hit': new Audio('audio/throwable/bottleBreak.mp3'),
         'backgroundmusic': new Audio('audio/game/mfcc-mexican-mexican-mexico-mariachi-music-290633.mp3'),
-        'startbutton': new Audio("audio/game/gameStart.mp3")
+        'startbutton': new Audio("audio/game/gameStart.mp3"),
+        'win': new Audio("audio/game/gameStart.mp3")
     };
 
     /**

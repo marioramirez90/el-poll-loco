@@ -56,9 +56,9 @@ class Chicken extends MovableObject {
           playsound.play("dead_chicken");
           this.deadSoundPlayed = true;
         }
-        this.playaAnimation(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD);
       } else {
-        this.playaAnimation(this.IMAGES_WALKING);
+        this.playAnimation(this.IMAGES_WALKING);
       }
     }, 200);
   }

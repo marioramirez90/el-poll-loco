@@ -31,8 +31,8 @@ class DrawableObject {
    * Draws a debug frame around collidable objects.
    * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.
    */
-  drawframe(ctx) {
-    if (this.instanceof()) {
+  drawFrame(ctx) {
+    if (this.isFrameDrawable()) {
       ctx.strokeStyle = "red";
       ctx.lineWidth = 1;
       ctx.strokeRect(
@@ -44,10 +44,14 @@ class DrawableObject {
     }
   }
 
-  instanceof() {
+  /**
+   * Checks if this object is a type that should have a debug collision frame drawn.
+   * @returns {boolean} True if the object is a collidable game entity.
+   */
+  isFrameDrawable() {
     return this instanceof Character ||
       this instanceof Chicken ||
-      this instanceof Smallchicken ||
+      this instanceof SmallChicken ||
       this instanceof Endboss ||
       this instanceof Bottle ||
       this instanceof Coins ||
@@ -69,7 +73,7 @@ class DrawableObject {
    * Plays a frame-by-frame animation from the given image array.
    * @param {string[]} images - Array of image paths for the animation.
    */
-  playaAnimation(images) {
+  playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
     this.img = this.imageCache[path];
