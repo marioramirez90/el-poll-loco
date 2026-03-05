@@ -17,6 +17,7 @@
   100% { opacity: 1; transform: scale(1); }
 }
 
+
 .rotate-warning {
   position: fixed;
   inset: 0;
@@ -42,6 +43,21 @@ body {
   background-size: cover;
   overflow: hidden;
   margin: 0;
+}
+
+h1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+}
+
+h1 img {
+  width: 200px;
+  margin-top: 20px;
 }
 
 .canvas-container {
@@ -109,7 +125,7 @@ canvas {
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  margin-top: 200px;
+  padding-top: 200px;
 }
 
 .start-img {
@@ -247,7 +263,7 @@ dialog::backdrop {
 
 .restart-butten-gameover {
   position: absolute;
-  top: 400px;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -273,7 +289,7 @@ dialog::backdrop {
 }
 .menu-butten-gameover {
   position: absolute;
-  top: 500px;
+  top: 320px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -361,6 +377,10 @@ dialog::backdrop {
   canvas {
     width: 100%;
   }
+
+  h1{
+    display: none;
+  }
   .canvas-container {
     width: 100%;
   }
@@ -380,7 +400,7 @@ dialog::backdrop {
 
   .start-menu {
     width: 100%;
-    margin-top: 130px;
+    padding-top: 130px;
     gap: 0;
   }
   .menu-butten-youwin {

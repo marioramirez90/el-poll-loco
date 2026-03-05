@@ -6,6 +6,8 @@ let world;
 let keyboard = new Keyboard();
 /** @type {HTMLDialogElement} The instructions dialog element. */
 let dialog = document.getElementById("dialog");
+/** @type {HTMLDialogElement} The instructions dialog element. */
+let dialog2 = document.getElementById("dialog2");
 /** @type {HTMLElement} The fullscreen toggle button element. */
 let fullscreen = document.getElementById("fullscreen");
 /** @type {HTMLElement} The restart button element. */
@@ -134,12 +136,20 @@ function openDialog() {
   dialog.showModal();
   playsound.play("startbutton");
 }
+function openDialog2() {
+  dialog2.showModal();
+  playsound.play("startbutton");
+}
 
 /**
  * Closes the instructions dialog.
  */
 function closeDialog() {
   dialog.close();
+}
+
+function closeDialog2() {
+  dialog2.close();
 }
 
 /**
