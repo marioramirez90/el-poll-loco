@@ -157,6 +157,9 @@ function closeDialog() {
   dialog.close();
 }
 
+/**
+ * Closes the impressum dialog.
+ */
 function closeImpresum() {
   impressum.close();
 }
