@@ -50,6 +50,7 @@ function restartGame() {
  */
 function restartGameOver() {
   playsound.play("startbutton");
+  document.getElementById("canvas").classList.remove("d-none");
   gameOverRestart.classList.add("d-none");
   document.getElementById("restart-gameover").classList.add("d-none");
   document.getElementById("menu-gameover").classList.add("d-none");
@@ -72,10 +73,8 @@ function backToStart() {
  * Displays the game over screen with staggered button reveals.
  */
 function renderGameOverScreen() {
-  document.getElementById("game-over-screen").classList.remove("d-none");
-  document.getElementById("canvas-container").classList.add("d-none");
   document.getElementById("h1-image").classList.add("d-none");
-  
+  document.getElementById("canvas").classList.add("d-none");
   setTimeout(() => {
     document.getElementById("restart-gameover").classList.remove("d-none");
   }, 1000);

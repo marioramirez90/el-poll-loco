@@ -253,6 +253,8 @@ class World {
    */
   showGameOver() {
     this.stopAllIntervals();
+    document.getElementById("menu").classList.add("d-none");
+    gameOverRestart.classList.remove("d-none");
     playsound.pause("backgroundmusic");
     playsound.play("dead2");
     playsound.play("gameover");
@@ -264,6 +266,7 @@ class World {
    */
   showYouWin() {
     this.stopAllIntervals();
+    document.getElementById("menu").classList.add("d-none");
     playsound.pause("backgroundmusic");
     playsound.play("win");
     renderYouWinScreen();
