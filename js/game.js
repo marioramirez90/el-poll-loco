@@ -7,9 +7,11 @@ let keyboard = new Keyboard();
 /** @type {HTMLDialogElement} The instructions dialog element. */
 let dialog = document.getElementById("dialog");
 /** @type {HTMLDialogElement} The instructions dialog element. */
-let dialog2 = document.getElementById("dialog2");
+let impressum = document.getElementById("impressum-close");
 /** @type {HTMLElement} The fullscreen toggle button element. */
 let fullscreen = document.getElementById("fullscreen");
+/** @type {HTMLElement} The home toggle button element. */
+let home = document.getElementById("home")
 /** @type {HTMLElement} The restart button element. */
 let restart = document.getElementById("reset");
 /** @type {HTMLElement} The game-over screen overlay element. */
@@ -18,6 +20,7 @@ let gameOverRestart = document.getElementById("game-over-screen");
 let sound = document.getElementById("soundToggleBtn");
 /** @type {HTMLElement} The container element wrapping the game canvas. */
 let gameCanvas = document.getElementById("canvas-container");
+
 
 /**
  * Starts a new game by initializing the level, canvas and world.
@@ -71,6 +74,7 @@ function backToStart() {
 function renderGameOverScreen() {
   document.getElementById("game-over-screen").classList.remove("d-none");
   document.getElementById("canvas-container").classList.add("d-none");
+  document.getElementById("h1-image").classList.add("d-none");
   
   setTimeout(() => {
     document.getElementById("restart-gameover").classList.remove("d-none");
@@ -87,6 +91,7 @@ function renderGameOverScreen() {
 function renderYouWinScreen() {
   document.getElementById("you-win-screen").classList.remove("d-none");
   document.getElementById("canvas-container").classList.add("d-none");
+  document.getElementById("h1-image").classList.add("d-none");
 
   setTimeout(() => {
     document.getElementById("menu-you-win").classList.remove("d-none");
@@ -108,6 +113,7 @@ function removeStartMenu() {
   start.classList.add("d-none");
   sound.classList.remove("d-none");
   restart.classList.remove("d-none");
+  home.classList.remove("d-none");
   canvas.classList.remove("d-none");
   playsound.play("startbutton");
   fullscreen.classList.remove("d-none");
@@ -136,8 +142,11 @@ function openDialog() {
   dialog.showModal();
   playsound.play("startbutton");
 }
-function openDialog2() {
-  dialog2.showModal();
+/**
+ * Opens the instructions dialog.
+ */
+function openImpressum() {
+  impressum.showModal();
   playsound.play("startbutton");
 }
 
@@ -148,15 +157,15 @@ function closeDialog() {
   dialog.close();
 }
 
-function closeDialog2() {
-  dialog2.close();
+function closeImpresum() {
+  impressum.close();
 }
 
 /**
  * Toggles browser fullscreen mode for the game canvas container.
  */
 function openFullscreen() {
-  playsound.play("startbutton");
+  playsound.play("startbutton");      
   if (!document.fullscreenElement) {
     if (gameCanvas.requestFullscreen) {
       gameCanvas.requestFullscreen();
@@ -292,6 +301,7 @@ function checkOrientation() {
     rotateWarning.classList.remove("d-none");
   } else {
     rotateWarning.classList.add("d-none");
+    
   }
 }
 
