@@ -67,62 +67,77 @@ class Endboss extends MovableObject {
     this.loadImages(this.IMAGES_ALERT);
     this.loadImages(this.IMAGES_ATTACK);
     this.loadImages(this.IMAGES_HURT);
-
     this.y = 520 - this.height;
     this.x = 5100;
-
     this.animate();
   }
   /**
    * Starts the animation interval handling alert, walk, attack, hurt and dead states.
    */
   animate() {
+    setInterval(() => {
     if (!this.character) return;
-
     this.checkCharacterDistance();
     this.endbossIsDead();
     this.endbossIsHurt();
+    this.endbossIsAttack();
+    this.endbossIsWalking();
+    this.endbossAlert();
+  },100); 
+}
 
-
-
+  checkCharacterDistance() {
+    this.distance = Math.abs(this.x - this.character.x);
   }
-    setInterval(() => {
-      
-      this.distance = Math.abs(this.x - this.character.x);
 
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        if (!this.winTriggered) {
-          this.winTriggered = true;
-          setTimeout(() => {
-            this.world.showYouWin();
-            playsound.play("gameover");
-            playsound.pause("endgame");
-          }, 1000);
-        }
-      } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
-      } else if (this.distance < 10) {
-        this.playAnimation(this.IMAGES_ATTACK);
-      } else if (this.distance < 550) {
-        if (playsound.sounds["endgame"].paused) {
-          playsound.play("endgame");
-          playsound.pause("backgroundmusic");
-        }
-        if (playsound.sounds["chicken"].paused) {
-          playsound.play("chicken");
-        }
-        this.playAnimation(this.IMAGES_WALKING);
-        if (this.x > this.character.x) {
-          this.moveLeft();
-        } else {
-          this.moveRight();
-        }
-      } else {
-        this.playAnimation(this.IMAGES_ALERT);
+  endbossIsDead() {
+    if (!this.isDead()) return;
+    this.playAnimation(this.IMAGES_DEAD);
+    if (!this.winTriggered) {
+      this.winTriggered = true;
+      setTimeout(() => {
+        this.world.showYouWin();
+        playsound.play("gameover");
         playsound.pause("endgame");
-        playsound.pause("chicken");
-      }
-    }, 100);
+      }, 1000);
+    }
+  }
+
+  endbossIsHurt() {
+    if (!this.isHurt() || this.isDead()) return;
+    this.playAnimation(this.IMAGES_HURT);
+  }
+
+  endbossIsAttack() {
+    if (this.distance >= 10 || this.isDead()) return;
+    this.playAnimation(this.IMAGES_ATTACK);
+  }
+
+  endbossIsWalking() {
+    if (this.distance >= 550 || this.distance < 10 || this.isDead()) return;
+    this.playAnimation(this.IMAGES_WALKING);
+    this.playEndbossSound();
+    if (this.x > this.character.x) {
+      this.moveLeft();
+    } else {
+      this.moveRight();
+    }
+  }
+
+  endbossAlert() {
+    if (this.distance < 550 || this.isDead()) return;
+    this.playAnimation(this.IMAGES_ALERT);
+    playsound.pause("endgame");
+    playsound.pause("chicken");
+  }
+
+  playEndbossSound() {
+    if (playsound.sounds["endgame"].paused) {
+      playsound.play("endgame");
+      playsound.pause("backgroundmusic");
+    }
+    if (playsound.sounds["chicken"].paused) {
+      playsound.play("chicken");
+    }
   }
 }

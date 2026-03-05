@@ -101,13 +101,16 @@ class Character extends MovableObject {
    * Starts all animation intervals for idle, movement, state and jump.
    */
   animate() {
-    this.CharacterIdleAnimation();
-    this.CharacterMovmentAnimation();
+    this.characterIdleAnimation();
+    this.characterMovmentAnimation()
     this.characterDamage();
     this.characterIsJumping();
   }
 
-  CharacterIdleAnimation() {
+  /**
+   * Starts the idle animation loop. Resets idle counter on input, otherwise increments it.
+   */
+  characterIdleAnimation() {
     let i = 0;
     setInterval(() => {
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE) {
@@ -116,11 +119,15 @@ class Character extends MovableObject {
       } else {
         i++;
       }
-      this.CharacterSleepAnimation(i);
+      this.characterSleepAnimation(i);
     }, 750);
   }
 
-  CharacterSleepAnimation(i) {
+  /**
+   * Plays standing or sleeping animation based on idle duration.
+   * @param {number} i - The idle frame counter.
+   */
+  characterSleepAnimation(i) {
     if (!this.isAboveGround() && !this.isHurt() && !this.isDead()) {
       if (i < 10) {
         this.playAnimation(this.IMAGES_STANDING);
@@ -133,22 +140,30 @@ class Character extends MovableObject {
     }
   }
 
-  CharacterMovmentAnimation() {
-
+  /**
+   * Handles movement input and updates the camera position each frame.
+   */
+  characterMovmentAnimation() {
     setInterval(() => {
       if (this.isDead()) {
         playsound.pause("walking");
         return;
       }
-      this.CharacterMoveRight();
-      this.CharacterMoveLeft();
-      this.CharacterJump();
+      if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT) {
+      playsound.pause("walking");
+    }
+      this.characterMoveRight();
+      this.characterMoveLeft();
+      this.characterJump();
 
       this.world.camera_x = -this.x + 180;
     }, 1000 / 70);
   }
 
-  CharacterMoveRight() {
+  /**
+   * Moves the character to the right and plays the walking sound.
+   */
+  characterMoveRight() {
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
       this.otherDirection = false;
       this.moveRight();
@@ -157,7 +172,11 @@ class Character extends MovableObject {
       }
     }
   }
-  CharacterMoveLeft() {
+
+  /**
+   * Moves the character to the left and plays the walking sound.
+   */
+  characterMoveLeft() {
 
     if (this.world.keyboard.LEFT && this.x > 0) {
       this.otherDirection = true;
@@ -168,13 +187,19 @@ class Character extends MovableObject {
     }
   }
 
-  CharacterJump() {
+  /**
+   * Makes the character jump if space is pressed and character is on the ground.
+   */
+  characterJump() {
     if (this.world.keyboard.SPACE && !this.isAboveGround()) {
       this.jump();
       playsound.play("jump");
     }
 
   }
+  /**
+   * Checks the character's damage state each frame and plays the corresponding animation.
+   */
   characterDamage() {
     setInterval(() => {
 
@@ -190,6 +215,9 @@ class Character extends MovableObject {
     }, 50);
   }
 
+  /**
+   * Plays the death animation, sound, and triggers the game-over screen.
+   */
   characterIsDead() {
     this.playAnimation(this.IMAGES_DEAD);
 
@@ -205,6 +233,9 @@ class Character extends MovableObject {
     }, 1000);
   }
 }
+  /**
+   * Plays the hurt animation and sound when the character takes damage.
+   */
   characterIsHurt() {
 
     this.playAnimation(this.IMAGES_HURT);
@@ -216,6 +247,9 @@ class Character extends MovableObject {
 
 
 
+  /**
+   * Plays the walking animation when moving on the ground.
+   */
   characterIsWalking() {
     if (!this.isAboveGround()) {
 
@@ -225,6 +259,9 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   * Plays the jumping animation while the character is above ground.
+   */
   characterIsJumping() {
     setInterval(() => {
       if (this.isAboveGround()) {
