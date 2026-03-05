@@ -6,7 +6,7 @@ class Smallchicken extends MovableObject {
   height = 70;
   width = 70;
   speed = 0.5;
-  
+
   deadSoundPlayed = false;
 
   offset = {
@@ -34,11 +34,11 @@ class Smallchicken extends MovableObject {
     this.animate();
     this.speed = 0.5;
   }
- 
-/**
+
+  /**
    * Instantly kills the small chicken by setting energy to 0.
    */
-hit() {
+  hit() {
     this.energy = 0;
   }
   /**
@@ -51,10 +51,10 @@ hit() {
       }
     }, 1000 / 60);
 
-      setInterval(() => {
+    setInterval(() => {
       if (this.isDead()) {
         if (!this.deadSoundPlayed) {
-          playsound.play('dead_small_chicken');
+          playsound.play("dead_small_chicken");
           this.deadSoundPlayed = true;
         }
         this.playaAnimation(this.IMAGES_DEAD);

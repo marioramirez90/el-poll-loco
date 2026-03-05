@@ -8,7 +8,7 @@ class Endboss extends MovableObject {
   energy = 100;
   speed = 25;
   distance = 0;
-  
+
   offset = {
     top: 120,
     left: 80,
@@ -33,7 +33,7 @@ class Endboss extends MovableObject {
     "img/4_enemie_boss_chicken/2_alert/G11.png",
     "img/4_enemie_boss_chicken/2_alert/G12.png",
   ];
-  
+
   IMAGES_HURT = [
     "img/4_enemie_boss_chicken/4_hurt/G21.png",
     "img/4_enemie_boss_chicken/4_hurt/G22.png",
@@ -55,13 +55,13 @@ class Endboss extends MovableObject {
     "img/4_enemie_boss_chicken/3_attack/G19.png",
     "img/4_enemie_boss_chicken/3_attack/G20.png",
   ];
-  
+
   /**
    * Creates the endboss, loads all images and starts animations.
    */
   constructor() {
     super().loadImage(this.IMAGES_ALERT[0]);
-     this.world = world;
+    this.world = world;
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_ALERT);
@@ -79,43 +79,37 @@ class Endboss extends MovableObject {
   animate() {
     setInterval(() => {
       if (!this.character) return;
-      
       this.distance = Math.abs(this.x - this.character.x);
-
+      
       if (this.isDead()) {
         this.playaAnimation(this.IMAGES_DEAD);
-        
+
         setTimeout(() => {
-            this.world.showYouWin();
+          this.world.showYouWin();
         }, 1000);
-    
-      }else if (this.isHurt()) {
+      } else if (this.isHurt()) {
         this.playaAnimation(this.IMAGES_HURT);
-      } 
-      else if (this.distance < 10) {
+      } else if (this.distance < 10) {
         this.playaAnimation(this.IMAGES_ATTACK);
-      } 
-      else if (this.distance < 550) {
-        if (playsound.sounds['endgame'].paused) {
-            playsound.play('endgame');
-            playsound.pause('backgroundmusic');
+      } else if (this.distance < 550) {
+        if (playsound.sounds["endgame"].paused) {
+          playsound.play("endgame");
+          playsound.pause("backgroundmusic");
         }
-        if (playsound.sounds['chicken'].paused) {
-            playsound.play('chicken');
+        if (playsound.sounds["chicken"].paused) {
+          playsound.play("chicken");
         }
-
         this.playaAnimation(this.IMAGES_WALKING);
-
         if (this.x > this.character.x) {
           this.moveLeft();
         } else {
           this.moveRight();
         }
-      } 
-      else {
+      } else {
         this.playaAnimation(this.IMAGES_ALERT);
-        playsound.pause('endgame');
-        playsound.pause('chicken');
+        playsound.pause("endgame");
+        playsound.pause("chicken");
       }
     }, 100);
-}}
+  }
+}

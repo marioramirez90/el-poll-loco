@@ -33,6 +33,7 @@ function startGame() {
  * Restarts the game by clearing intervals and reinitializing.
  */
 function restartGame() {
+  playsound.play("startbutton");
   clearAllIntervals();
   initLevel1();
   canvas = document.getElementById("canvas");
@@ -43,6 +44,7 @@ function restartGame() {
  * Restarts the game from the game over screen.
  */
 function restartGameOver() {
+  playsound.play("startbutton");
   gameOverRestart.classList.add("d-none");
   document.getElementById("restart-gameover").classList.add("d-none");
   document.getElementById("menu-gameover").classList.add("d-none");
@@ -58,7 +60,8 @@ function restartGameOver() {
  * Returns to the start screen by reloading the page.
  */
 function backToStart() {
-  location.reload();
+  playsound.play("startbutton");
+  setTimeout(() => location.reload(), 200);
 }
 /**
  * Displays the game over screen with staggered button reveals.
@@ -66,7 +69,7 @@ function backToStart() {
 function renderGameOverScreen() {
   document.getElementById("game-over-screen").classList.remove("d-none");
   document.getElementById("canvas-container").classList.add("d-none");
-
+  
   setTimeout(() => {
     document.getElementById("restart-gameover").classList.remove("d-none");
   }, 1000);
@@ -143,6 +146,7 @@ function closeDialog() {
  * Toggles browser fullscreen mode for the game canvas container.
  */
 function openFullscreen() {
+  playsound.play("startbutton");
   if (!document.fullscreenElement) {
     if (gameCanvas.requestFullscreen) {
       gameCanvas.requestFullscreen();

@@ -16,7 +16,6 @@ class World {
   backgroundObjects = level1.backgroundObjects;
   throwableObjects = [];
   endbossActivated = false;
-
   keyboard;
   canvas;
   ctx;
@@ -46,7 +45,6 @@ class World {
    */
   setWorld() {
     this.character.world = this;
-
     this.level.enemies.forEach((enemy) => {
       if (enemy instanceof Endboss) {
         enemy.character = this.character;
@@ -72,65 +70,51 @@ class World {
    * Checks collisions between the character and all enemies.
    */
   checkCollisions() {
-    this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy) && !enemy.isDead()) {
-        let hitFromAbove =
-          this.character.isAboveGround() && this.character.speedY < 0;
-
-        if (hitFromAbove && !(enemy instanceof Endboss)) {
-          enemy.energy = 0;
-          this.character.speedY = 15;
-
-          setTimeout(() => {
-            let i = this.level.enemies.indexOf(enemy);
-            if (i > -1) this.level.enemies.splice(i, 1);
-          }, 200);
-        } else {
-          if (!this.character.isHurt()) {
-            this.character.hit();
-            this.statusBar.setPercentage(this.character.energy);
-          }
-        }
-      }
-    });
-  }
+  this.level.enemies.forEach((enemy) => {
+  if (this.character.isColliding(enemy) && !enemy.isDead()) {
+  let hitFromAbove =
+  this.character.isAboveGround() && this.character.speedY < 0; if (hitFromAbove && !(enemy instanceof Endboss)) {
+  enemy.energy=0; this.character.speedY=15; setTimeout(()=> {
+  let i = this.level.enemies.indexOf(enemy);
+  if (i > -1) this.level.enemies.splice(i, 1);
+  }, 200);
+  } else {
+  if (!this.character.isHurt()) {
+  this.character.hit();
+  this.statusBar.setPercentage(this.character.energy);
+  }}}});}
 
   /**
    * Checks if the character collides with coins and collects them.
    */
   checkCoinCollisions() {
-    this.level.coins.forEach((coin, index) => {
-      if (this.character.isColliding(coin)) {
-        this.character.receivedCoin();
-        this.coinStatusBar.setPercentage(this.character.coinNumber);
-        this.level.coins.splice(index, 1);
-      }
-    });
-  }
+  this.level.coins.forEach((coin, index) => {
+  if (this.character.isColliding(coin)) {
+  this.character.receivedCoin();
+  this.coinStatusBar.setPercentage(this.character.coinNumber);
+  this.level.coins.splice(index, 1);
+  }});}
+
   /**
    * Checks if the character collides with bottles and collects them.
    */
   checkBottleCollisions() {
-    this.level.bottle.forEach((bottle, index) => {
-      if (this.character.isColliding(bottle)) {
-        this.character.receivedBottle();
-        this.bottleStatusBar.setPercentage(this.character.bottlenumber);
-        this.level.bottle.splice(index, 1);
-      }
-    });
-  }
+  this.level.bottle.forEach((bottle, index) => {
+  if (this.character.isColliding(bottle)) {
+  this.character.receivedBottle();
+  this.bottleStatusBar.setPercentage(this.character.bottlenumber);
+  this.level.bottle.splice(index, 1);
+}
+});
+}
 
   /**
    * Checks if the player presses the throw key and creates a throwable object.
    */
   checkThrowObject() {
     if (this.keyboard.D && this.character.bottlenumber > 0 && !this.canThrow) {
-      let salsa = new ThrowableObject(
-        this.character.x + 40,
-        this.character.y + 100,
-      );
+      let salsa = new ThrowableObject(this.character.x + 40, this.character.y + 100,);
       this.canThrow = true;
-
       this.throwableObjects.push(salsa);
       this.character.hitBottle();
       this.bottleStatusBar.setPercentage(this.character.bottlenumber);
@@ -147,11 +131,12 @@ class World {
     this.throwableObjects.forEach((bottle) => {
       if (bottle.isSplashed) return;
       this.level.enemies.forEach((enemy) => {
-        if (bottle.isColliding(enemy) && !enemy.isDead() && !bottle.isSplashed) {
+        if (
+          bottle.isColliding(enemy) && !enemy.isDead() && !bottle.isSplashed) {
           bottle.splash();
           if (enemy instanceof Endboss) {
             enemy.hit();
-            this.endbossStatusBar.setPercentage(enemy.energy )
+            this.endbossStatusBar.setPercentage(enemy.energy);
           } else {
             enemy.energy = 0;
           }
@@ -160,7 +145,11 @@ class World {
               let i = this.level.enemies.indexOf(enemy);
               if (i > -1) this.level.enemies.splice(i, 1);
             }, 200);
-          }}});});}
+          }
+        }
+      });
+    });
+  }
 
   /**
    * Removes splashed bottles from the throwable objects array after a delay.
@@ -182,17 +171,13 @@ class World {
    */
   draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     this.ctx.translate(Math.floor(this.camera_x), 0);
     this.addObjectsToMap(this.level.backgroundObjects);
     this.ctx.translate(-Math.floor(this.camera_x), 0);
-
     this.addObjectsToMap(this.level.clouds);
-
     this.addToMap(this.statusBar);
     this.addToMap(this.coinStatusBar);
     this.addToMap(this.bottleStatusBar);
-
     this.ctx.translate(Math.floor(this.camera_x), 0);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottle);
@@ -231,9 +216,7 @@ class World {
     if (mo.otherDiretion) {
       this.flipImage(mo);
     }
-
     mo.draw(this.ctx);
-
     if (mo.otherDiretion) {
       this.flipImageBack(mo);
     }
@@ -267,7 +250,6 @@ class World {
     playsound.pause("backgroundmusic");
     playsound.play("dead2");
     playsound.play("gameover");
-
     renderGameOverScreen();
   }
 
@@ -279,7 +261,6 @@ class World {
     playsound.pause("backgroundmusic");
     playsound.play("dead2");
     playsound.play("gameover");
-
     renderYouWinScreen();
   }
 

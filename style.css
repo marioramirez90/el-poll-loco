@@ -1,3 +1,22 @@
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 165, 0, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.8)) drop-shadow(0 0 25px rgba(255, 80, 0, 0.3)); }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.3); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+  70% { transform: translateX(-50%) scale(0.95); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+@keyframes startBounceIn {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1.05); }
+  70% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 .rotate-warning {
   position: fixed;
   inset: 0;
@@ -56,14 +75,21 @@ canvas {
   position: absolute;
   top: 14px;
   right: 70px;
-  transition: all 1.5s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .restart:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+}
+.restart:hover img {
+  filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.8));
+}
+.restart:active {
+  transform: scale(0.9);
 }
 .restart img {
   height: 35px;
   cursor: pointer;
+  transition: filter 0.3s;
 }
 
 .fullscreen img {
@@ -87,25 +113,55 @@ canvas {
 }
 
 .start-img {
-  transition: all 1s;
   cursor: pointer;
   background: none;
   border: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: startBounceIn 0.6s ease-out backwards;
+}
+
+.start-img .butten-img {
+  animation: glowPulse 2.5s ease-in-out infinite;
+  transition: filter 0.3s;
 }
 
 .start-img:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(2deg);
+}
+
+.start-img:hover .butten-img {
+  animation: none;
+  filter: drop-shadow(0 0 15px rgba(255, 165, 0, 1)) drop-shadow(0 0 30px rgba(255, 80, 0, 0.4));
+}
+
+.start-img:active {
+  transform: scale(0.92);
 }
 
 .info-img {
   background: none;
-  transition: all 1s;
   cursor: pointer;
   border: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: startBounceIn 0.6s ease-out 0.15s backwards;
+}
+
+.info-img .butten-img {
+  animation: glowPulse 2.5s ease-in-out infinite;
+  transition: filter 0.3s;
 }
 
 .info-img:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(-2deg);
+}
+
+.info-img:hover .butten-img {
+  animation: none;
+  filter: drop-shadow(0 0 15px rgba(255, 165, 0, 1)) drop-shadow(0 0 30px rgba(255, 80, 0, 0.4));
+}
+
+.info-img:active {
+  transform: scale(0.92);
 }
 
 .start-menu img {
@@ -169,8 +225,7 @@ dialog::backdrop {
 }
 
 .you-win-container {
-  position: absolute;
-
+  position: relative;
   justify-content: center;
   align-items: center;
 }
@@ -180,9 +235,8 @@ dialog::backdrop {
   width: 960px;
 }
 
-.geme-over-container {
-  position: absolute;
-
+.game-over-container {
+  position: relative;
   justify-content: center;
   align-items: center;
 }
@@ -194,41 +248,80 @@ dialog::backdrop {
 .restart-butten-gameover {
   position: absolute;
   top: 400px;
-  right: 650px;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
-  transition: all 1.5s;
   background: none;
   border: none;
-  height: 50px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: bounceIn 0.6s ease-out backwards;
 }
 .restart-butten-gameover img {
   height: 70px;
+  animation: glowPulse 2s ease-in-out infinite;
+  transition: filter 0.3s;
+}
+.restart-butten-gameover:hover {
+  transform: translateX(-50%) scale(1.15);
+}
+.restart-butten-gameover:hover img {
+  animation: none;
+  filter: drop-shadow(0 0 18px rgba(255, 165, 0, 1)) drop-shadow(0 0 35px rgba(255, 80, 0, 0.5));
+}
+.restart-butten-gameover:active {
+  transform: translateX(-50%) scale(0.92);
 }
 .menu-butten-gameover {
-  top: 500px;
-  right: 650px;
   position: absolute;
-  margin: auto;
+  top: 500px;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
-  transition: all 1.5s;
   background: none;
   border: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: bounceIn 0.6s ease-out backwards;
+}
+.menu-butten-gameover:hover {
+  transform: translateX(-50%) scale(1.15);
+}
+.menu-butten-gameover:hover img {
+  animation: none;
+  filter: drop-shadow(0 0 18px rgba(255, 165, 0, 1)) drop-shadow(0 0 35px rgba(255, 80, 0, 0.5));
+}
+.menu-butten-gameover:active {
+  transform: translateX(-50%) scale(0.92);
 }
 .menu-butten-youwin {
-  top: 250px;
-  right: 370px;
   position: absolute;
-  margin: auto;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
-  transition: all 1.5s;
   background: none;
   border: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: bounceIn 0.6s ease-out backwards;
+}
+.menu-butten-youwin:hover {
+  transform: translateX(-50%) scale(1.15);
+}
+.menu-butten-youwin:hover img {
+  animation: none;
+  filter: drop-shadow(0 0 18px rgba(255, 165, 0, 1)) drop-shadow(0 0 35px rgba(255, 80, 0, 0.5));
+}
+.menu-butten-youwin:active {
+  transform: translateX(-50%) scale(0.92);
 }
 .menu-butten-youwin img {
   height: 70px;
+  animation: glowPulse 2s ease-in-out infinite;
+  transition: filter 0.3s;
 }
 .menu-butten-gameover img {
   height: 70px;
+  animation: glowPulse 2s ease-in-out infinite;
+  transition: filter 0.3s;
 }
 #mobile-controls {
   display: none;
@@ -292,7 +385,6 @@ dialog::backdrop {
   }
   .menu-butten-youwin {
     top: 170px;
-    right: 220px;
   }
 
   .start-menu img {
@@ -305,11 +397,9 @@ dialog::backdrop {
 
   .menu-butten-gameover {
     top: 220px;
-    right: 340px;
   }
   .restart-butten-gameover {
     top: 150px;
-    right: 340px;
   }
 }
 

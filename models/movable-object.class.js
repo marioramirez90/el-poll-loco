@@ -12,7 +12,6 @@ class MovableObject extends DrawableObject {
   coinNumber = 0;
   bottlenumber = 0;
   cloudStartX = 0;
-  
 
   /**
    * Applies gravity to the object using a recurring interval.
@@ -34,17 +33,17 @@ class MovableObject extends DrawableObject {
     }, 1000 / 25);
   }
 
- /**
-  * Checks if the object is above ground level.
-  * @returns {boolean} True if the object is above ground.
-  */
- isAboveGround() {
+  /**
+   * Checks if the object is above ground level.
+   * @returns {boolean} True if the object is above ground.
+   */
+  isAboveGround() {
     if (this instanceof ThrowableObject) {
-        return this.y < 380; 
+      return this.y < 380;
     } else {
-        return this.y < 210;
+      return this.y < 210;
     }
-}
+  }
 
   /**
    * Moves the object to the right by its speed value.
@@ -88,10 +87,8 @@ class MovableObject extends DrawableObject {
     this.energy -= 10;
     if (this.energy < 0) {
       this.energy = 0;
-
     } else {
       this.lastHit = new Date().getTime();
-      
     }
   }
 
@@ -100,26 +97,25 @@ class MovableObject extends DrawableObject {
    */
   receivedCoin() {
     this.coinNumber += 10;
-    playsound.play('coin');
+    playsound.play("coin");
     if (this.coinNumber > 100) this.coinNumber = 100;
-}
+  }
   /**
    * Increases the bottle counter by 20 and plays the bottle sound.
    */
   receivedBottle() {
     this.bottlenumber += 20;
-        playsound.play('bottle');
-
+    playsound.play("bottle");
     if (this.bottlenumber > 100) this.bottlenumber = 100;
-}
+  }
 
   /**
    * Decreases the bottle counter by 10 after throwing.
    */
-  hitBottle(){
+  hitBottle() {
     this.bottlenumber -= 10;
     if (this.bottlenumber == 0) this.bottlenumber = 0;
-}
+  }
 
   /**
    * Checks if the object was recently hurt.
@@ -128,7 +124,7 @@ class MovableObject extends DrawableObject {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
-    return timepassed < 0.5; 
+    return timepassed < 0.5;
   }
 
   /**

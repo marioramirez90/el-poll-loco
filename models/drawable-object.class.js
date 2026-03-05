@@ -31,28 +31,28 @@ class DrawableObject {
    * Draws a debug frame around collidable objects.
    * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.
    */
-drawframe(ctx) {
-  if (
-    this instanceof Character ||
-    this instanceof Chicken ||
-    this instanceof Smallchicken ||
-    this instanceof Endboss ||
-    this instanceof Bottle ||
-    this instanceof Coins ||
-    this instanceof ThrowableObject
-  ) {
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 1;
-
-   ctx.strokeRect(
-      this.x + this.offset.left,
-      this.y + this.offset.top,
-      this.width - this.offset.left - this.offset.right,
-      this.height - this.offset.top - this.offset.bottom
-    );
+  drawframe(ctx) {
+    if (this.instanceof()) {
+      ctx.strokeStyle = "red";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(
+        this.x + this.offset.left,
+        this.y + this.offset.top,
+        this.width - this.offset.left - this.offset.right,
+        this.height - this.offset.top - this.offset.bottom,
+      );
+    }
   }
-}
 
+  instanceof() {
+    return this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Smallchicken ||
+      this instanceof Endboss ||
+      this instanceof Bottle ||
+      this instanceof Coins ||
+      this instanceof ThrowableObject;
+  }
   /**
    * Loads an array of images into the image cache.
    * @param {string[]} arr - Array of image paths to preload.

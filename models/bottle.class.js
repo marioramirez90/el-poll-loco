@@ -1,30 +1,29 @@
 /**
- * Represents a collectible salsa bottle on the ground.
- * @extends MovableObject
- */
+* Represents a collectible salsa bottle on the ground.
+* @extends MovableObject
+*/
 class Bottle extends MovableObject {
-  height = 100;
-  width = 100;
-  x = 100;
-  y = 400;
+height = 100;
+width = 100;
+x = 100;
+y = 400;
 
-  offset = {
-    top: 20,
-    left: 35,
-    right: 35,
-    bottom: 10,
-  };
+offset = {
+top: 20,
+left: 35,
+right: 35,
+bottom: 10,
+};
 
+IMAGES = ["img/6_salsa_bottle/2_salsa_bottle_on_ground.png"];
 
-  IMAGES = ["img/6_salsa_bottle/2_salsa_bottle_on_ground.png"];
+/**
+* Creates a bottle at a random x position on the ground.
+*/
+constructor() {
+super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
 
-  /**
-   * Creates a bottle at a random x position on the ground.
-   */
-  constructor() {
-    super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
+this.x = 350 + Math.random() * 7000;
 
-    this.x = 350 + Math.random() * 7000;
-
-  }
+}
 }
