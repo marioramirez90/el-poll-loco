@@ -123,7 +123,7 @@ class Character extends MovableObject {
           }
         }
       }
-    }, 1450);
+    }, 450);
 
     setInterval(() => {
       if (this.isDead()) {
@@ -151,7 +151,7 @@ class Character extends MovableObject {
         playsound.play("jump");
       }
       this.world.camera_x = -this.x + 180;
-    }, 1000 / 60);
+    }, 1000 / 70);
 
     setInterval(() => {
       if (this.isDead()) {
