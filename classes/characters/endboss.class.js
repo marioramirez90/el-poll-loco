@@ -86,10 +86,16 @@ class Endboss extends MovableObject {
   },100); 
 }
 
+  /**
+   * Calculates the distance between the endboss and the character.
+   */
   checkCharacterDistance() {
     this.distance = Math.abs(this.x - this.character.x);
   }
 
+  /**
+   * Handles the endboss death state and triggers the win screen.
+   */
   endbossIsDead() {
     if (!this.isDead()) return;
     this.playAnimation(this.IMAGES_DEAD);
@@ -103,16 +109,25 @@ class Endboss extends MovableObject {
     }
   }
 
+  /**
+   * Plays the hurt animation if the endboss is hurt and not dead.
+   */
   endbossIsHurt() {
     if (!this.isHurt() || this.isDead()) return;
     this.playAnimation(this.IMAGES_HURT);
   }
 
+  /**
+   * Plays the attack animation when the character is very close.
+   */
   endbossIsAttack() {
     if (this.distance >= 10 || this.isDead()) return;
     this.playAnimation(this.IMAGES_ATTACK);
   }
 
+  /**
+   * Moves the endboss toward the character and plays walk animation.
+   */
   endbossIsWalking() {
     if (this.distance >= 550 || this.distance < 10 || this.isDead()) return;
     this.playAnimation(this.IMAGES_WALKING);
@@ -124,6 +139,9 @@ class Endboss extends MovableObject {
     }
   }
 
+  /**
+   * Plays the alert animation when the character is far away.
+   */
   endbossAlert() {
     if (this.distance < 550 || this.isDead()) return;
     this.playAnimation(this.IMAGES_ALERT);
@@ -131,6 +149,9 @@ class Endboss extends MovableObject {
     playsound.pause("chicken");
   }
 
+  /**
+   * Plays endboss background music and chicken sounds if not already playing.
+   */
   playEndbossSound() {
     if (playsound.sounds["endgame"].paused) {
       playsound.play("endgame");
