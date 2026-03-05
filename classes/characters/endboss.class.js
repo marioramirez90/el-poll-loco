@@ -99,11 +99,11 @@ class Endboss extends MovableObject {
   endbossIsDead() {
     if (!this.isDead()) return;
     this.playAnimation(this.IMAGES_DEAD);
+     playsound.play("win");
     if (!this.winTriggered) {
       this.winTriggered = true;
       setTimeout(() => {
         this.world.showYouWin();
-        playsound.play("gameover");
         playsound.pause("endgame");
       }, 1000);
     }

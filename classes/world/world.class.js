@@ -74,7 +74,7 @@ class World {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
         let hitFromAbove =
           this.character.isAboveGround() && this.character.speedY < 0; if (hitFromAbove && !(enemy instanceof Endboss)) {
-            enemy.energy = 0; this.character.speedY = 15; setTimeout(() => {
+            enemy.energy = 0; this.character.speedY = 20; setTimeout(() => {
               let i = this.level.enemies.indexOf(enemy);
               if (i > -1) this.level.enemies.splice(i, 1);
             }, 200);
