@@ -120,7 +120,7 @@ class Character extends MovableObject {
         i++;
       }
       this.characterSleepAnimation(i);
-    }, 750);
+    }, 1500);
   }
 
   /**
