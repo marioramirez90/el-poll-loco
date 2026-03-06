@@ -53,13 +53,12 @@ function startGame() {
  */
 function restartGame() {
   clearAllIntervals();
-  loadingSpinner.classList.remove("d-none");
   playsound.pause("backgroundmusic");
-
-  setTimeout(() => {
-    initLevel1();
-    canvas = document.getElementById("canvas");
+  loadingSpinner.classList.remove("d-none");
+  initLevel1();
+  canvas = document.getElementById("canvas");
     world = new World(canvas, keyboard);
+  setTimeout(() => {
     loadingSpinner.classList.add("d-none");
     playsound.play("backgroundmusic");
   }, 1000);
