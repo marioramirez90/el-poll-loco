@@ -26,8 +26,8 @@ class MovableObject extends DrawableObject {
         this.y = 210;
         this.speedY = 0;
       }
-      if (this instanceof ThrowableObject && this.y > 380) {
-        this.y = 380;
+      if (this instanceof ThrowableObject && this.y > 420) {
+        this.y = 420;
         this.speedY = 0;
       }
     }, 1000 / 25);
@@ -39,7 +39,7 @@ class MovableObject extends DrawableObject {
    */
   isAboveGround() {
     if (this instanceof ThrowableObject) {
-      return this.y < 380;
+      return this.y < 420;
     } else {
       return this.y < 210;
     }

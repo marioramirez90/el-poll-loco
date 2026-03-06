@@ -56,7 +56,7 @@ class ThrowableObject extends MovableObject {
     setInterval(() => {
       if (!this.isSplashed) {
         this.x += 10;
-        if (this.y >= 380) {
+        if (this.y >= 420) {
           this.splash();
         }
       }
