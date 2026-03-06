@@ -34,6 +34,7 @@ function startGame() {
   removeStartMenu();
   playsound.play("backgroundmusic");
   bindBtsPressEvents();
+  document.getElementById("mobile-controls").classList.add("show");
 }
 
 /**

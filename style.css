@@ -464,7 +464,8 @@ dialog::backdrop {
   }
 }
 @media (hover: none) and (pointer: coarse) {
-  #mobile-controls {
+  #mobile-controls.show {
     display: flex;
   }
 }
+
