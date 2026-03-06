@@ -68,6 +68,8 @@ function restartGame() {
  */
 function restartGameOver() {
   playsound.play("startbutton");
+  playsound.pause("backgroundmusic");
+  loadingSpinner.classList.remove("d-none");
   document.getElementById("canvas").classList.remove("d-none");
   gameOverRestart.classList.add("d-none");
   document.getElementById("restart-gameover").classList.add("d-none");
@@ -77,7 +79,10 @@ function restartGameOver() {
   canvas = document.getElementById("canvas");
   gameCanvas.classList.remove("d-none");
   world = new World(canvas, keyboard);
-  playsound.play("backgroundmusic");
+   setTimeout(() => {
+    loadingSpinner.classList.add("d-none");
+    playsound.play("backgroundmusic");
+  }, 1000);
 }
 /**
  * Returns to the start screen by reloading the page.
