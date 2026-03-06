@@ -129,7 +129,7 @@ class Character extends MovableObject {
    */
   characterSleepAnimation(i) {
     if (!this.isAboveGround() && !this.isHurt() && !this.isDead()) {
-      if (i < 10) {
+      if (i < 15) {
         this.playAnimation(this.IMAGES_STANDING);
       } else {
         this.playAnimation(this.IMAGES_SLEEPING);

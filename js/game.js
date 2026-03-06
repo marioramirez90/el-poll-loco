@@ -22,31 +22,47 @@ let youWinRestart = document.getElementById("you-win-screen");
 let sound = document.getElementById("soundToggleBtn");
 /** @type {HTMLElement} The container element wrapping the game canvas. */
 let gameCanvas = document.getElementById("canvas-container");
-
-
+/** @type {HTMLElement} The loading spinner element. */
+let loadingSpinner = document.getElementById("loading-spinner");
 /**
  * Starts a new game by initializing the level, canvas and world.
  */
 function startGame() {
+  loadingSpinner.classList.remove("d-none");
+  document.getElementById("menu").classList.add("d-none");
   initLevel1();
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
-  removeStartMenu();
-  playsound.play("backgroundmusic");
+  sound.classList.remove("d-none");
+  restart.classList.remove("d-none");
+  home.classList.remove("d-none");
+  canvas.classList.remove("d-none");
+  fullscreen.classList.remove("d-none");
+  updateMuteIcon();
   bindBtsPressEvents();
   document.getElementById("mobile-controls").classList.add("show");
+
+  setTimeout(() => {
+    loadingSpinner.classList.add("d-none");
+    playsound.play("backgroundmusic");
+  }, 1000);
 }
 
 /**
  * Restarts the game by clearing intervals and reinitializing.
  */
 function restartGame() {
-  playsound.play("startbutton");
   clearAllIntervals();
-  initLevel1();
-  canvas = document.getElementById("canvas");
-  world = new World(canvas, keyboard);
-  playsound.play("backgroundmusic");
+  loadingSpinner.classList.remove("d-none");
+  playsound.pause("backgroundmusic");
+
+  setTimeout(() => {
+    initLevel1();
+    canvas = document.getElementById("canvas");
+    world = new World(canvas, keyboard);
+    loadingSpinner.classList.add("d-none");
+    playsound.play("backgroundmusic");
+  }, 1000);
 }
 /**
  * Restarts the game from the game over screen.
@@ -64,7 +80,6 @@ function restartGameOver() {
   world = new World(canvas, keyboard);
   playsound.play("backgroundmusic");
 }
-
 /**
  * Returns to the start screen by reloading the page.
  */
@@ -171,7 +186,7 @@ function closeImpresum() {
  * Toggles browser fullscreen mode for the game canvas container.
  */
 function openFullscreen() {
-  playsound.play("startbutton");      
+  playsound.play("startbutton");
   if (!document.fullscreenElement) {
     if (gameCanvas.requestFullscreen) {
       gameCanvas.requestFullscreen();
@@ -190,7 +205,6 @@ function openFullscreen() {
     }
   }
 }
-
 /**
  * Toggles game sound on/off and updates the UI icon.
  */
@@ -307,7 +321,7 @@ function checkOrientation() {
     rotateWarning.classList.remove("d-none");
   } else {
     rotateWarning.classList.add("d-none");
-    
+
   }
 }
 
