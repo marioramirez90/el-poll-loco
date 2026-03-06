@@ -39,7 +39,7 @@ class StatusBar extends DrawableObject {
     "img/7_statusbars/1_statusbar/1_statusbar_coin/blue/100.png",
   ];
 
-  percentage = 100;
+  percentage = 120;
 
   /**
    * Creates the status bar and loads all status images.
@@ -54,7 +54,7 @@ class StatusBar extends DrawableObject {
     this.loadImages(this.BOTTLE_IMAGES);
     this.loadImages(this.ENDBOSS_IMAGES);
     this.loadImages(this.COIN_IMAGES);
-    this.setPercentage(100);
+    this.setPercentage(120);
   }
 
   /**
@@ -72,7 +72,7 @@ class StatusBar extends DrawableObject {
    * @returns {number} The index of the image to display.
    */
   resolveImageIndex() {
-    if (this.percentage == 100) {
+    if (this.percentage == 120) {
       return 5;
     } else if (this.percentage > 80) {
       return 4;
@@ -80,7 +80,7 @@ class StatusBar extends DrawableObject {
       return 3;
     } else if (this.percentage > 40) {
       return 2;
-    } else if (this.percentage > 20) {
+    } else if (this.percentage > 10) {
       return 1;
     } else if (this.percentage >= 0) {
       return 0;

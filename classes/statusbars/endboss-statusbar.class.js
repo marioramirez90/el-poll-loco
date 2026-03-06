@@ -12,7 +12,7 @@ class EndbossStatusBar extends StatusBar {
     "img/7_statusbars/2_statusbar_endboss/orange/orange100.png",
   ];
 
-  percentage = 100;
+  percentage = 120;
 
   /**
    * Creates the endboss status bar at its position.

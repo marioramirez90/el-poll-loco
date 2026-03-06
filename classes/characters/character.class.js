@@ -6,7 +6,7 @@ class Character extends MovableObject {
   speed = 5.5;
   height = 280;
   camera_x = 0;
-  energy = 100;
+  energy = 120;
   coinNumber = 0;
   bottleNumber = 0;
   idleTime = 0;

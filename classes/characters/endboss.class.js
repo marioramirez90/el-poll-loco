@@ -5,7 +5,7 @@
 class Endboss extends MovableObject {
   height = 450;
   width = 390;
-  energy = 100;
+  energy = 120;
   speed = 25;
   distance = 0;
 
@@ -85,7 +85,7 @@ class Endboss extends MovableObject {
     this.endbossAlert();
   },100); 
 }
-
+ 
   /**
    * Calculates the distance between the endboss and the character.
    */
@@ -115,6 +115,7 @@ class Endboss extends MovableObject {
   endbossIsHurt() {
     if (!this.isHurt() || this.isDead()) return;
     this.playAnimation(this.IMAGES_HURT);
+    
   }
 
   /**
