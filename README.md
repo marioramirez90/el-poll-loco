@@ -1,67 +1,69 @@
-# El Pollo Loco
+# 🌵 El Pollo Loco – 2D Jump & Run Game
 
-El Pollo Loco is a browser-based 2D platform game built with HTML, CSS and vanilla JavaScript. Play as Pepe, collect coins and salsa bottles, defeat chickens and face the end boss.
+An object-oriented 2D browser jump-and-run game built with **HTML5 Canvas** and modern **Vanilla JavaScript**, developed as part of the **Developer Akademie** frontend software development curriculum. The project demonstrates clean Object-Oriented Programming (OOP), class inheritance models, custom collision physics, fluid character state animations, and dedicated mobile landscape gameplay.
 
-## Features
+---
 
-- Canvas-based platform gameplay
-- Keyboard and mobile touch controls
-- Collectible coins and salsa bottles
-- Different chicken enemies and an end boss
-- Health, coin and bottle status bars
-- Sound effects, background music and mute control
-- Restart, home and fullscreen controls
-- Win and game-over screens
+## 🚀 Live Demo
 
-## How to Play
+Play the live build in your browser:  
+👉 **[Play Game](https://marioramirez.de/projekte/el-pollo-loco)**
 
-Move through the level, collect items and defeat the enemies. Use salsa bottles to attack and reach the end boss to complete the level.
+*(Note: If you built "Sharkie" instead, update the URL to `.../projekte/sharkie`.)*
 
-### Keyboard Controls
+---
 
+## 🎮 Controls & Gameplay
+
+### Desktop (Keyboard)
 | Key | Action |
-| --- | --- |
-| Left Arrow | Move left |
-| Right Arrow | Move right |
-| Up Arrow or Space | Jump |
-| D | Throw a salsa bottle |
+| :--- | :--- |
+| `A` / `D` or `Arrow Left` / `Arrow Right` | Move Left / Right |
+| `W` / `Space` or `Arrow Up` | Jump (stomp enemies from above) |
+| `D` or `F` | Throw Bottle (attack) |
+| `Esc` | Close Story / Instruction Modal |
 
-On mobile devices, use the on-screen control buttons. The game works best in landscape mode.
+### Mobile & Tablet (Touch Controls)
+* Virtual on-screen touch buttons dynamically activate on tablet and smartphone viewports.
+* **Landscape-Only:** Portrait orientation displays a locked overlay prompting users to rotate their device.
+* Long-press and context menus are disabled on all mobile touch triggers.
 
-## Getting Started
+---
 
-This project does not require a build process or package installation.
+## ✨ Features & Architecture
 
-1. Clone or download the repository.
-2. Open the project folder.
-3. Open `index.html` in a modern web browser.
+* **Object-Oriented Programming (OOP):**
+  * Clear inheritance architecture (`MovableObject`, `DrawableObject`, `World`, `Keyboard`, etc.).
+  * Every class is decoupled into its own file located inside the `classes/` directory.
+* **Character States & Dynamic Animations:**
+  * Fluid cycles for walking, jumping, hurt frames (`HURT`), and death sequences (`DEAD`).
+  * Idle animation transitions into sleep mode accompanied by audio cues after 15 seconds of inactivity.
+* **Enemy AI & Accurate Collision Detection:**
+  * At least two distinct enemy archetypes plus a multi-phase endboss.
+  * Precise collision hitboxes and offsets: enemies are only defeated by direct top-down jumps.
+* **Collectibles & Status Indicators:**
+  * Collectible coins and throwable bottles across the map.
+  * Real-time status bars reflecting current health, coins, bottle inventory, and endboss health.
+* **Sound & State Management:**
+  * Background soundtrack and synchronized sound effects for combat, steps, and hits.
+  * Global mute control with state persistence via `localStorage`.
+* **Zero-Reload Restart:**
+  * Seamless state resets upon game over or victory without reloading the browser window (`location.reload()`).
 
-For the most reliable local setup, serve the folder with a local web server, for example:
+---
 
+## 🛠️ Tech Stack
+
+* **HTML5:** Canvas API (`<canvas>`), semantic elements, help dialogs.
+* **CSS3:** Flexbox, media queries (`@media (orientation: portrait)`), custom touch handling.
+* **JavaScript (ES6+ OOP):** Class hierarchies, Canvas rendering cycle (`requestAnimationFrame`), event listeners, Web Audio, JSDoc standard documentation.
+
+---
+
+## ⚡ Quickstart (Run Locally)
+
+To run and inspect the game locally on your machine:
+
+### 1. Clone the repository
 ```bash
-python -m http.server
-```
-
-Then visit `http://localhost:8000` in your browser.
-
-## Project Structure
-
-```text
-index.html              Main game page and canvas
-style.css               Layout and responsive styles
-js/game.js              Game startup, controls and UI logic
-classes/                Game objects and gameplay classes
-level/                  Level definitions and level data
-img/                    Character, background and interface images
-audio/                  Music and sound effects
-```
-
-## Technologies
-
-- HTML5 Canvas
-- CSS3
-- Vanilla JavaScript
-
-## Credits
-
-Created as a frontend game project for the Developer Akademie.
+git clone [https://github.com/DEIN-GITHUB-NUTZERNAME/DEIN-REPO-NAME.git](https://github.com/DEIN-GITHUB-NUTZERNAME/DEIN-REPO-NAME.git)
