@@ -7,7 +7,7 @@ An object-oriented 2D browser jump-and-run game built with **HTML5 Canvas** and 
 ## 🚀 Live Demo
 
 Play the live build in your browser:  
-👉 **[Play Game](https://marioramirez.de/projekte/el-pollo-loco)**
+👉 **[Play Game](https://marioramirez.de/projekte/pollo-loco)**
 
 *(Note: If you built "Sharkie" instead, update the URL to `.../projekte/sharkie`.)*
 
