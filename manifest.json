@@ -1,0 +1,23 @@
+{
+  "name": "Pollo Loco",
+  "short_name": "Pollo Loco",
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "scope": "./",
+  "start_url": "./index.html",
+  "description": "Pollo-Loco ",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
